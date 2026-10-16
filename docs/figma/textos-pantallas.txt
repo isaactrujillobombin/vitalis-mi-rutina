@@ -1,0 +1,271 @@
+### Inicio/Desktop
+  [t] Label
+  [t] Name
+  [t] Initial
+  [t] Section
+  [t] Title
+  [t] Description
+  [t] Section
+  [t] Exercise
+  [t] Description
+  [t] Pending status
+  [i] Button/Empezarahora
+  [t] Alternative action
+  [t] Title
+  [t] Description
+  [t] Title
+  [t] Section link
+  [t] Nutrient
+  [t] Amount
+  [t] Description
+  [t] Nutrient
+  [t] Amount
+  [t] Description
+  [t] Nutrient
+  [t] Amount
+  [t] Description
+
+### Preparación/Desktop
+  [t] Label
+  [t] Name
+  [t] Initial
+  [t] Section
+  [t] Title
+  [t] Description
+  [t] Title
+  [t] Description
+  [t] Title
+  [t] Description
+  [t] Title
+  [t] Description
+  [i] Button/Secondary / Volver al inicio
+  [i] Button/Estoylista,empezar
+  [t] Title
+  [i] Badge/Session / Nivel 1 · Con silla
+  [t] Description
+  [t] Registration status
+  [t] Title
+  [t] Description
+
+### Ejercicio/Desktop
+  [t] Label
+  [t] Name
+  [t] Initial
+  [t] Section
+  [t] Title
+  [t] Description
+  [t] Instructions
+  [i] Badge/Session / 8 repeticiones
+  [i] Badge/Session / Descanso 30 s
+  [t] Description
+  [i] Button/Secondary / Me duele
+  [i] Button/Terminarejercicio
+  [t] Description
+  [t] Title
+  [i] Badge/Session / Nivel 1 · Con silla
+  [t] Description
+  [t] Registration status
+  [t] Description
+  [i] Button/Pausarsesión
+  [t] Preparation link
+
+### SesiónRegistrada/Desktop
+  [t] Label
+  [t] Name
+  [t] Initial
+  [t] Section
+  [t] Title
+  [t] Description
+  [t] Title
+  [t] Description
+  [t] Exercise
+  [t] Status
+  [t] Description
+  [i] Button/Return / Volver al inicio
+  [t] Label
+  [i] Button/Secondary / Avisar a la familia
+  [t] Title
+  [i] Badge/Session / Nivel 1 · Con silla
+  [t] Description
+  [t] Registration status
+  [t] Title
+  [t] Description
+
+### SesiónPausada/Desktop
+  [t] Label
+  [t] Name
+  [t] Initial
+  [t] Section
+  [t] Title
+  [t] Description
+  [t] Title
+  [t] Description
+  [t] Exercise
+  [t] Status
+  [t] Description
+  [i] Button/Return / Volver al inicio
+  [t] Label
+  [i] Button/Secondary / Revisar preparación
+  [t] Title
+  [i] Badge/Session / Nivel 1 · Con silla
+  [t] Description
+  [t] Registration status
+  [t] Description
+
+### Inicio/Mobile
+  [t] Buenos días, Carmen
+  [t] 2 de 3 hechas hoy
+  [t] ¡Muy bien!
+  [t] MI RUTINA · HOY
+  [t] Levantarse de la silla
+  [t] 8 repeticiones
+  [t] ~5 minutos
+  [i] Button/StartMobile / Empezar ahora
+  [t] Hoy tengo dolor o no puedo
+  [t] Mi Plato · objetivos de hoy
+  [t] Calcio
+  [t] 700 / 1000 mg
+  [t] Proteína
+  [t] 62 / 75 g
+  [t] Vitamina D
+  [t] 6 / 15 µg
+  [t] Reto en Familia
+  [t] Lucía te propone 5 paseos.
+  [t] 3 / 5
+  [t] Inicio
+  [t] Mi Rutina
+  [t] Mi Plato
+  [t] Familia
+
+### Ejercicio/Mobile
+  [t] Mi Rutina
+  [t] Nivel 1 · Con silla
+  [t] Levantarse de la silla
+  [t] Heading
+  [t] Instruction
+  [t] Heading
+  [t] 8 repeticiones
+  [t] Descanso 30 s
+  [i] Button/FinishMobile / Terminar ejercicio
+  [t] Me duele
+  [t] Inicio
+  [t] Mi Rutina
+  [t] Mi Plato
+  [t] Familia
+
+### SesiónRegistrada/Mobile
+  [t] Section
+  [t] Title
+  [t] Description
+  [t] Exercise
+  [t] Status
+  [t] Description
+  [i] Button/Return / Volver al inicio
+  [t] Label
+  [i] Button/Secondary / Avisar a la familia
+  [t] Description
+  [t] Label
+
+### SesiónPausada/Mobile
+  [t] Section
+  [t] Title
+  [t] Description
+  [t] Exercise
+  [t] Status
+  [t] Description
+  [i] Button/Return / Volver al inicio
+  [t] Label
+  [i] Button/Secondary / Volver a la guía
+  [t] Label
+
+### ConfirmarRegistro/Desktop
+  [t] Title
+  [t] Description
+  [i] Button/Secondary / Cancelar
+  [i] Button/Primary / Sí, registrar sesión
+
+### AvisoDolor/Desktop
+  [t] Title
+  [t] Description
+  [i] Button/Pausarsesión
+  [i] Button/Secondary / Volver sin registrar
+
+### ConfirmarRegistro/Mobile
+  [t] Title
+  [t] Description
+  [i] Button/Primary / Sí, registrar sesión
+  [i] Button/Secondary / Cancelar
+
+### AvisoDolor/Mobile
+  [t] Title
+  [t] Description
+  [i] Button/Pausarsesión
+  [i] Button/Secondary / Volver sin registrar
+
+### header
+  [t] Handoff · Vitalis / Mi Rutina
+  [t] Versiones finales de diseño. Aprobación del equipo, conexiones y prueb
+
+### Fuente de verdad
+  [t] Fuente de verdad
+  [t] Esta página reúne solo el flujo central: 5 pantallas/estados desktop,
+
+### Responsive
+  [t] Responsive
+  [t] Desktop separa guía y resumen contextual. Mobile reúne preparación e i
+
+### Estados y datos
+  [t] Estados y datos
+  [t] Estado inicial: sesión pendiente. El registro solo se confirma desde S
+
+### Componentes y tokens
+  [t] Componentes y tokens
+  [t] Button/Primary: State=Default y Hover; Label editable.
+
+### Contenido largo y accesibilidad
+  [t] Contenido largo y accesibilidad
+  [t] La confirmación móvil prueba el título «¿Registrar esta sesión?» en va
+
+### Assets
+  [t] Assets
+  [t] Los símbolos y apoyos visuales son vectores editables existentes en el
+
+### Conexiones y prueba final · pendientes
+  [t] Revisión final en Present · pendiente del equipo
+  [t] Configurar Navigate to y Back; confirmar que el inicio es Inicio.
+
+### header
+  [t] Checklist de entrega · Vitalis
+  [t] Preparado ≠ validado. Los pendientes no se han marcado como realizados
+
+### checklist-card
+  [i] Badge/Session
+  [t] 0 · Design Thinking y alcance · 10%
+  [t] Brief con5 respuestas, tarea observable y exclusiones preparados a par
+  [i] Badge/Session
+  [t] 1 · Organización y portada
+  [t] Cover, estado, tarea y enlace al diseño preparados. PENDIENTE: integra
+  [i] Badge/Session
+  [t] 2 · Wireframes y estructura · 10%
+  [t] 6 wireframes de baja fidelidad y mapa de flujo preparados. Son reconst
+  [i] Badge/Session
+  [t] 3 · Community
+  [t] PENDIENTE: elegir un recurso real, abrirlo y analizar Layers, Auto Lay
+  [i] Badge/Session
+  [t] 4–5 · UI, Auto Layout y componentes · 20%
+  [t] PREPARADO: flujo central con contenido real, componentes e instancias
+  [i] Badge/Session
+  [t] 6 · Prototipo funcional · 35%
+  [t] DISEÑADO: ruta principal, confirmación, dolor, éxito y pausa. PENDIENT
+  [i] Badge/Session
+  [t] 7 · Responsive · 10%
+  [t] PREPARADO: 3 pantallas clave mobile y estado pausa, con guía compacta
+  [i] Badge/Session
+  [t] 8 · Test e iteración · 10%
+  [t] PENDIENTE: participante real, al menos3 observaciones y una mejora apl
+  [i] Badge/Session
+  [t] 9 · Ready for dev · 5%
+  [t] PREPARADO: versiones del flujo central y notas de comportamiento, resp
+  [i] Badge/Session
+  [t] Entrega final
+  [t] PENDIENTE: nombres del equipo, recurso Community, test, Present y perm
