@@ -3,11 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { Badge } from '../components/Badge';
 import { Button } from '../components/Button';
 import { sitToStand, ui } from '../content/exercises';
-import {
-  copyMessage,
-  shareWithFamily,
-  whatsappLink,
-} from '../features/session/shareWithFamily';
+import { copyMessage, shareWithFamily, whatsappLink } from '../features/session/shareWithFamily';
 
 /** RF-07 y RF-12. */
 export function SessionCompletedPage() {
@@ -55,7 +51,10 @@ export function SessionCompletedPage() {
 
       {showFallback && (
         <div className="stack">
-          <a className="btn btn--secondary btn--block" href={whatsappLink(ui.completed.shareMessage)}>
+          <a
+            className="btn btn--secondary btn--block"
+            href={whatsappLink(ui.completed.shareMessage)}
+          >
             {ui.completed.shareWhatsApp}
           </a>
           <Button variant="secondary" onClick={handleCopy}>

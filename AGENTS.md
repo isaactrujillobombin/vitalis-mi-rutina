@@ -67,15 +67,21 @@ Después de cada cambio, ejecuta las comprobaciones y muestra el resultado. Si a
 | Comprobación | Comando | Estado |
 | --- | --- | --- |
 | Instalar dependencias | `npm install` | **Confirmado** (16/10/2026) |
+| Lint | `npm run lint` (ESLint + jsx-a11y) | **Confirmado** · 0 avisos |
 | Tipos | `npm run typecheck` (`tsc --noEmit`) | **Confirmado** |
+| Formato | `npm run format` · `npm run format:check` | **Confirmado** |
+| Contraste de los tokens | `npm run check:contrast` | **Confirmado** · 15 pares, todos ≥ mínimo |
+| Tests unitarios y de componentes | `npm run test` (Vitest) | **Confirmado** · 51 tests |
+| Tests e2e + accesibilidad | `npm run test:e2e` (Playwright + axe) | **Confirmado** · 28 × 2 perfiles |
 | Build | `npm run build` (incluye `typecheck`) | **Confirmado** |
 | Servidor local | `npm run dev` (en http://localhost:5173) | **Confirmado** |
-| Lint | `npm run lint` | ⚠️ **No existe todavía.** ESLint + jsx-a11y pendientes (T-01b) |
-| Tests unitarios y de componentes | `npm run test` | ⚠️ **No existe todavía.** Vitest pendiente (T-01b) |
-| Tests e2e + accesibilidad | `npm run test:e2e` | ⚠️ **No existe todavía.** Playwright + axe pendientes (T-01b) |
+| **Todo de una vez** | `npm run check` | **Confirmado** |
 | Lighthouse | Pendiente de definir (manual o `@lhci/cli`) | Pendiente de decidir en T-22 |
 
-> **Importante.** El primer esqueleto se montó sin ESLint, Vitest ni Playwright para tener antes algo que se pudiera abrir en un móvil. Eso deja **la regla C-2 sin cumplir** (cada RF necesita un test que lo nombre) y C-3 a medias. Es deuda conocida, no un olvido: está recogida en la tarea **T-01b** de tasks.md y hay que saldarla antes de fusionar nada en `main`.
+> `npm run check` encadena lint → tipos → contraste → unitarios → e2e. Es lo que hay que ver en verde antes de abrir un *pull request* (C-3).
+
+**Cómo nombrar los tests (C-2).** El ID del requisito va en el nombre, para poder rastrearlo:
+`it('RF-08: Cancelar no guarda ningún registro', …)`. Si tocas un RF, el test que lo nombra tiene que seguir pasando o cambiar contigo.
 
 **Para ver la app en el móvil:** `npm run dev` imprime una dirección `Network:`; ábrela en el móvil estando en la misma wifi.
 

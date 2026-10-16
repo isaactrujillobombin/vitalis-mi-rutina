@@ -32,16 +32,58 @@ Prototipo de Figma: [Vitalis — NexoTeam (Pantallas)](https://www.figma.com/des
 Inicio → Ejercicio (preparación + pasos) → «Terminar ejercicio» → confirmar → **Sesión registrada**
 y la salida segura: «Me duele» → «Pausar sesión» → **Sesión pausada** (sin registro).
 
-⚠️ **Es un prototipo, no el producto final.** Todavía **no hay tests ni ESLint** (tarea T-01b), así que la regla C-2 de la constitución está sin cumplir. Las tareas T-05 a T-15 rehacen cada pantalla con sus tests antes de que nada entre en `main`.
+**Comprobado automáticamente:** 51 tests unitarios y de componentes + 28 pruebas e2e en dos perfiles de móvil (Chromium/Android y WebKit/iPhone), con auditoría axe sin violaciones *serious* ni *critical*.
+
+### Limitaciones conocidas
+
+- Los **tokens de color** salen de las capturas de Figma, no de las variables del archivo: el conector de Figma agotó el límite del plan Starter (tarea T-02b). El contraste sí está verificado con `npm run check:contrast`.
+- **No hay servicios simulados ni servidor:** todo es local con `localStorage`. No hay nada que arrancar aparte de la app.
+- **DEC-01 (solo móvil) está pendiente de confirmar** por el resto del equipo (tarea T-00b).
+- Falta el **test con personas de 65+ años** (T-20) y el informe de **Lighthouse** (T-22).
 
 ## Puesta en marcha
 
+Requisitos previos: **Node.js 20 o superior** y npm (probado con Node 24 y npm 11).
+
 ```bash
-npm install      # instalar dependencias
-npm run dev      # servidor local en http://localhost:5173
-npm run typecheck
-npm run build
+npm install          # instalar dependencias
+npm run dev          # servidor local en http://localhost:5173
 ```
+
+### Comandos de comprobación
+
+```bash
+npm run check        # todo: lint + tipos + contraste + unitarios + e2e
+npm run lint         # ESLint + jsx-a11y
+npm run typecheck    # tsc --noEmit
+npm run test         # Vitest + Testing Library (51 tests)
+npm run test:e2e     # Playwright + axe (28 tests × 2 perfiles de móvil)
+npm run check:contrast  # contraste de los tokens de color (WCAG AA)
+npm run build        # build de producción
+```
+
+La primera vez que ejecutes los e2e hace falta bajar los navegadores:
+
+```bash
+npx playwright install chromium webkit
+```
+
+### Datos ficticios
+
+La app arranca vacía (sin ninguna sesión registrada), que es el estado inicial de la usuaria. Para cargar o borrar datos de prueba, abre la consola del navegador:
+
+```js
+// Simular una sesión hecha hoy
+localStorage.setItem('vitalis.sessionRecords.v1', JSON.stringify([
+  { id: 'demo-1', exerciseId: 'sit-to-stand', status: 'completed',
+    completedAt: new Date().toISOString(), schemaVersion: 1 },
+]));
+
+// Volver a empezar de cero
+localStorage.removeItem('vitalis.sessionRecords.v1');
+```
+
+No hay variables de entorno que configurar (ver [.env.example](.env.example)): el MVP no usa servidor, cuentas ni claves de terceros.
 
 **Para verlo en el móvil:** `npm run dev` imprime una dirección `Network:` (por ejemplo `http://192.168.1.40:5173`). Ábrela en el móvil estando en la misma wifi. Es la forma correcta de probarlo: la app está diseñada solo para móvil.
 

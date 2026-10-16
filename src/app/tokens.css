@@ -1,22 +1,30 @@
 /*
- * Tokens provisionales, sacados a ojo de las capturas de Figma.
- * T-02 los sustituirá por las variables reales del archivo de Figma.
- * Todos los pares texto/fondo de aquí cumplen 4,5:1 (A-3, RNF-03).
+ * T-02 · Tokens de color, tipografía y espaciado.
+ *
+ * ⚠️ Pendiente: estos valores están sacados de las capturas de `04_UI · Mobile`,
+ * NO de las variables del archivo de Figma. El conector de Figma agotó el
+ * límite de llamadas del plan Starter (el mismo problema anotado en uso-ia.md).
+ * Cuando se pueda leer el archivo, hay que contrastar estos hex con los reales.
+ *
+ * Lo que SÍ está comprobado: todos los pares texto/fondo cumplen 4,5:1 y los
+ * bordes 3:1 (A-3, RNF-03). Se verifica con `npm run check:contrast`, que lee
+ * este mismo archivo. Si cambias un color aquí, vuelve a ejecutarlo.
  */
 :root {
   /* Color */
-  --bg: #faf7f1;
-  --surface: #ffffff;
-  --navy: #152a4e;
-  --navy-soft: #26406c;
-  --ink: #15213b;
-  --ink-soft: #46516b;
-  --primary: #b84b1b;
-  --primary-dark: #94370f;
-  --success-bg: #e8f3ea;
-  --success-ink: #14532d;
-  --warn-bg: #fdf0e4;
-  --warn-ink: #8a3a0b;
+  --bg: #faf7f1; /* crema del fondo */
+  --surface: #ffffff; /* tarjetas */
+  --navy: #16294a; /* tarjeta destacada de Inicio */
+  --navy-soft: #2f4d7d; /* bordes sobre blanco */
+  --ink: #141d33; /* texto principal */
+  --ink-soft: #4d566d; /* texto secundario */
+  --primary: #b4481a; /* naranja de la acción principal */
+  --primary-dark: #8f3610; /* hover y sección activa */
+  --success-bg: #e6f2e9;
+  --success-ink: #12512a;
+  --warn-bg: #fcefe3;
+  --warn-ink: #833707;
+  --notice-bg: #f1ece3; /* fondo del aviso de salud */
   --line: #e2dcd2;
 
   /* Tipografía — A-2: cuerpo mínimo 18 px, títulos 24 px */

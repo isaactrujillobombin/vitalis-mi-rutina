@@ -19,14 +19,15 @@
 | T-00 | Cerrar los pendientes del Figma que afectan al desarrollo: revisión en Present (flujo móvil), retorno de Hover, nombres del equipo (Isaac), persona única (Rosa o Carmen), acceso del docente | D-03, D-08, D-09 | — | Iker | 3 | Present recorre la ruta móvil principal y las alternativas sin enlaces rotos, el docente abre el archivo y los nombres están corregidos. | ☐ |
 | T-00b | Confirmar DEC-01 con Iker y Enzo (y comentarlo con el docente) y terminar de volcarla en spec.md, plan.md y Figma | D-11, M-2, M-4 | — | Isaac | 1 | Los tres han dicho que sí por escrito, la lista de pendientes de `decisiones.md` está toda marcada y el Figma anota que Desktop no se implementa. | ☐ |
 | T-01 | Crear el repositorio en GitHub y el proyecto Vite `react-ts` con TypeScript `strict`. Copiar los documentos SDD a `docs/sdd/` | C-1 | — | Isaac | 2 | `typecheck`, `build` y `dev` funcionan y los comandos reales están anotados en AGENTS.md §6. | ☑ |
-| T-01b | Añadir el tooling de calidad que falta: ESLint (+ jsx-a11y), Prettier, Vitest + Testing Library y Playwright + axe (perfil móvil) | C-2, C-3 | T-01 | Isaac | 3 | `npm run lint`, `npm run test` y `npm run test:e2e` existen y pasan, y AGENTS.md §6 queda sin avisos. | ☐ |
+| T-01b | Añadir el tooling de calidad que falta: ESLint (+ jsx-a11y), Prettier, Vitest + Testing Library y Playwright + axe (perfil móvil) | C-2, C-3 | T-01 | Isaac | 3 | `npm run lint`, `npm run test` y `npm run test:e2e` existen y pasan, y AGENTS.md §6 queda sin avisos. | ☑ |
 | T-01c | Prototipo recorrible del flujo móvil completo (Inicio → Ejercicio → Confirmar → Registrada / Pausada) para poder enseñarlo y probarlo a mano | RF-01, RF-04 a RF-13 | T-01 | Isaac | 4 | El flujo se recorre entero en un móvil real sin pantallas rotas. **Es un prototipo: no sustituye a T-05 a T-15, que lo rehacen con tests.** | ☑ |
 
 ## Fase 1 · Base
 
 | ID | Tarea | Requisito | Depende de | Responsable | Horas | Hecho cuando… | Estado |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| T-02 | Pasar los tokens de Figma (colores, tipografía, espaciado, radios) a variables CSS | RNF-02, RNF-03 | T-01 | Iker | 3 | Los colores de texto y botón cumplen 4,5:1 / 3:1 (comprobado con un verificador de contraste) y el cuerpo mide ≥ 18 px. | ☐ |
+| T-02 | Pasar los tokens de Figma (colores, tipografía, espaciado, radios) a variables CSS | RNF-02, RNF-03 | T-01 | Iker | 3 | Los colores de texto y botón cumplen 4,5:1 / 3:1 (comprobado con un verificador de contraste) y el cuerpo mide ≥ 18 px. | ◐ |
+| T-02b | **Contrastar los tokens con las variables reales de Figma.** Los valores actuales salen de las capturas: el conector de Figma agotó el límite de llamadas del plan Starter | RNF-03, D-08 | T-02 | Iker | 1 | Cada hex de `tokens.css` coincide con su variable de Figma, o la diferencia está justificada por contraste. | ☐ |
 | T-03 | Componentes `Button` (primary, secondary, return), `Badge` y `Card` | RNF-01, RNF-04, RNF-12 | T-02 | Iker | 4 | Los tres botones miden ≥ 48 × 48 px, tienen foco visible y un test de componente por variante. | ☐ |
 | T-04 | Componente `Modal` sobre `<dialog>`: retiene el foco, Esc cierra y el foco vuelve al botón de origen | RNF-05 | T-03 | Enzo | 4 | Un test de componente comprueba el foco al abrir, Esc y el retorno del foco. | ☐ |
 | T-05 | Archivo `content/exercises.ts` con todos los textos de Figma (preparación, pasos, botones, aviso de salud) revisados con A-7 | RF-05, RNF-10, RNF-11 | T-01 | Enzo | 2 | Dos integrantes han revisado los textos y ninguna frase supera las 20 palabras. | ☐ |

@@ -1,0 +1,8 @@
+dist
+coverage
+playwright-report
+test-results
+package-lock.json
+# Los documentos SDD se escriben a mano: que Prettier no les toque las tablas.
+docs/
+*.md

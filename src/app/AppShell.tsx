@@ -27,14 +27,17 @@ export function AppShell({ children }: { children: ReactNode }) {
           <span aria-hidden="true">💪</span>
           {ui.nav.routine}
         </NavLink>
-        {/* RF-19: «Próximamente», sin navegación funcional. */}
+        {/* RF-19: «Próximamente», sin navegación funcional.
+            A-5: que no esté disponible se dice con texto, no con un color más flojo. */}
         <span className="tabbar__item tabbar__item--disabled">
           <span aria-hidden="true">🍽️</span>
           {ui.nav.plate}
+          <span className="sr-only"> · {ui.home.soonTitle}</span>
         </span>
         <span className="tabbar__item tabbar__item--disabled">
           <span aria-hidden="true">👪</span>
           {ui.nav.family}
+          <span className="sr-only"> · {ui.home.soonTitle}</span>
         </span>
       </nav>
     </div>

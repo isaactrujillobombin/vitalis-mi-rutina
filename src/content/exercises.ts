@@ -96,8 +96,7 @@ export const ui = {
     title: 'Sesión registrada',
     body: 'Un momento para ti, completado.',
     share: 'Avisar a la familia',
-    shareMessage:
-      'Hoy he hecho mi rutina de Vitalis: Levantarse de la silla, 8 repeticiones.',
+    shareMessage: 'Hoy he hecho mi rutina de Vitalis: Levantarse de la silla, 8 repeticiones.',
     shareWhatsApp: 'Enviar por WhatsApp',
     shareCopy: 'Copiar mensaje',
     shareCopied: 'Mensaje copiado',
