@@ -1,0 +1,46 @@
+/*
+ * Tokens provisionales, sacados a ojo de las capturas de Figma.
+ * T-02 los sustituirá por las variables reales del archivo de Figma.
+ * Todos los pares texto/fondo de aquí cumplen 4,5:1 (A-3, RNF-03).
+ */
+:root {
+  /* Color */
+  --bg: #faf7f1;
+  --surface: #ffffff;
+  --navy: #152a4e;
+  --navy-soft: #26406c;
+  --ink: #15213b;
+  --ink-soft: #46516b;
+  --primary: #b84b1b;
+  --primary-dark: #94370f;
+  --success-bg: #e8f3ea;
+  --success-ink: #14532d;
+  --warn-bg: #fdf0e4;
+  --warn-ink: #8a3a0b;
+  --line: #e2dcd2;
+
+  /* Tipografía — A-2: cuerpo mínimo 18 px, títulos 24 px */
+  --font: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --text-body: 1.125rem; /* 18 px */
+  --text-lead: 1.25rem; /* 20 px */
+  --text-title: 1.5rem; /* 24 px */
+  --text-hero: 1.75rem; /* 28 px */
+  --text-small: 1rem; /* 16 px, solo etiquetas cortas */
+
+  /* Espaciado */
+  --space-1: 0.5rem;
+  --space-2: 0.75rem;
+  --space-3: 1rem;
+  --space-4: 1.5rem;
+  --space-5: 2rem;
+
+  /* Formas */
+  --radius: 14px;
+  --radius-lg: 20px;
+
+  /* A-1: zona pulsable mínima */
+  --tap-min: 48px;
+
+  /* DEC-01: ancho máximo del contenido, es una app móvil */
+  --app-width: 390px;
+}

@@ -1,0 +1,394 @@
+/* Estilos globales. Simples a propósito: un solo archivo mientras el MVP sea pequeño. */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font);
+  font-size: var(--text-body);
+  line-height: 1.55;
+  /* A-8: nada de animaciones que metan prisa. */
+}
+
+h1,
+h2,
+p,
+ul,
+ol {
+  margin: 0;
+}
+
+/* ---------- Estructura (CL-13: en pantallas anchas se centra, no se estira) ---------- */
+
+.shell {
+  max-width: var(--app-width);
+  margin: 0 auto;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg);
+}
+
+.shell__header {
+  padding: var(--space-3) var(--space-3) 0;
+}
+
+.shell__brand {
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: var(--navy);
+}
+
+.shell__main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding: var(--space-3);
+  /* Hueco para la barra inferior fija. */
+  padding-bottom: calc(var(--tap-min) + var(--space-5) + env(safe-area-inset-bottom));
+}
+
+/* RNF-05: el foco siempre se ve. */
+:focus-visible {
+  outline: 3px solid var(--navy);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+}
+.skip-link:focus {
+  left: var(--space-3);
+  top: var(--space-3);
+  z-index: 10;
+  background: var(--surface);
+  padding: var(--space-2);
+  border-radius: var(--radius);
+}
+
+/* ---------- Texto ---------- */
+
+.greeting {
+  font-size: var(--text-hero);
+  line-height: 1.25;
+}
+
+.page-title {
+  font-size: var(--text-title);
+  line-height: 1.3;
+}
+
+.eyebrow {
+  font-size: var(--text-small);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
+.muted {
+  color: var(--ink-soft);
+}
+
+/* ---------- Tarjetas ---------- */
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: var(--space-3);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.card--highlight {
+  background: var(--navy);
+  border-color: var(--navy);
+  color: #ffffff;
+}
+
+.card--success {
+  background: var(--success-bg);
+  border-color: #bcd9c4;
+  text-align: center;
+}
+
+.card--calm {
+  background: var(--warn-bg);
+  border-color: #efd8bf;
+}
+
+.card--muted {
+  background: transparent;
+  border-style: dashed;
+}
+
+.card__label {
+  font-size: var(--text-small);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  opacity: 0.85;
+}
+
+.card__title {
+  font-size: var(--text-lead);
+  line-height: 1.3;
+}
+
+.card__title--big {
+  font-size: var(--text-title);
+}
+
+.big-icon {
+  font-size: 2.5rem;
+  line-height: 1;
+}
+
+/* ---------- Insignias ---------- */
+
+.badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1);
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35em;
+  padding: 0.25em 0.7em;
+  border-radius: 999px;
+  font-size: var(--text-small);
+  font-weight: 600;
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid currentColor;
+}
+
+.card:not(.card--highlight) .badge--neutral {
+  background: #f1ece3;
+  color: var(--ink-soft);
+}
+
+.badge--success {
+  background: var(--success-bg);
+  color: var(--success-ink);
+}
+
+.badge--warn {
+  background: var(--warn-bg);
+  color: var(--warn-ink);
+}
+
+/* ---------- Listas ---------- */
+
+.checklist {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.checklist li {
+  display: flex;
+  gap: var(--space-2);
+}
+
+.checklist__mark {
+  color: var(--success-ink);
+  font-weight: 700;
+}
+
+.steps {
+  padding-left: 1.3em;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.soon {
+  display: flex;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+  font-weight: 600;
+  color: var(--ink-soft);
+}
+
+/* ---------- Avisos ---------- */
+
+.health-notice {
+  font-size: var(--text-small);
+  color: var(--ink-soft);
+  background: #f1ece3;
+  border-radius: var(--radius);
+  padding: var(--space-2);
+}
+
+.alert {
+  background: var(--warn-bg);
+  color: var(--warn-ink);
+  border: 1px solid var(--warn-ink);
+  border-radius: var(--radius);
+  padding: var(--space-2);
+  font-weight: 600;
+}
+
+/* ---------- Botones (A-1: 48 px mínimo, 8 px de separación) ---------- */
+
+.btn {
+  min-height: var(--tap-min);
+  min-width: var(--tap-min);
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius);
+  border: 2px solid transparent;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4em;
+  text-align: center;
+  text-decoration: none;
+}
+
+.btn--block {
+  width: 100%;
+}
+
+.btn--primary {
+  background: var(--primary);
+  color: #ffffff;
+}
+
+.btn--primary:hover:not(:disabled) {
+  background: var(--primary-dark);
+}
+
+.btn--secondary {
+  background: var(--surface);
+  color: var(--navy);
+  border-color: var(--navy-soft);
+}
+
+.btn--secondary:hover {
+  background: #f1ece3;
+}
+
+.btn--return {
+  background: transparent;
+  color: var(--navy);
+  border-color: transparent;
+  text-decoration: underline;
+}
+
+.btn:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+/* S-1 y CA-05.3: «Me duele» visible sin desplazarse en 390 × 844. */
+.sticky-actions {
+  position: sticky;
+  bottom: calc(var(--tap-min) + var(--space-2));
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: var(--space-2);
+  background: var(--bg);
+  border-top: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+
+/* ---------- Ventanas modales (RNF-05, 350 px como en Figma) ---------- */
+
+.modal {
+  width: min(350px, calc(100vw - 2rem));
+  border: none;
+  border-radius: var(--radius-lg);
+  padding: 0;
+  background: var(--surface);
+  color: var(--ink);
+}
+
+.modal::backdrop {
+  background: rgba(10, 18, 35, 0.55);
+}
+
+.modal__content {
+  padding: var(--space-3);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.modal__title {
+  font-size: var(--text-title);
+  line-height: 1.3;
+}
+
+.modal__summary {
+  font-weight: 600;
+}
+
+.modal__body {
+  color: var(--ink-soft);
+}
+
+.modal__actions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  margin-top: var(--space-1);
+}
+
+/* ---------- Barra inferior ---------- */
+
+.tabbar {
+  position: fixed;
+  bottom: 0;
+  width: min(var(--app-width), 100%);
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  background: var(--surface);
+  border-top: 1px solid var(--line);
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+.tabbar__item {
+  min-height: var(--tap-min);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--ink-soft);
+  text-decoration: none;
+}
+
+.tabbar__item.active {
+  color: var(--primary-dark);
+}
+
+/* RF-19: Mi Plato y Familia se ven, pero no navegan. */
+.tabbar__item--disabled {
+  opacity: 0.5;
+}

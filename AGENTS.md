@@ -66,16 +66,18 @@ Después de cada cambio, ejecuta las comprobaciones y muestra el resultado. Si a
 
 | Comprobación | Comando | Estado |
 | --- | --- | --- |
-| Instalar dependencias | `npm ci` | Pendiente de confirmar en T-01 |
-| Lint | `npm run lint` | Pendiente de confirmar en T-01 |
-| Tipos | `npm run typecheck` (`tsc --noEmit`) | Pendiente de confirmar en T-01 |
-| Tests unitarios y de componentes | `npm run test` | Pendiente de confirmar en T-01 |
-| Tests e2e + accesibilidad | `npm run test:e2e` | Pendiente de confirmar en T-01 |
-| Build | `npm run build` | Pendiente de confirmar en T-01 |
-| Servidor local | `npm run dev` | Pendiente de confirmar en T-01 |
+| Instalar dependencias | `npm install` | **Confirmado** (16/10/2026) |
+| Tipos | `npm run typecheck` (`tsc --noEmit`) | **Confirmado** |
+| Build | `npm run build` (incluye `typecheck`) | **Confirmado** |
+| Servidor local | `npm run dev` (en http://localhost:5173) | **Confirmado** |
+| Lint | `npm run lint` | ⚠️ **No existe todavía.** ESLint + jsx-a11y pendientes (T-01b) |
+| Tests unitarios y de componentes | `npm run test` | ⚠️ **No existe todavía.** Vitest pendiente (T-01b) |
+| Tests e2e + accesibilidad | `npm run test:e2e` | ⚠️ **No existe todavía.** Playwright + axe pendientes (T-01b) |
 | Lighthouse | Pendiente de definir (manual o `@lhci/cli`) | Pendiente de decidir en T-22 |
 
-> Cuando T-01 esté hecha, quien la haga sustituye «Pendiente…» por «Confirmado» y corrige los comandos si han cambiado.
+> **Importante.** El primer esqueleto se montó sin ESLint, Vitest ni Playwright para tener antes algo que se pudiera abrir en un móvil. Eso deja **la regla C-2 sin cumplir** (cada RF necesita un test que lo nombre) y C-3 a medias. Es deuda conocida, no un olvido: está recogida en la tarea **T-01b** de tasks.md y hay que saldarla antes de fusionar nada en `main`.
+
+**Para ver la app en el móvil:** `npm run dev` imprime una dirección `Network:`; ábrela en el móvil estando en la misma wifi.
 
 Además de los comandos, comprueba a mano que tu cambio:
 

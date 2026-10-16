@@ -27,21 +27,23 @@ Prototipo de Figma: [Vitalis — NexoTeam (Pantallas)](https://www.figma.com/des
 
 ## Estado
 
-El proyecto está en **T-01**: crear el proyecto Vite `react-ts`. Todavía no hay código de aplicación.
+**Prototipo recorrible** (T-01 y T-01c hechas). El flujo móvil completo funciona de punta a punta:
+
+Inicio → Ejercicio (preparación + pasos) → «Terminar ejercicio» → confirmar → **Sesión registrada**
+y la salida segura: «Me duele» → «Pausar sesión» → **Sesión pausada** (sin registro).
+
+⚠️ **Es un prototipo, no el producto final.** Todavía **no hay tests ni ESLint** (tarea T-01b), así que la regla C-2 de la constitución está sin cumplir. Las tareas T-05 a T-15 rehacen cada pantalla con sus tests antes de que nada entre en `main`.
 
 ## Puesta en marcha
 
-Pendiente de T-01. Cuando exista el proyecto, estos serán los comandos:
-
 ```bash
-npm ci           # instalar dependencias
-npm run dev      # servidor local
-npm run lint     # ESLint + jsx-a11y
+npm install      # instalar dependencias
+npm run dev      # servidor local en http://localhost:5173
 npm run typecheck
-npm run test     # Vitest + Testing Library
-npm run test:e2e # Playwright + axe (perfil móvil)
 npm run build
 ```
+
+**Para verlo en el móvil:** `npm run dev` imprime una dirección `Network:` (por ejemplo `http://192.168.1.40:5173`). Ábrela en el móvil estando en la misma wifi. Es la forma correcta de probarlo: la app está diseñada solo para móvil.
 
 ## Convenciones
 
