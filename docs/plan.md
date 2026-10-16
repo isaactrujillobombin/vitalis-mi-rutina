@@ -154,23 +154,42 @@ Solo se implementan las pantallas `*/Mobile`.
 
 ## 6. Estructura de carpetas
 
+La estructura sigue la que pide la entrega del MVP.
+
 ```
-vitalis/
-├── docs/sdd/                 # constitution, spec, plan, tasks, decisiones, uso-ia, evidencias-ia
-├── docs/figma/               # textos y capturas del prototipo
-├── AGENTS.md
-├── CLAUDE.md
-├── public/icons/             # SVG exportados de Figma
+.
+├── README.md                 # propósito, instalación, comandos, limitaciones
+├── validacion.md             # qué se ha comprobado, cómo y con qué resultado
+├── uso-ia.md                 # registro del uso de IA
+├── evidencias-ia/            # capturas de los casos de uso-ia.md
+├── .env.example              # no hace falta ninguna variable; está para dejarlo claro
+├── docs/
+│   ├── AGENTS.md             # cómo se trabaja aquí (personas y asistentes de IA)
+│   ├── constitution.md
+│   ├── spec.md
+│   ├── plan.md
+│   ├── tasks.md
+│   ├── decisiones.md         # decisiones posteriores al SDD inicial (DEC-01)
+│   ├── design-thinking/
+│   ├── figma/                # enlace, textos y capturas del prototipo
+│   └── presentacion.pdf
+├── scripts/
+│   └── check-contrast.mjs    # verifica el contraste de los tokens (RNF-03)
 ├── src/
 │   ├── app/                  # AppShell, router, estilos globales y tokens
-│   ├── components/           # Button, Badge, Card, Modal, PreparationChecklist, HealthNotice
+│   ├── components/           # Button, Badge, Modal, PreparationChecklist, HealthNotice
 │   │   └── modals/           # ConfirmRegistrationModal, PainNoticeModal
-│   ├── content/exercises.ts  # todos los textos de la interfaz
+│   ├── content/exercises.ts  # todos los textos de la interfaz (C-5)
 │   ├── data/                 # types.ts, sessionRepository.ts
 │   ├── features/session/     # useSessionFlow, useTodayStatus, shareWithFamily
-│   └── pages/                # una página por pantalla de Figma
+│   ├── pages/                # una página por pantalla de Figma
+│   └── test/                 # utilidades de los tests
 └── tests/e2e/                # Playwright + axe
 ```
+
+Los tests unitarios y de componentes viven **junto al archivo que prueban** (`sessionRepository.test.ts` al lado de `sessionRepository.ts`); los e2e, en `tests/e2e/`.
+
+> CLAUDE.md se queda en la raíz porque es donde lo busca la herramienta; solo apunta a `docs/AGENTS.md`.
 
 ---
 

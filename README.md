@@ -7,7 +7,7 @@ App **móvil** que ayuda a personas de 65 a 85 años a mantener fuerza y autonom
 
 ## Alcance
 
-**SOLO APP MÓVIL** (decisión DEC-01, 16/10/2026). Diseñada para 390 × 844 px y verificada entre 320 y 768 px. Las pantallas `*/Desktop` del Figma son referencia visual y no se implementan. Ver [docs/sdd/decisiones.md](docs/sdd/decisiones.md).
+**SOLO APP MÓVIL** (decisión DEC-01, 16/10/2026). Diseñada para 390 × 844 px y verificada entre 320 y 768 px. Las pantallas `*/Desktop` del Figma son referencia visual y no se implementan. Ver [docs/decisiones.md](docs/decisiones.md).
 
 Todo se guarda en el propio dispositivo (`localStorage`): **sin servidor, sin cuentas, sin analíticas y sin peticiones a terceros**.
 
@@ -15,13 +15,14 @@ Todo se guarda en el propio dispositivo (`localStorage`): **sin servidor, sin cu
 
 Antes de tocar nada, leer en este orden:
 
-1. [AGENTS.md](AGENTS.md) — cómo se trabaja aquí (personas y asistentes de IA).
-2. [docs/sdd/constitution.md](docs/sdd/constitution.md) — reglas que no se negocian.
-3. [docs/sdd/spec.md](docs/sdd/spec.md) — requisitos RF-xx / RNF-xx y casos límite.
-4. [docs/sdd/plan.md](docs/sdd/plan.md) — tecnologías, arquitectura y datos.
-5. [docs/sdd/tasks.md](docs/sdd/tasks.md) — tareas T-xx y su estado.
-6. [docs/sdd/decisiones.md](docs/sdd/decisiones.md) — decisiones posteriores al SDD inicial.
-7. [docs/sdd/uso-ia.md](docs/sdd/uso-ia.md) — registro del uso de IA.
+1. [docs/AGENTS.md](docs/AGENTS.md) — cómo se trabaja aquí (personas y asistentes de IA).
+2. [docs/constitution.md](docs/constitution.md) — reglas que no se negocian.
+3. [docs/spec.md](docs/spec.md) — requisitos RF-xx / RNF-xx y casos límite.
+4. [docs/plan.md](docs/plan.md) — tecnologías, arquitectura y datos.
+5. [docs/tasks.md](docs/tasks.md) — tareas T-xx y su estado.
+6. [docs/decisiones.md](docs/decisiones.md) — decisiones posteriores al SDD inicial.
+7. [uso-ia.md](uso-ia.md) — registro del uso de IA.
+8. [validacion.md](validacion.md) — qué se ha comprobado, cómo y con qué resultado.
 
 Prototipo de Figma: [Vitalis — NexoTeam (Pantallas)](https://www.figma.com/design/qs3XbPY89nY10Wf2JxxdI0/Vitalis-%E2%80%94-NexoTeam--Pantallas-) · textos exportados en [docs/figma/](docs/figma/).
 

@@ -124,6 +124,41 @@ Sugerencias para revisar el borrador: comprobad cada RF contra las pantallas de 
 
 ---
 
+## Caso 5 · Los tests automáticos encuentran un fallo que la revisión a ojo no vio
+
+| Apartado | Detalle |
+| --- | --- |
+| **Tarea y objetivo** | Añadir el tooling de calidad que faltaba (ESLint + jsx-a11y, Prettier, Vitest + Testing Library, Playwright + axe) y escribir los tests que exige la regla C-2: cada RF con al menos un test que lo nombre. |
+| **Herramienta o agente** | Claude Code (terminal). Modelo: `claude-opus-5`. |
+| **Modo de trabajo** | Agente con herramientas: escribe los tests, los ejecuta y ve el resultado. |
+| **Contexto facilitado** | El repositorio entero, con los documentos SDD ya dentro. |
+| **Prompt relevante (textual)** | «haz todo esta bien solo haz el 3 y el 2» (en referencia a T-02, tokens, y T-01b, tooling de tests) |
+
+**Resultado: 51 tests unitarios y de componentes + 28 e2e en dos perfiles de móvil.** Al ejecutarlos por primera vez, **2 fallaron**. Uno era un test mal escrito. El otro era un fallo real del código:
+
+> **RF-16 / CL-01 — doble registro.** `useSessionFlow.confirmSave()` se fiaba del estado del reducer para bloquear una segunda llamada. React no actualiza ese estado hasta el siguiente render, así que dos llamadas seguidas veían el mismo estado y **guardaban dos registros**. El botón desactivado tapaba el síntoma en la interfaz, pero la lógica estaba mal.
+
+Es exactamente el caso límite CL-01 que el equipo había anotado en la fase SDD: una persona mayor con poca experiencia digital pulsando dos veces sin querer. El requisito estaba bien escrito; la implementación no lo cumplía, y **leyendo el código no se veía**.
+
+**Corrección:** una marca con `useRef`, que se pone de forma síncrona y solo se libera si el guardado falla, para que «Reintentar» (RF-15) siga funcionando.
+
+**Qué aprendimos**
+
+- Escribir el caso límite en el spec **no basta**: hay que tener un test que lo ejecute. Haberlo documentado en la fase SDD fue lo que hizo que alguien escribiera ese test.
+- La IA también se equivocó al corregirlo: su primera versión reseteaba la marca al final de la función, lo que la dejaba inservible. Lo detectó al volver a ejecutar el test, no al razonarlo.
+- Los tests de accesibilidad (axe) obligaron a quitar los `opacity: 0.5` de los elementos «Próximamente», que bajaban el contraste por debajo de 4,5:1 y además comunicaban el estado solo con color (A-3, A-5).
+
+**Revisión humana [EQUIPO]**
+
+| Propuesta de la IA | Decisión | Motivo | Cómo lo comprobamos |
+| --- | --- | --- | --- |
+| Corregir RF-16 con una marca `useRef` en vez de solo con el botón desactivado | | | |
+| Que el test de privacidad falle si aparece cualquier petición externa (RNF-08) | | | |
+| Verificar el contraste con un script propio en vez de a mano | | | |
+| Dejar fuera de la validación automática RF-12 (Web Share) y declararlo en validacion.md | | | |
+
+---
+
 ## Reflexión final [EQUIPO]
 
 > Borrador a reescribir con vuestras palabras (5-8 líneas). Cada integrante debe poder defenderlo.

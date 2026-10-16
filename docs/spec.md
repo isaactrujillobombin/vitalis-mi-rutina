@@ -19,7 +19,7 @@
 **Prototipo de Figma:** [Vitalis — NexoTeam (Pantallas)](https://www.figma.com/design/qs3XbPY89nY10Wf2JxxdI0/Vitalis-%E2%80%94-NexoTeam--Pantallas-)
 Páginas de referencia: `00_Cover · 01_Brief · 02_UserFlow · 03_Wireframes`, `04_UI · 05_Components · 06_Prototype` y `07_ReadyForDev`.
 
-**Documentos relacionados:** [constitution.md](constitution.md) · [plan.md](plan.md) · [tasks.md](tasks.md) · [decisiones.md](decisiones.md) · [AGENTS.md](../../AGENTS.md) · [uso-ia.md](uso-ia.md)
+**Documentos relacionados:** [constitution.md](constitution.md) · [plan.md](plan.md) · [tasks.md](tasks.md) · [decisiones.md](decisiones.md) · [AGENTS.md](AGENTS.md) · [uso-ia.md](../uso-ia.md)
 
 ---
 

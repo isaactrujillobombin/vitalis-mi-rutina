@@ -7,15 +7,15 @@
 
 Vitalis ayuda a personas de 65 a 85 años a mantener fuerza y autonomía con ejercicios sencillos en casa. El MVP es **un solo flujo**: la usuaria hace la sesión guiada «Levantarse de la silla» (8 repeticiones + 30 s de descanso), confirma y registra la sesión, puede parar si le duele y puede avisar a su familia. Usuarias con **miedo a caerse y poca experiencia digital**: la seguridad y la accesibilidad pesan más que cualquier otra cosa.
 
-> **Alcance de plataforma (decisión del equipo, 16/10/2026): SOLO APP MÓVIL.** El MVP se construye y se prueba únicamente en ancho móvil (390 × 844 px de referencia). Las pantallas Desktop de Figma quedan como referencia visual, no se implementan. Ver `docs/sdd/decisiones.md`.
+> **Alcance de plataforma (decisión del equipo, 16/10/2026): SOLO APP MÓVIL.** El MVP se construye y se prueba únicamente en ancho móvil (390 × 844 px de referencia). Las pantallas Desktop de Figma quedan como referencia visual, no se implementan. Ver `decisiones.md`.
 
 ## 2. Documentos que debes leer (en este orden)
 
-1. `docs/sdd/constitution.md` — reglas que **no puedes romper** nunca.
-2. `docs/sdd/spec.md` — qué hace el sistema: requisitos RF-xx / RNF-xx, casos límite CL-xx y dudas D-xx.
-3. `docs/sdd/plan.md` — cómo se construye: tecnologías, arquitectura, modelo de datos y mapa de pantallas.
-4. `docs/sdd/tasks.md` — tarea en curso, su «hecho cuando…» y sus dependencias.
-5. `docs/sdd/decisiones.md` — decisiones posteriores a la primera versión del SDD (incluida la de solo móvil).
+1. `constitution.md` — reglas que **no puedes romper** nunca.
+2. `spec.md` — qué hace el sistema: requisitos RF-xx / RNF-xx, casos límite CL-xx y dudas D-xx.
+3. `plan.md` — cómo se construye: tecnologías, arquitectura, modelo de datos y mapa de pantallas.
+4. `tasks.md` — tarea en curso, su «hecho cuando…» y sus dependencias.
+5. `decisiones.md` — decisiones posteriores a la primera versión del SDD (incluida la de solo móvil).
 6. Figma «Vitalis — NexoTeam (Pantallas)», página `07_ReadyForDev` — referencia visual y textos.
    Si no tienes acceso al Figma, usa `docs/figma/`: `textos-pantallas.txt` (estructura y textos de cada pantalla), `handoff-notas.png` (notas de implementación) y las capturas de las pantallas.
 
