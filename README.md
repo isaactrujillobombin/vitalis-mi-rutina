@@ -2,8 +2,8 @@
 
 App **móvil** que ayuda a personas de 65 a 85 años a mantener fuerza y autonomía con una sesión guiada de «Levantarse de la silla» (8 repeticiones + 30 s de descanso), con salida segura si duele y aviso a la familia.
 
-> **Grupo: 2DAM-G0X** · Proyecto interdisciplinar Monlau · 2.º DAM / 2.º DAW · Curso 2026-2027
-> Equipo NexoTeam (G0X-01, G0X-02, G0X-03) · Tema del reto: la soledad de las personas mayores
+> **Grupo: 2DAM-G02** · Proyecto interdisciplinar Monlau · 2.º DAM / 2.º DAW · Curso 2026-2027
+> Equipo NexoTeam (G02-01, G02-02, G02-03) · Tema del reto: la soledad de las personas mayores
 
 ## Propósito y usuarios
 

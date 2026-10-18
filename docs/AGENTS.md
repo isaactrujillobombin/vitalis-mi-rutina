@@ -1,6 +1,6 @@
 # AGENTS.md · Instrucciones para asistentes de IA
 
-> Proyecto **Vitalis — Mi Rutina** · Equipo NexoTeam (G0X-01, G0X-02, G0X-03) · Monlau 2026-2027
+> Proyecto **Vitalis — Mi Rutina** · Equipo NexoTeam (G02-01, G02-02, G02-03) · Monlau 2026-2027
 > Este archivo lo lee cualquier asistente de IA (Claude, Copilot, Cursor, etc.) **antes** de proponer o modificar nada en este repositorio.
 
 ## 1. Contexto en 30 segundos

@@ -1,6 +1,6 @@
 # plan.md · Vitalis — Plan técnico del MVP
 
-> Equipo NexoTeam · G0X-01, G0X-02, G0X-03
+> Equipo NexoTeam · G02-01, G02-02, G02-03
 > Implementa: [spec.md](spec.md) · Respeta: [constitution.md](constitution.md) · Se desglosa en: [tasks.md](tasks.md) · Decisiones posteriores: [decisiones.md](decisiones.md)
 > Estado: propuesta para revisión del equipo · 15/10/2026 · actualizado con DEC-01 el 16/10/2026
 
@@ -242,6 +242,6 @@ Las fechas exactas dependen del calendario del módulo (pendiente de confirmar c
 
 | Integrante | Revisado | Comentarios |
 | --- | --- | --- |
-| G0X-01 | ☐ | |
-| G0X-02 | ☐ | |
-| G0X-03 | ☐ | |
+| G02-01 | ☐ | |
+| G02-02 | ☐ | |
+| G02-03 | ☐ | |

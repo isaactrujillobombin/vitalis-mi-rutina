@@ -1,6 +1,6 @@
 # decisiones.md · Vitalis — Decisiones posteriores al SDD inicial
 
-> Equipo NexoTeam · G0X-01, G0X-02, G0X-03
+> Equipo NexoTeam · G02-01, G02-02, G02-03
 > Aquí se anotan las decisiones tomadas después de la primera versión de los documentos SDD (15/10/2026), para no perder el motivo ni la fecha. Cada decisión indica qué documentos quedan pendientes de actualizar.
 
 ---
@@ -10,8 +10,8 @@
 | Apartado | Detalle |
 | --- | --- |
 | **Fecha** | 16/10/2026 |
-| **Propuesta por** | G0X-01 |
-| **Estado** | Propuesta aplicada al repositorio · **pendiente de confirmación de G0X-02 y G0X-03** (M-2) |
+| **Propuesta por** | G02-01 |
+| **Estado** | Propuesta aplicada al repositorio · **pendiente de confirmación de G02-02 y G02-03** (M-2) |
 
 **Decisión.** El MVP se construye y se prueba **únicamente en ancho móvil**, con 390 × 844 px como tamaño de referencia. Las pantallas `*/Desktop` del Figma pasan a ser referencia visual y no se implementan.
 
@@ -77,7 +77,7 @@
 | **Fecha** | 19/10/2026 |
 | **Motivo** | El enunciado de la entrega final prohíbe nombres, apellidos, correos o fotografías del alumnado en archivos, repositorio y diapositivas. |
 
-**Decisión.** Los nombres del equipo se sustituyen por los códigos **G0X-01, G0X-02 y G0X-03** en todos los documentos. «2DAM-G0X» es provisional: hay que poner el identificador real del grupo y los números de lista.
+**Decisión.** Los nombres del equipo se sustituyen por los códigos **G02-01, G02-02 y G02-03** en todos los documentos. El grupo es el **2DAM-G02**. Los números 01, 02 y 03 no son los números de lista reales: el equipo los asignó así porque no los conocía.
 
 **Pendiente (lo tiene que hacer el equipo):**
 

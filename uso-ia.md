@@ -1,6 +1,6 @@
 # uso-ia.md · Registro del uso de IA en la fase SDD
 
-> Equipo NexoTeam · G0X-01, G0X-02, G0X-03
+> Equipo NexoTeam · G02-01, G02-02, G02-03
 > Capturas en [evidencias-ia/](evidencias-ia/)
 
 > **Nota para el equipo (borrar antes de entregar):** los campos marcados con **[EQUIPO]** solo los podéis rellenar vosotros, porque recogen **vuestra** revisión y vuestras decisiones. Lo que puntúa es esa revisión crítica, no las propuestas de la IA. Los datos de herramienta, modo y prompts de los casos 1 y 2 son reales y salen de la sesión con Claude.
@@ -41,7 +41,7 @@
 
 | Propuesta de la IA | Decisión | Motivo | Cómo lo comprobamos |
 | --- | --- | --- | --- |
-| Reparto de archivos (G0X-02 → spec, G0X-01 → plan y AGENTS, G0X-03 → constitution y tasks) | **Modificado** | Investigamos si era el reparto más adecuado: mantuvimos lo que encajaba y cambiamos lo que no. | Lo contrastamos con lo que cada uno conocía mejor del proyecto. |
+| Reparto de archivos (G02-02 → spec, G02-01 → plan y AGENTS, G02-03 → constitution y tasks) | **Modificado** | Investigamos si era el reparto más adecuado: mantuvimos lo que encajaba y cambiamos lo que no. | Lo contrastamos con lo que cada uno conocía mejor del proyecto. |
 | Usar «Avisar a la familia» como conexión con la soledad | **Aceptado** | Conecta a las personas mayores con su familia y, a la vez, las motiva a hacer ejercicio y a llevar una vida plena. | RF-12 en spec.md; el botón está en SesiónRegistrada ([captura 04](docs/capturas-app/04-sesion-registrada.png)). |
 | Dejar fuera el stack completo de la ideación | **Aceptado** | No daba tiempo a montarlo todo en el MVP. | El flujo principal funciona completo sin servidor ([validacion.md](validacion.md) §2). |
 | Corregir la grafía de un nombre del equipo en el Figma | **Aceptado · corregido** | Era un error de escritura. Además, desde la entrega final los documentos usan códigos de grupo (DEC-03). | Revisado en el archivo de Figma. |
@@ -82,7 +82,7 @@ Sugerencias para revisar el borrador: comprobad cada RF contra las pantallas de 
 
 ## Caso 3 · [EQUIPO] Revisión de casos límite o desglose de tareas
 
-> Lo hace G0X-02 o G0X-03 con **ChatGPT**. Pegad este prompt y, debajo, la sección 6 (Casos límite) y la sección 4 (Requisitos funcionales) de spec.md. Haced captura de la respuesta y rellenad la tabla.
+> Lo hace G02-02 o G02-03 con **ChatGPT**. Pegad este prompt y, debajo, la sección 6 (Casos límite) y la sección 4 (Requisitos funcionales) de spec.md. Haced captura de la respuesta y rellenad la tabla.
 >
 > *Prompt:* «Eres revisor de requisitos de una app para personas de 65 a 85 años con miedo a caerse. Te paso los requisitos y los casos límite de nuestro MVP. Dime qué casos límite importantes faltan y cuáles de los que tenemos son ambiguos o no se pueden comprobar. No propongas funcionalidades nuevas fuera del alcance.»
 
@@ -110,7 +110,7 @@ Sugerencias para revisar el borrador: comprobad cada RF contra las pantallas de 
 **Qué hizo la IA**
 
 - Creó el repositorio privado `vitalis-mi-rutina` y el primer commit con los documentos SDD.
-- **No cambió el alcance por su cuenta en silencio:** creó `decisiones.md` con DEC-01, marcó en spec.md los requisitos afectados (RF-02, RF-03, CA-05.2, RF-10) en vez de borrarlos, y dejó la decisión como «pendiente de confirmar por G0X-02 y G0X-03» (regla M-2 y H-5).
+- **No cambió el alcance por su cuenta en silencio:** creó `decisiones.md` con DEC-01, marcó en spec.md los requisitos afectados (RF-02, RF-03, CA-05.2, RF-10) en vez de borrarlos, y dejó la decisión como «pendiente de confirmar por G02-02 y G02-03» (regla M-2 y H-5).
 - Añadió M-4 a la constitución, CL-13 (qué pasa si se abre en un navegador ancho) y la tarea T-00b para cerrar la decisión.
 
 **Revisión humana**
@@ -215,7 +215,7 @@ Es exactamente el caso límite CL-01 que el equipo había anotado en la fase SDD
 **Resultado.**
 
 - **Auditoría contra el enunciado.** La funcionalidad del MVP estaba completa; lo que faltaba era documentación y entrega. Encontró un problema grave: **los nombres del alumnado** (uno con apellidos) aparecían en 8 documentos y en la URL del repositorio, cuando el enunciado lo prohíbe.
-- **Datos personales.** Sustituyó los nombres por códigos G0X-NN (DEC-03). Avisó de que el **historial de git** los conserva y de que eso lo tiene que resolver el equipo.
+- **Datos personales.** Sustituyó los nombres por códigos G02-NN (DEC-03). Avisó de que el **historial de git** los conserva y de que eso lo tiene que resolver el equipo.
 - **Capturas de evidencia.** Un script de Playwright genera 9 capturas a 390 × 844 de la app real: flujo principal, ruta de dolor, caso de error simulando que `localStorage` falla, y «Hoy no puedo» ([docs/capturas-app/](docs/capturas-app/)).
 - **Las capturas destaparon una regresión** que los 113 tests no detectaban: las insignias de Ejercicio se habían quedado sin fondo tras la corrección del Caso 6 ([07-captura-revela-regresion.png](evidencias-ia/07-captura-revela-regresion.png)). Se corrigió y se repitieron las capturas.
 - **Lighthouse** (móvil, build de producción): Rendimiento 100 · Accesibilidad 100 · Buenas prácticas 100. Cierra RNF-09.
@@ -229,7 +229,7 @@ Es exactamente el caso límite CL-01 que el equipo había anotado en la fase SDD
 
 | Propuesta de la IA | Decisión | Motivo | Cómo lo comprobamos |
 | --- | --- | --- | --- |
-| Códigos G0X-01/02/03 en lugar de nombres | **Aceptado** | El enunciado prohíbe nombres del alumnado en el repositorio, y no nos habíamos dado cuenta de que estaban en 8 documentos, uno con apellidos. | Búsqueda en todo el repositorio: ningún nombre en los archivos actuales. |
+| Códigos G02-01/02/03 en lugar de nombres | **Aceptado** | El enunciado prohíbe nombres del alumnado en el repositorio, y no nos habíamos dado cuenta de que estaban en 8 documentos, uno con apellidos. | Búsqueda en todo el repositorio: ningún nombre en los archivos actuales. |
 | Estado de las tareas en tasks.md sin marcarlas como hechas | **Modificado** | Funcionan y tienen tests, así que preferimos marcarlas como hechas. | 57 tests unitarios y 28 × 2 e2e; tasks.md actualizado. |
 | Declarar los dos tests e2e inestables en lugar de desactivarlos | **Aceptado** | Fallaban también antes del rediseño, así que es un problema de tiempos del test y no de la app. | Ejecutados varias veces con y sin el rediseño. Después se corrigieron: esperan a que la pantalla esté pintada y pasan 6 de 6 veces. |
 
