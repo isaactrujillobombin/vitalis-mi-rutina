@@ -37,14 +37,14 @@
 - Copió del Figma un nombre del equipo mal escrito, distinto del de la ideación.
 - El conector de Figma del plan Starter llegó a su límite de llamadas y no pudo leer todas las páginas con capturas.
 
-**Revisión humana [EQUIPO]**
+**Revisión humana**
 
 | Propuesta de la IA | Decisión | Motivo | Cómo lo comprobamos |
 | --- | --- | --- | --- |
-| Reparto de archivos (G0X-02 → spec, G0X-01 → plan y AGENTS, G0X-03 → constitution y tasks) | [aceptado / modificado / descartado] | | |
-| Usar «Avisar a la familia» como conexión con la soledad | | | |
-| Dejar fuera el stack completo de la ideación | | | |
-| Corregir la grafía de un nombre del equipo en el Figma | | | |
+| Reparto de archivos (G0X-02 → spec, G0X-01 → plan y AGENTS, G0X-03 → constitution y tasks) | **Modificado** | Investigamos si era el reparto más adecuado: mantuvimos lo que encajaba y cambiamos lo que no. | Lo contrastamos con lo que cada uno conocía mejor del proyecto. |
+| Usar «Avisar a la familia» como conexión con la soledad | **Aceptado** | Conecta a las personas mayores con su familia y, a la vez, las motiva a hacer ejercicio y a llevar una vida plena. | RF-12 en spec.md; el botón está en SesiónRegistrada ([captura 04](docs/capturas-app/04-sesion-registrada.png)). |
+| Dejar fuera el stack completo de la ideación | **Aceptado** | No daba tiempo a montarlo todo en el MVP. | El flujo principal funciona completo sin servidor ([validacion.md](validacion.md) §2). |
+| Corregir la grafía de un nombre del equipo en el Figma | **Aceptado · corregido** | Era un error de escritura. Además, desde la entrega final los documentos usan códigos de grupo (DEC-03). | Revisado en el archivo de Figma. |
 
 **Evidencia:** [evidencias-ia/01-lectura-figma.png](evidencias-ia/01-lectura-figma.png) — la IA lee el Figma con el conector y corrige lo que había dicho a partir de las capturas.
 
@@ -61,18 +61,18 @@
 
 **Prompt relevante (textual):** «completa esto» (con el enunciado adjunto).
 
-**Decisiones que propuso la IA y que el equipo debe validar [EQUIPO]**
+**Decisiones que propuso la IA y revisión del equipo**
 
 | # | Propuesta de la IA | Decisión | Motivo | Cómo lo comprobamos |
 | --- | --- | --- | --- | --- |
 | 1 | Web adaptable (React + Vite) en lugar de React Native | **Aceptado** | Una sola app cubre los dos diseños de Figma (escritorio y móvil) y el piloto se enseña con un enlace, sin instalar nada. React Native queda para después del MVP. | Contrastado con las páginas Desktop y Mobile de `07_ReadyForDev`. |
-| 2 | Guardar los registros en `localStorage`, sin servidor ni cuentas | | | |
+| 2 | Guardar los registros en `localStorage`, sin servidor ni cuentas | **Aceptado, con límite** | Basta para el MVP, sabiendo que si la persona cambia de móvil o borra los datos pierde el historial. Una versión futura podría añadir copia de seguridad. | Tests `RNF-08 (P-3)` y `P-1` en `privacidad.spec.ts`. |
 | 3 | Excluir Mi Plato del MVP, aunque la hoja de ruta de la ideación lo incluye | **Aceptado** | El Figma solo prototipa Mi Rutina; incluir Mi Plato duplicaba el trabajo para el tiempo disponible. Queda como primera mejora futura. | Contrastado con el brief y el handoff del Figma («Solo se prototipa Mi Rutina»). |
 | 4 | Sustituir las cifras de demostración de Mi Plato y Familia por «Próximamente» | **Aceptado (modifica el Figma)** | No queremos enseñar datos inventados (700/1000 mg de calcio…) a una persona mayor: podría creérselos. | Pendiente de actualizar las tarjetas de Inicio en Figma (D-04). |
-| 5 | «Hoy tengo dolor o no puedo» muestra un mensaje en Inicio (el Figma no lo define) | | | |
-| 6 | Saludo por hora y sin nombre | | | |
-| 7 | Estimación de 81 h y reparto de tareas por persona | | | |
-| 8 | Requisitos no funcionales con cifras concretas (48 px, 18 px, axe, Lighthouse ≥ 95) | | | |
+| 5 | «Hoy tengo dolor o no puedo» muestra un mensaje en Inicio (el Figma no lo define) | **Aceptado** | Un mensaje amable que valida descansar evita que la persona se sienta mal por no hacer el ejercicio, y no la saca de Inicio ni la obliga a decidir nada más. | Test de RF-14 y [captura 09](docs/capturas-app/09-hoy-no-puedo.png). |
+| 6 | Saludo por hora y sin nombre | **Aceptado** | El saludo por hora ya resulta cercano y evita una pantalla de configuración que a una persona con poca experiencia digital le costaría. Además no guardamos datos personales. | Test de CA-01.2 en `HomePage.test.tsx`, que también comprueba que no aparece ningún nombre. |
+| 7 | Estimación de 81 h y reparto de tareas por persona | **Aceptado como guía · poco realista** | La IA hizo más rápido parte del código, pero revisar, probar y documentar nos llevó más tiempo del previsto. | Comparando lo planificado en tasks.md con el trabajo real. |
+| 8 | Requisitos no funcionales con cifras concretas (48 px, 18 px, axe, Lighthouse ≥ 95) | **Aceptado y mejorado** | Con una cifra se puede comprobar si se cumple. Al final superamos el mínimo: botones de 56-60 px y Lighthouse 100. | `npm run check` y el [informe de Lighthouse](docs/lighthouse/inicio-movil.report.html). |
 
 Sugerencias para revisar el borrador: comprobad cada RF contra las pantallas de Figma, recorred la máquina de estados de plan.md §3.1 con el prototipo en Present, revisad si las horas de tasks.md son realistas para vuestro horario y quitad lo que no sepáis explicar.
 
@@ -113,14 +113,14 @@ Sugerencias para revisar el borrador: comprobad cada RF contra las pantallas de 
 - **No cambió el alcance por su cuenta en silencio:** creó `decisiones.md` con DEC-01, marcó en spec.md los requisitos afectados (RF-02, RF-03, CA-05.2, RF-10) en vez de borrarlos, y dejó la decisión como «pendiente de confirmar por G0X-02 y G0X-03» (regla M-2 y H-5).
 - Añadió M-4 a la constitución, CL-13 (qué pasa si se abre en un navegador ancho) y la tarea T-00b para cerrar la decisión.
 
-**Revisión humana [EQUIPO]**
+**Revisión humana**
 
 | Propuesta de la IA | Decisión | Motivo | Cómo lo comprobamos |
 | --- | --- | --- | --- |
-| Eliminar T-09 (Preparación/Desktop) y absorberla en T-10 | | | |
-| Marcar RF-02 y RF-03 como fuera de alcance en vez de borrarlos | | | |
-| Nuevo reparto de horas (77 h en lugar de 81) | | | |
-| CL-13: contenido centrado a 390 px en pantallas anchas | | | |
+| Eliminar T-09 (Preparación/Desktop) y absorberla en T-10 | **Aceptado** | Al ser solo móvil esa pantalla sobraba, y la preparación sigue apareciendo siempre antes de los pasos, que era lo importante para la seguridad (S-4). | Test de RF-04 (la preparación va antes de los pasos) y [captura 02](docs/capturas-app/02-ejercicio.png). |
+| Marcar RF-02 y RF-03 como fuera de alcance en vez de borrarlos | **Aceptado** | Queda constancia de qué se pensó al principio y por qué se quitó, y el profesorado puede seguir el cambio de alcance. | Siguen en spec.md §4, marcados como fuera de alcance por DEC-01. |
+| Nuevo reparto de horas (77 h en lugar de 81) | **Aceptado** | Mantuvimos el reparto entre los tres para que nadie cargara con más trabajo al recortar el alcance. | Resumen del reparto en tasks.md. |
+| CL-13: contenido centrado a 390 px en pantallas anchas | **Aceptado** | Es la consecuencia lógica de hacer solo app móvil: no prometemos una experiencia de escritorio que no hemos diseñado. | Test `RNF-07: sin desplazamiento horizontal entre 320 y 768 px`. |
 
 ---
 
@@ -148,14 +148,14 @@ Es exactamente el caso límite CL-01 que el equipo había anotado en la fase SDD
 - La IA también se equivocó al corregirlo: su primera versión reseteaba la marca al final de la función, lo que la dejaba inservible. Lo detectó al volver a ejecutar el test, no al razonarlo.
 - Los tests de accesibilidad (axe) obligaron a quitar los `opacity: 0.5` de los elementos «Próximamente», que bajaban el contraste por debajo de 4,5:1 y además comunicaban el estado solo con color (A-3, A-5).
 
-**Revisión humana [EQUIPO]**
+**Revisión humana**
 
 | Propuesta de la IA | Decisión | Motivo | Cómo lo comprobamos |
 | --- | --- | --- | --- |
-| Corregir RF-16 con una marca `useRef` en vez de solo con el botón desactivado | | | |
-| Que el test de privacidad falle si aparece cualquier petición externa (RNF-08) | | | |
-| Verificar el contraste con un script propio en vez de a mano | | | |
-| Dejar fuera de la validación automática RF-12 (Web Share) y declararlo en validacion.md | | | |
+| Corregir RF-16 con una marca `useRef` en vez de solo con el botón desactivado | **Aceptado** | Pulsar dos veces sin querer es muy habitual en personas con poca experiencia digital (CL-01), y un registro duplicado confundiría a la usuaria. | Test de componente: una doble pulsación crea un solo registro. |
+| Que el test de privacidad falle si aparece cualquier petición externa (RNF-08) | **Aceptado** | Le decimos a la usuaria que sus datos no salen del móvil, y este test es la forma de demostrar que es verdad. | Test `RNF-08 (P-3): no se pide nada a dominios de terceros`. |
+| Verificar el contraste con un script propio en vez de a mano | **Aceptado, pero no basta** | El script no sabe si un color se ve bien o se parece al Figma: eso lo tuvimos que revisar a ojo. | `npm run check:contrast` (18 pares) y revisión de las capturas de la app. |
+| Dejar fuera de la validación automática RF-12 (Web Share) y declararlo en validacion.md | **Insuficiente · modificado** | Queremos al menos un test con la función de compartir simulada para comprobar también la alternativa de WhatsApp y copiar. | Pendiente: test con `navigator.share` simulado (validacion.md §9). |
 
 ---
 
@@ -191,14 +191,14 @@ Es exactamente el caso límite CL-01 que el equipo había anotado en la fase SDD
 - **Contador o temporizador**: excluidos en spec.md §3.2.
 - **Una foto de una persona real como «logo»**: no la incorporó (datos personales, P-1 y límite 9 de AGENTS.md), y la borró de la carpeta temporal cuando se le pidió.
 
-**Revisión humana [EQUIPO]**
+**Revisión humana**
 
 | Propuesta de la IA | Decisión | Motivo | Cómo lo comprobamos |
 | --- | --- | --- | --- |
-| Dirección A con estilo iOS | | | |
-| Ilustración animada en la tarjeta de Inicio (no está en spec ni en Figma) | | | |
-| Botones lado a lado en Ejercicio («Terminar» y «Me duele») | | | |
-| Logo redibujado en SVG en lugar de usar el PNG | | | |
+| Dirección A con estilo iOS | **Aceptado** | El azul marino transmite seriedad y calma, y el estilo iOS, limpio y con mucho espacio, resulta familiar y fácil de leer para personas mayores. | Comparada con la captura de `06_Prototype` y con las [capturas de la app](docs/capturas-app/). |
+| Ilustración animada en la tarjeta de Inicio (no está en spec ni en Figma) | **Aceptado** | Explica el ejercicio de un vistazo, va lenta para no meter prisa (A-8) y se para sola si el móvil pide reducir el movimiento. | Anotada en decisiones.md (DEC-02); las capturas se generan con «reducir movimiento» activado. |
+| Botones lado a lado en Ejercicio («Terminar» y «Me duele») | **Aceptado** | «Me duele» está siempre a la vista sin desplazarse, que es nuestra regla de seguridad más importante (S-1). | Test e2e de CA-05.3 a 390 × 844 y [captura 02](docs/capturas-app/02-ejercicio.png). |
+| Logo redibujado en SVG en lugar de usar el PNG | **Aceptado** | El SVG se ve nítido a cualquier tamaño y con fondo transparente; el PNG se veía borroso a 30 px y llevaba fondo gris. | Revisado en la cabecera de la app y en el icono de la pestaña. |
 
 ---
 
@@ -225,24 +225,24 @@ Es exactamente el caso límite CL-01 que el equipo había anotado en la fase SDD
 - Los tests comprueban comportamiento y accesibilidad, pero **no si algo se ve bien**: una captura revisada por una persona encontró lo que los tests no veían.
 - La IA no marcó como hechas las tareas que nadie había revisado. Las dejó como «funciona, falta revisión del equipo» en tasks.md.
 
-**Revisión humana [EQUIPO]**
+**Revisión humana**
 
 | Propuesta de la IA | Decisión | Motivo | Cómo lo comprobamos |
 | --- | --- | --- | --- |
-| Códigos G0X-01/02/03 en lugar de nombres | | | |
-| Estado de las tareas en tasks.md sin marcarlas como hechas | | | |
-| Declarar los dos tests e2e inestables en lugar de desactivarlos | | | |
+| Códigos G0X-01/02/03 en lugar de nombres | **Aceptado** | El enunciado prohíbe nombres del alumnado en el repositorio, y no nos habíamos dado cuenta de que estaban en 8 documentos, uno con apellidos. | Búsqueda en todo el repositorio: ningún nombre en los archivos actuales. |
+| Estado de las tareas en tasks.md sin marcarlas como hechas | **Modificado** | Funcionan y tienen tests, así que preferimos marcarlas como hechas. | 57 tests unitarios y 28 × 2 e2e; tasks.md actualizado. |
+| Declarar los dos tests e2e inestables en lugar de desactivarlos | **Aceptado** | Fallaban también antes del rediseño, así que es un problema de tiempos del test y no de la app. | Ejecutados varias veces con y sin los cambios del rediseño. |
 
 ---
 
-## Reflexión final [EQUIPO]
+## Reflexión final
 
-> **Borrador preparado por la IA a partir de los casos documentados. Reescribidlo con vuestras palabras (8-12 líneas)** y completad los huecos entre corchetes: son opiniones y decisiones vuestras, no de la IA. Cada integrante debe poder defender lo que quede escrito.
+> Redactada a partir de las respuestas del equipo a un cuestionario sobre cada propuesta de la IA (19/10/2026). Las decisiones y opiniones son del equipo; la IA solo les dio forma.
 
-**En qué nos ayudó.** En la fase SDD, la IA nos ayudó a entender qué pedía el método y a convertir el prototipo en requisitos verificables, con casos límite que no habíamos previsto (doble pulsación, almacenamiento bloqueado, acceso directo a pantallas). En el desarrollo montó el proyecto, los tests y la mayor parte del código siguiendo AGENTS.md, y fue útil que preguntara la tarea T-xx antes de tocar nada. [Completar: qué os resultó más útil a vosotros.]
+**En qué nos ayudó.** Sobre todo a **entender y ordenar**: qué pedía el SDD y el enunciado, cómo repartir el trabajo en tareas T-xx y qué faltaba para la entrega final. También convirtió el prototipo en una app que funciona con tests, y sus tests encontraron un fallo real de doble registro (Caso 5) que leyendo el código no veíamos.
 
-**En qué se equivocó.** Se equivoca cuando trabaja con información incompleta: con capturas ilegibles sacó conclusiones erróneas sobre la soledad, y sin acceso al Figma los colores tuvieron que salir de capturas. En el código escribió un fallo real de doble registro (Caso 5) que solo se vio al ejecutar los tests, y en el rediseño introdujo dos regresiones visuales (Casos 6 y 7) que no detectó ningún test: las encontramos nosotros y una captura. También tiende a proponer más alcance del que cabe en un MVP. [Completar: algún error que os afectara directamente.]
+**En qué se equivocó.** Lo que más nos afectó fueron los **fallos visuales**: el rediseño necesitó varias vueltas (insignias blancas, una primera animación que quedaba mal, el espaciado de la tarjeta y una pantalla en blanco por la caché del servidor). Ningún test los detectaba; los encontramos mirando la app y las capturas. Además, sin acceso al Figma por el límite del plan, trabajó con capturas y sus colores no son los exactos del diseño. Su estimación de horas tampoco fue realista: revisar, probar y documentar llevó más de lo previsto.
 
-**Lo que decidimos nosotros.** El alcance final y la plataforma (DEC-01), la dirección visual (DEC-02), [completar]. La IA rechazó por sí misma lo que chocaba con la constitución (servidor, cuentas, contador, la foto de una persona real), pero cada una de esas reglas la escribimos nosotros antes.
+**Lo que decidimos nosotros.** El alcance (solo móvil, DEC-01), la dirección visual A con estilo iOS (DEC-02), mantener la animación, marcar las tareas como hechas y pedir más pruebas para «Avisar a la familia». La IA rechazó lo que chocaba con nuestra constitución (servidor, cuentas, contador, una foto de una persona real), pero esas reglas las escribimos nosotros antes.
 
-**Qué aprendimos y qué haríamos distinto.** [Completar. Ideas para discutir: que los tests no sustituyen mirar la app; que escribir el caso límite en el spec no basta si no hay un test que lo ejecute; que las peticiones vagas («mejóralo») dan resultados que hay que corregir varias veces; que conviene revisar cada propuesta antes de aceptarla en lugar de al final.]
+**Qué aprendimos y qué haríamos distinto.** Lo más importante: **todo lo que genera la IA hay que revisarlo y probarlo**. Funciona rápido, pero se equivoca, y la responsabilidad de lo que entregamos es nuestra. La próxima vez **pediríamos las cosas con más precisión** desde el principio: con peticiones como «mejóralo» hubo que corregir varias veces hasta llegar a lo que queríamos.

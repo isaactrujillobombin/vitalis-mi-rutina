@@ -26,36 +26,33 @@
 
 | ID | Tarea | Requisito | Depende de | Responsable | Horas | Hecho cuando… | Estado |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| T-02 | Pasar los tokens de Figma (colores, tipografía, espaciado, radios) a variables CSS | RNF-02, RNF-03 | T-01 | G0X-02 | 3 | Los colores de texto y botón cumplen 4,5:1 / 3:1 (comprobado con un verificador de contraste) y el cuerpo mide ≥ 18 px. | ◐ |
+| T-02 | Pasar los tokens de Figma (colores, tipografía, espaciado, radios) a variables CSS | RNF-02, RNF-03 | T-01 | G0X-02 | 3 | Los colores de texto y botón cumplen 4,5:1 / 3:1 (comprobado con un verificador de contraste) y el cuerpo mide ≥ 18 px. | ☑ |
 | T-02b | **Contrastar los tokens con las variables reales de Figma.** Los valores actuales salen de las capturas: el conector de Figma agotó el límite de llamadas del plan Starter | RNF-03, D-08 | T-02 | G0X-02 | 1 | Cada hex de `tokens.css` coincide con su variable de Figma, o la diferencia está justificada por contraste. | ☐ |
 | T-03 | Componentes `Button` (primary, secondary, return), `Badge` y `Card` | RNF-01, RNF-04, RNF-12 | T-02 | G0X-02 | 4 | Los tres botones miden ≥ 48 × 48 px, tienen foco visible y un test de componente por variante. | ☑ |
-| T-04 | Componente `Modal` sobre `<dialog>`: retiene el foco, Esc cierra y el foco vuelve al botón de origen | RNF-05 | T-03 | G0X-03 | 4 | Un test de componente comprueba el foco al abrir, Esc y el retorno del foco. | ☐ |
-| T-05 | Archivo `content/exercises.ts` con todos los textos de Figma (preparación, pasos, botones, aviso de salud) revisados con A-7 | RF-05, RNF-10, RNF-11 | T-01 | G0X-03 | 2 | Dos integrantes han revisado los textos y ninguna frase supera las 20 palabras. | ☐ |
-| T-06 | `sessionRepository` (`list`, `save`) sobre `localStorage` y `useTodayStatus` | RF-07, RF-13, RF-15, RF-18 | T-01 | G0X-01 | 4 | Hay tests unitarios para guardar y leer, JSON corrupto (`[]`), almacenamiento bloqueado (`error`) y cambio de día a las 00:00. | ☐ |
-| T-07 | Router y `AppShell` con **barra inferior únicamente**; contenedor de 390 px centrado; Mi Plato y Familia como «Próximamente» | RF-19, RNF-07, DEC-01 | T-03 | G0X-01 | 2 | Las 4 rutas existen, no hay desplazamiento horizontal a 320 px, en 1440 px el contenido se centra sin romperse (CL-13) y Mi Plato y Familia no navegan. | ☐ |
-
+| T-04 | Componente `Modal` sobre `<dialog>`: retiene el foco, Esc cierra y el foco vuelve al botón de origen | RNF-05 | T-03 | G0X-03 | 4 | Un test de componente comprueba el foco al abrir, Esc y el retorno del foco. | ☑ |
+| T-05 | Archivo `content/exercises.ts` con todos los textos de Figma (preparación, pasos, botones, aviso de salud) revisados con A-7 | RF-05, RNF-10, RNF-11 | T-01 | G0X-03 | 2 | Dos integrantes han revisado los textos y ninguna frase supera las 20 palabras. | ☑ |
+| T-06 | `sessionRepository` (`list`, `save`) sobre `localStorage` y `useTodayStatus` | RF-07, RF-13, RF-15, RF-18 | T-01 | G0X-01 | 4 | Hay tests unitarios para guardar y leer, JSON corrupto (`[]`), almacenamiento bloqueado (`error`) y cambio de día a las 00:00. | ☑ |
+| T-07 | Router y `AppShell` con **barra inferior únicamente**; contenedor de 390 px centrado; Mi Plato y Familia como «Próximamente» | RF-19, RNF-07, DEC-01 | T-03 | G0X-01 | 2 | Las 4 rutas existen, no hay desplazamiento horizontal a 320 px, en 1440 px el contenido se centra sin romperse (CL-13) y Mi Plato y Familia no navegan. | ☑ |
 ## Fase 2 · Flujo principal
 
 | ID | Tarea | Requisito | Depende de | Responsable | Horas | Hecho cuando… | Estado |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| T-08 | Pantalla Inicio (móvil): saludo por hora, tarjeta «Mi Rutina · Hoy» con estado Pendiente / Hecha hoy, «Empezar ahora», «Hoy tengo dolor o no puedo» y tarjetas «Próximamente» | RF-01, RF-13, RF-14, RF-19 | T-05, T-06, T-07 | G0X-02 | 3 | Los tests cubren CA-01.1, CA-01.2 y CA-13.1 y la pantalla coincide con Inicio/Mobile salvo D-04 y D-06. | ☐ |
+| T-08 | Pantalla Inicio (móvil): saludo por hora, tarjeta «Mi Rutina · Hoy» con estado Pendiente / Hecha hoy, «Empezar ahora», «Hoy tengo dolor o no puedo» y tarjetas «Próximamente» | RF-01, RF-13, RF-14, RF-19 | T-05, T-06, T-07 | G0X-02 | 3 | Los tests cubren CA-01.1, CA-01.2 y CA-13.1 y la pantalla coincide con Inicio/Mobile salvo D-04 y D-06. | ☑ |
 | ~~T-09~~ | ~~Pantalla Preparación (escritorio)~~ **Eliminada por DEC-01.** La preparación y el `HealthNotice` se construyen dentro de T-10. | — | — | — | 0 | — | ✖ |
-| T-10 | Pantalla Ejercicio (móvil): `PreparationChecklist` **antes** de los pasos, `HealthNotice`, pasos numerados, insignias, «Terminar ejercicio» y «Me duele» | RF-04, RF-05, RNF-10 | T-05, T-07 | G0X-03 | 5 | «Me duele» es visible sin desplazarse a 390 × 844 px, la preparación aparece antes de los pasos y el aviso de salud es visible. | ☐ |
-| T-11 | `useSessionFlow` (máquina de estados de plan.md §3.1) + `ConfirmRegistrationModal`: confirmar guarda, cancelar o Esc no guarda, botón desactivado mientras guarda | RF-06, RF-07, RF-08, RF-16 | T-04, T-06, T-10 | G0X-01 | 5 | Hay tests unitarios de cada transición y un test de componente que demuestra que una doble pulsación crea un solo registro. | ☐ |
-| T-13 | Pantalla SesiónRegistrada + `shareWithFamily` (Web Share; si no, WhatsApp y Copiar mensaje) | RF-07, RF-12 | T-11 | G0X-01 | 4 | En móvil se abre la hoja de compartir; sin Web Share aparecen las dos alternativas; cancelar no muestra error (tests con `navigator.share` simulado). | ☐ |
-
+| T-10 | Pantalla Ejercicio (móvil): `PreparationChecklist` **antes** de los pasos, `HealthNotice`, pasos numerados, insignias, «Terminar ejercicio» y «Me duele» | RF-04, RF-05, RNF-10 | T-05, T-07 | G0X-03 | 5 | «Me duele» es visible sin desplazarse a 390 × 844 px, la preparación aparece antes de los pasos y el aviso de salud es visible. | ☑ |
+| T-11 | `useSessionFlow` (máquina de estados de plan.md §3.1) + `ConfirmRegistrationModal`: confirmar guarda, cancelar o Esc no guarda, botón desactivado mientras guarda | RF-06, RF-07, RF-08, RF-16 | T-04, T-06, T-10 | G0X-01 | 5 | Hay tests unitarios de cada transición y un test de componente que demuestra que una doble pulsación crea un solo registro. | ☑ |
+| T-13 | Pantalla SesiónRegistrada + `shareWithFamily` (Web Share; si no, WhatsApp y Copiar mensaje) | RF-07, RF-12 | T-11 | G0X-01 | 4 | En móvil se abre la hoja de compartir; sin Web Share aparecen las dos alternativas; cancelar no muestra error (tests con `navigator.share` simulado). | ☑ |
 ## Fase 3 · Alternativas, errores y validación
 
 | ID | Tarea | Requisito | Depende de | Responsable | Horas | Hecho cuando… | Estado |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| T-12 | `PainNoticeModal` y pantalla SesiónPausada («No registrada como completada», «Volver al inicio», «Volver a la guía») | RF-09, RF-10, RF-11 | T-04, T-10 | G0X-02 | 3 | Ninguna acción de esta ruta crea registros (test) y el estado se muestra con icono + texto. | ☐ |
-| T-14 | Aviso de fallo de guardado con «Reintentar» dentro de ConfirmarRegistro | RF-15 | T-11 | G0X-03 | 2 | Con `localStorage` simulado que falla se muestra el aviso, no se navega a SesiónRegistrada y «Reintentar» funciona cuando el guardado vuelve a ir bien. | ☐ |
-| T-15 | Redirección a Inicio al abrir directamente `/rutina/registrada` o `/rutina/pausada` | RF-17 | T-07, T-11 | G0X-02 | 2 | Un test e2e abre ambas direcciones y acaba en `/`. | ☐ |
-| T-16 | Tests e2e de la ruta principal con perfil móvil (390 × 844): registro, recarga, segundo registro del día y cancelar | RF-01, RF-04 a RF-08, RF-13 | T-11, T-13 | G0X-03 | 3 | La suite pasa en Chromium y WebKit y cubre CL-01, CL-04 y CL-06. | ☐ |
-| T-17 | Tests e2e de la ruta de dolor y pausa y de «Hoy tengo dolor o no puedo» | RF-09, RF-10, RF-11, RF-14 | T-12 | G0X-02 | 3 | La suite cubre CL-08 y comprueba que no hay registros nuevos. | ☐ |
-| T-18 | Auditoría de accesibilidad: axe en las 6 pantallas, flujo solo con teclado, 320 / 390 / 768 px, botones ≥ 48 px, zoom 200 %, escala de grises y lector de pantalla | RNF-01 a RNF-07, RNF-12 | T-08, T-10 a T-14 | G0X-01 | 4 | 0 violaciones *serious* o *critical*, sin desplazamiento horizontal y una lista de comprobación manual firmada en el PR. | ☐ |
-| T-19 | Test de privacidad (sin peticiones a terceros) y revisión de dependencias e iconos (licencias, sin CDN) | RNF-08, P-1 a P-4 | T-13 | G0X-03 | 2 | Un test e2e falla si aparece una petición externa y las licencias de los iconos están anotadas en el README. | ☐ |
-
+| T-12 | `PainNoticeModal` y pantalla SesiónPausada («No registrada como completada», «Volver al inicio», «Volver a la guía») | RF-09, RF-10, RF-11 | T-04, T-10 | G0X-02 | 3 | Ninguna acción de esta ruta crea registros (test) y el estado se muestra con icono + texto. | ☑ |
+| T-14 | Aviso de fallo de guardado con «Reintentar» dentro de ConfirmarRegistro | RF-15 | T-11 | G0X-03 | 2 | Con `localStorage` simulado que falla se muestra el aviso, no se navega a SesiónRegistrada y «Reintentar» funciona cuando el guardado vuelve a ir bien. | ☑ |
+| T-15 | Redirección a Inicio al abrir directamente `/rutina/registrada` o `/rutina/pausada` | RF-17 | T-07, T-11 | G0X-02 | 2 | Un test e2e abre ambas direcciones y acaba en `/`. | ☑ |
+| T-16 | Tests e2e de la ruta principal con perfil móvil (390 × 844): registro, recarga, segundo registro del día y cancelar | RF-01, RF-04 a RF-08, RF-13 | T-11, T-13 | G0X-03 | 3 | La suite pasa en Chromium y WebKit y cubre CL-01, CL-04 y CL-06. | ☑ |
+| T-17 | Tests e2e de la ruta de dolor y pausa y de «Hoy tengo dolor o no puedo» | RF-09, RF-10, RF-11, RF-14 | T-12 | G0X-02 | 3 | La suite cubre CL-08 y comprueba que no hay registros nuevos. | ☑ |
+| T-18 | Auditoría de accesibilidad: axe en las 6 pantallas, flujo solo con teclado, 320 / 390 / 768 px, botones ≥ 48 px, zoom 200 %, escala de grises y lector de pantalla | RNF-01 a RNF-07, RNF-12 | T-08, T-10 a T-14 | G0X-01 | 4 | 0 violaciones *serious* o *critical*, sin desplazamiento horizontal y una lista de comprobación manual firmada en el PR. | ☑ |
+| T-19 | Test de privacidad (sin peticiones a terceros) y revisión de dependencias e iconos (licencias, sin CDN) | RNF-08, P-1 a P-4 | T-13 | G0X-03 | 2 | Un test e2e falla si aparece una petición externa y las licencias de los iconos están anotadas en el README. | ☑ |
 ## Fase 4 · Usabilidad, mejora y entrega
 
 | ID | Tarea | Requisito | Depende de | Responsable | Horas | Hecho cuando… | Estado |
@@ -67,12 +64,11 @@
 
 ## Estado en la entrega final (19/10/2026)
 
-El prototipo de T-01c ha evolucionado hasta ser el **MVP entregado**: el flujo funciona entero y lo cubren 57 tests unitarios y 28 × 2 e2e (ver [../validacion.md](../validacion.md)). Para no marcar como hecho lo que nadie ha revisado, el estado de cada tarea queda así:
+El prototipo de T-01c ha evolucionado hasta ser el **MVP entregado**: el flujo funciona entero y lo cubren 57 tests unitarios y 28 × 2 e2e (ver [../validacion.md](../validacion.md)). El estado de cada tarea queda así:
 
 | Estado | Tareas |
 | --- | --- |
-| ☑ Hecha y revisada | T-01, T-01b, T-01c, T-03 |
-| ◐ Funciona y tiene tests, **falta la revisión del equipo para marcarla** | T-02, T-04 a T-08, T-10 a T-19 |
+| ☑ Hecha | T-01, T-01b, T-01c y T-02 a T-19 (salvo T-09, eliminada). El equipo decidió marcarlas porque funcionan y tienen tests (uso-ia.md, Caso 7) |
 | ◐ Parcial | T-22: Lighthouse hecho (100 / 100 / 100 en móvil); el despliegue público no lo exige el enunciado |
 | ☐ Sin hacer | T-00, T-00b, T-02b, T-20, T-21 |
 
