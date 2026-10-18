@@ -22,13 +22,13 @@ npm run check                            # lint + tipos + contraste + unitarios 
 | Tipos | TypeScript 5.9 `strict` | **0 errores** |
 | Contraste de los tokens | `scripts/check-contrast.mjs` | **18/18 pares** cumplen |
 | Unitarios y de componentes | Vitest + Testing Library | **62/62 pasan** |
-| End-to-end | Playwright · perfil Android (Chromium) | **28/28 pasan** |
-| End-to-end | Playwright · perfil iPhone (WebKit) | **28/28 pasan** |
+| End-to-end | Playwright · perfil Android (Chromium) | **29/29 pasan** |
+| End-to-end | Playwright · perfil iPhone (WebKit) | **29/29 pasan** |
 | Accesibilidad automática | @axe-core/playwright, 6 pantallas | **0 violaciones** *serious* / *critical* |
 | Build de producción | Vite 7 | **correcto** |
 | Rendimiento y accesibilidad | Lighthouse 12.2.1 · móvil, build de producción | **Rendimiento 100 · Accesibilidad 100 · Buenas prácticas 100** · [informe](docs/lighthouse/inicio-movil.report.html) |
 
-**Total: 118 comprobaciones automáticas** (62 unitarias + 28 × 2 perfiles de e2e), más el informe de Lighthouse.
+**Total: 120 comprobaciones automáticas** (62 unitarias + 29 × 2 perfiles de e2e), más el informe de Lighthouse.
 
 **Capturas de evidencia** (390 × 844, generadas con Playwright sobre la app real) en [docs/capturas-app/](docs/capturas-app/):
 
@@ -105,6 +105,8 @@ Texto comprobado literalmente: «No hemos podido guardar la sesión. Inténtalo 
 | CL-06 | Segunda sesión el mismo día | ✅ se permite, se guardan 2 | `CL-06: permite una segunda sesión el mismo día` |
 | CL-07 | Registrada a las 23:59, abierta a las 00:01 | ✅ vuelve a «Pendiente» | `CL-07: registrada a las 23:59, consultada a las 00:01 del día siguiente, vuelve a pendiente` |
 | CL-08 | «Me duele» → «Volver sin registrar» | ✅ Inicio igual que antes, sin registro | `CL-08: «Me duele» → «Volver sin registrar» deja Inicio como estaba` |
+| CL-14 | Falla el guardado y se pulsa «Reintentar» | ✅ aviso, sin éxito falso; al reintentar se guarda un solo registro | tests de RF-15 y RF-16 (§3 y §4) |
+| CL-19 | «Me duele» después de registrar otra sesión hoy | ✅ Inicio sigue en «Hecha hoy», sin registro nuevo | `CL-19: «Me duele» tras una sesión ya registrada hoy no borra «Hecha hoy»` |
 
 ---
 
@@ -163,6 +165,7 @@ Esta sección es tan importante como las anteriores. Nada de lo de aquí debe da
 | **Lector de pantalla** | axe detecta fallos de marcado, pero no si la experiencia con VoiceOver o TalkBack se entiende. | Recorrido manual con lector, apuntado en T-18. |
 | **Zoom al 200 % y escala de grises** | Comprobaciones manuales que aún no se han hecho. | Lista firmada en el PR de T-18. |
 | **Lighthouse solo en Inicio** | Se ha medido la pantalla de Inicio con el build de producción. El resto de pantallas no se pueden abrir directamente (RF-17 redirige a Inicio). | Medición manual recorriendo el flujo con DevTools. |
+| **Recarga durante el guardado (CL-15 propuesto en el Caso 3)** | Guardar en `localStorage` es casi instantáneo, así que no hay un momento real para recargar a mitad; no se ha escrito como caso límite ni se ha probado. | Limitación conocida, decidida por el equipo en el Caso 3. |
 | **Tokens de color contra Figma** | Los hex salen de las capturas, no de las variables del archivo: el conector de Figma agotó el límite de llamadas del plan Starter. **El contraste sí está verificado**, pero el parecido con el diseño no. | T-02b. |
 | **DEC-01 (solo móvil)** | Decisión aplicada al código pero **pendiente de que la confirmen los otros dos integrantes** y de comentarla con el docente. | T-00b. |
 | **Navegadores reales** | Probado en los motores Chromium y WebKit que trae Playwright, no en móviles físicos. | Durante T-20. |

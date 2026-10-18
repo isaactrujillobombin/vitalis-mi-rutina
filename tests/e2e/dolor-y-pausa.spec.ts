@@ -70,3 +70,24 @@ test('RF-17 (CL-05): entrar directo a las pantallas de resultado lleva a Inicio'
   await page.goto('/rutina/pausada');
   await expect(page).toHaveURL(/\/$/);
 });
+
+test('CL-19: «Me duele» tras una sesión ya registrada hoy no borra «Hecha hoy»', async ({
+  page,
+}) => {
+  await page.goto('/');
+  // Primera sesión del día, registrada.
+  await page.getByRole('button', { name: 'Empezar ahora' }).click();
+  await page.getByRole('button', { name: 'Terminar ejercicio' }).click();
+  await page.getByRole('button', { name: 'Sí, registrar sesión' }).click();
+  await page.getByRole('button', { name: 'Volver al inicio' }).click();
+  await expect(page.getByText(/Hecha hoy/)).toBeVisible();
+  const before = await records(page);
+
+  // Segunda sesión: duele y se vuelve sin registrar.
+  await page.getByRole('button', { name: 'Empezar otra vez' }).click();
+  await page.getByRole('button', { name: /Me duele/ }).click();
+  await page.getByRole('button', { name: 'Volver sin registrar' }).click();
+
+  await expect(page.getByText(/Hecha hoy/)).toBeVisible();
+  expect(await records(page)).toBe(before);
+});

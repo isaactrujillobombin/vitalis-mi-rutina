@@ -227,17 +227,19 @@ Donde la interfaz muestre «Mi Plato» o «Familia» (tarjetas de Inicio y naveg
 | --- | --- | --- | --- |
 | CL-01 | La usuaria pulsa dos veces seguidas «Sí, registrar sesión». | Se guarda un solo registro. | RF-16 |
 | CL-02 | El almacenamiento del dispositivo está lleno, bloqueado o en modo privado. | Aviso y «Reintentar»; no se muestra éxito. | RF-15 |
-| CL-03 | Los datos guardados están corruptos. | Se ignoran; la sesión aparece «Pendiente»; la app no se bloquea. | RF-18 |
+| CL-03 | Los datos guardados están corruptos. | Se ignoran; la sesión aparece «Pendiente»; la app no se bloquea. **Si solo una parte está dañada** (un registro con formato incorrecto entre varios válidos), se descarta ese registro y se conservan los válidos. | RF-18 |
 | CL-04 | Se recarga la página en mitad del ejercicio. | Vuelve a la pantalla Ejercicio con la sesión pendiente; no se crea registro. | RF-05, RF-07 |
 | CL-05 | Se abre directamente `/rutina/registrada` o `/rutina/pausada`. | Redirección a Inicio. | RF-17 |
 | CL-06 | La usuaria registra una segunda sesión el mismo día. | Se permite; se guarda otro registro e Inicio muestra la hora del último. | RF-07, RF-13 |
 | CL-07 | La sesión se registra a las 23:59 y se abre la app a las 00:01. | La tarjeta muestra «Pendiente» (nuevo día). | CA-13.1 |
 | CL-08 | La usuaria pulsa «Me duele» y después «Volver sin registrar». | Inicio con el mismo estado de antes; ningún registro nuevo. | RF-09, RF-11 |
 | CL-09 | El navegador no permite compartir o la usuaria cancela. | Alternativas WhatsApp / Copiar; cancelar no muestra error. | RF-12 |
-| CL-10 | Se gira el móvil o se cambia el ancho de la ventana durante el ejercicio. | El contenido se recoloca sin perder el paso actual ni el estado. | RF-04, RNF-07 |
+| CL-10 | Se gira el móvil o se cambia el ancho de la ventana durante el ejercicio. | El contenido se recoloca, sigue en la pantalla Ejercicio sin crear registros y no aparece desplazamiento horizontal. (Reescrito tras el Caso 3: RF-05 no define un «paso actual».) | RF-04, RNF-07 |
 | CL-11 | Zoom del navegador al 200 % en móvil. | Todo el texto y los botones siguen visibles y usables. | RNF-02 |
 | CL-12 | Títulos largos (por ejemplo, «¿Registrar esta sesión?» en varias líneas en 350 px). | El texto se parte en varias líneas sin cortarse ni solaparse con los botones. | RNF-07 |
-| CL-13 | La app se abre en un navegador de escritorio (ancho > 768 px). | DEC-01: el diseño móvil se muestra centrado, con ancho máximo de 390 px. Nada se rompe. | DEC-01, RNF-07 |
+| ~~CL-13~~ | ~~La app se abre en un navegador de escritorio (ancho > 768 px).~~ | **Eliminado tras el Caso 3:** el escritorio está fuera de alcance (DEC-01). El contenedor de 390 px centrado se mantiene en el código, pero ya no es un caso límite que se valide. | — |
+| CL-14 | Falla el primer guardado y la usuaria pulsa «Reintentar». | Si el segundo intento funciona, se guarda **un solo** registro y se muestra SesiónRegistrada; si vuelve a fallar, se mantiene el aviso y no se muestra éxito. | RF-07, RF-15, RF-16 |
+| CL-19 | La usuaria ya registró una sesión hoy, empieza otra, pulsa «Me duele» y «Volver sin registrar». | Inicio sigue mostrando «Hecha hoy» con la hora de la sesión anterior; no se crea ningún registro nuevo. | RF-09, RF-11, RF-13 |
 
 ---
 

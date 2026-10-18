@@ -3,8 +3,6 @@
 > Equipo NexoTeam · G02-01, G02-02, G02-03
 > Capturas en [evidencias-ia/](evidencias-ia/)
 
-> **Nota para el equipo (borrar antes de entregar):** los campos marcados con **[EQUIPO]** solo los podéis rellenar vosotros, porque recogen **vuestra** revisión y vuestras decisiones. Lo que puntúa es esa revisión crítica, no las propuestas de la IA. Los datos de herramienta, modo y prompts de los casos 1 y 2 son reales y salen de la sesión con Claude.
-
 ---
 
 ## Caso 1 · Entender el SDD, leer el prototipo y repartir el trabajo
@@ -80,20 +78,35 @@ Sugerencias para revisar el borrador: comprobad cada RF contra las pantallas de 
 
 ---
 
-## Caso 3 · [EQUIPO] Revisión de casos límite o desglose de tareas
-
-> Lo hace G02-02 o G02-03 con **ChatGPT**. Pegad este prompt y, debajo, la sección 6 (Casos límite) y la sección 4 (Requisitos funcionales) de spec.md. Haced captura de la respuesta y rellenad la tabla.
->
-> *Prompt:* «Eres revisor de requisitos de una app para personas de 65 a 85 años con miedo a caerse. Te paso los requisitos y los casos límite de nuestro MVP. Dime qué casos límite importantes faltan y cuáles de los que tenemos son ambiguos o no se pueden comprobar. No propongas funcionalidades nuevas fuera del alcance.»
+## Caso 3 · Revisión de casos límite con una segunda IA
 
 | Apartado | Detalle |
 | --- | --- |
-| **Tarea y objetivo** | Revisar con una segunda IA los casos límite de **spec.md §6**, para encontrar los que faltan o no son verificables. |
-| **Herramienta o agente** | ChatGPT · modelo: [el que muestre la app, o «no visible»] |
-| **Modo de trabajo** | [conversación / el modo que aparezca, o «sin selector de modo»] |
-| **Contexto y prompts** | Secciones 4 y 6 de spec.md + el prompt de arriba. [Añadid los prompts de refinamiento si hicisteis alguno.] |
-| **Resultado y revisión humana** | [Qué casos propuso, cuáles añadisteis a spec.md §6, cuáles descartasteis y por qué. Ejemplo de formato: «Propuso X. Lo descartamos porque está fuera del alcance (spec §3.2).»] |
-| **Evidencia** | [evidencias-ia/03-revision-casos-limite.png](evidencias-ia/03-revision-casos-limite.png) |
+| **Tarea y objetivo** | Revisar con una segunda IA los casos límite de **spec.md §6**, para encontrar los que faltan, los ambiguos y los que no se pueden comprobar. |
+| **Herramienta o agente** | ChatGPT · modelo visible: **GPT-5** |
+| **Modo de trabajo** | Conversación normal, sin modos especiales. |
+| **Contexto facilitado** | Las secciones 4 (requisitos funcionales) y 6 (casos límite) de spec.md, sin nombres ni datos personales. |
+| **Prompt (textual)** | «Eres revisor de requisitos de una app para personas de 65 a 85 años con miedo a caerse. Te paso los requisitos y los casos límite de nuestro MVP. Dime qué casos límite importantes faltan y cuáles de los que tenemos son ambiguos o no se pueden comprobar. No propongas funcionalidades nuevas fuera del alcance.» |
+| **Evidencia** | [1](evidencias-ia/03-revision-casos-limite-1.png) · [2](evidencias-ia/03-revision-casos-limite-2.png) · [3](evidencias-ia/03-revision-casos-limite-3.png) · [4](evidencias-ia/03-revision-casos-limite-4.png) |
+
+**Resultado.** ChatGPT respetó el alcance: no propuso funcionalidades nuevas. Señaló **2 contradicciones** (CL-10 frente a RF-05 y CL-13 frente a DEC-01), **12 casos límite nuevos** (CL-14 a CL-25) y varias expresiones no verificables («usable», «nada se rompe»).
+
+**Revisión humana**
+
+| Propuesta de ChatGPT | Decisión | Motivo | Cómo lo comprobamos |
+| --- | --- | --- | --- |
+| CL-14: fallo de guardado seguido de «Reintentar» | **Aceptado** | Es el caso de error que enseñamos en la defensa y debe quedar escrito: tras reintentar se guarda un solo registro. | Añadido a spec.md §6. Lo cubren los tests de RF-15 y RF-16 y la [captura 08](docs/capturas-app/08-error-guardado.png). |
+| CL-15: recargar justo después de pulsar «Sí, registrar sesión» | **Solo documentado** | Guardar en el móvil es casi instantáneo, así que no es un caso real en nuestro MVP. | Anotado como limitación en validacion.md §9. |
+| CL-16: la app abierta mientras pasa la medianoche | **Descartado** | Al volver a abrir o recargar la app ya se ve bien (CL-07), y es poco frecuente. | CL-07 sigue cubierto por su test. |
+| CL-17: cambiar a mano la fecha u hora del móvil | **Descartado** | La app usa la hora del móvil como referencia (RF-13); si la persona la cambia, es razonable que la siga. | — |
+| CL-18: solo uno de varios registros está dañado | **Aceptado como aclaración de CL-03** | Hay que dejar escrito que se conservan los registros válidos. El código ya lo hacía. | Test `RF-18: descarta los registros que no cumplen el formato`. |
+| CL-19: «Me duele» después de haber registrado otra sesión hoy | **Aceptado** | Parar por dolor no debe borrar lo que ya hizo ese día; es coherente con no castigar parar (S-2). | Añadido a spec.md §6 con un test e2e nuevo. |
+| CL-20: recorrido completo con Tab por las ventanas | **Descartado** | El `<dialog>` nativo ya retiene el foco, y los tests de CA-06.1 y CA-08.1 comprueban el foco al abrir y al cerrar. | Tests de CA-06.1 y CA-08.1. |
+| CL-21 a CL-25: dos pestañas, volver a la guía, Esc y reabrir, texto ampliado, varios «Reintentar» | **Descartados** | Son variaciones de casos que ya tenemos y no aportan al MVP. | — |
+| Contradicción CL-10 frente a RF-05 («paso actual») | **CL-10 reescrito** | RF-05 solo pide una lista de pasos, así que «no perder el paso actual» no se podía comprobar. | CL-10 en spec.md §6. |
+| Contradicción CL-13 frente a DEC-01 (escritorio) | **CL-13 eliminado** | El escritorio está fuera de alcance; se tacha en el spec para que se vea el cambio. | spec.md §6. |
+
+**Qué aprendimos.** Una segunda IA, sin el contexto de la primera, encontró incoherencias que ni el equipo ni Claude habían visto. Pero no todo lo que propuso era útil: de 12 casos nuevos aceptamos 2 y una aclaración. La decisión de qué entra en el MVP siguió siendo nuestra.
 
 ---
 
