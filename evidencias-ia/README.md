@@ -10,3 +10,10 @@ Archivos esperados:
 - `04-bug-doble-registro.png` — Caso 4: el test encuentra el doble registro de RF-16.
 
 > ⚠️ Antes de subir cada captura, comprobad que **no** aparecen nombres, apellidos, correos ni avatares en la interfaz de la herramienta. La entrega prohíbe datos personales (P-7).
+
+Añadidas en la entrega final:
+
+- `06-captura-figma-referencia.png`: Caso 6, captura de `06_Prototype` usada como referencia (el conector de Figma estaba limitado).
+- `06-propuesta-a-elegida.png`: Caso 6, la dirección visual A elegida por el equipo.
+- `06-fallo-insignias-tarjeta.png`: Caso 6, fallo de estilo detectado por el equipo.
+- `07-captura-revela-regresion.png`: Caso 7, captura automática que destapó una regresión que los tests no veían.

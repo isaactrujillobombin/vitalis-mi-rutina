@@ -2,8 +2,27 @@
 
 App **móvil** que ayuda a personas de 65 a 85 años a mantener fuerza y autonomía con una sesión guiada de «Levantarse de la silla» (8 repeticiones + 30 s de descanso), con salida segura si duele y aviso a la familia.
 
-> Proyecto interdisciplinar Monlau · 2.º DAM / 2.º DAW · Curso 2026-2027
-> Equipo **NexoTeam**: Isaac, Iker, Enzo · Tema del reto: la soledad de las personas mayores
+> **Grupo: 2DAM-G0X** · Proyecto interdisciplinar Monlau · 2.º DAM / 2.º DAW · Curso 2026-2027
+> Equipo NexoTeam (G0X-01, G0X-02, G0X-03) · Tema del reto: la soledad de las personas mayores
+
+## Propósito y usuarios
+
+Personas de **65 a 85 años** que viven solas o pasan mucho tiempo en casa, con **miedo a caerse y poca experiencia digital**. Vitalis les da una rutina diaria muy corta y segura para mantener la fuerza de las piernas, y una forma sencilla de **contar a su familia** que la han hecho: un pequeño motivo diario de contacto, que es la conexión con el tema de la soledad.
+
+## Funcionalidades
+
+| Funcionalidad | Requisitos |
+| --- | --- |
+| Inicio con saludo según la hora y estado del día (*Pendiente* / *Hecha hoy · Registrada a las HH:MM*) | RF-01, RF-13 |
+| Ejercicio guiado: preparación de seguridad antes de los 6 pasos, aviso de salud siempre visible | RF-04, RF-05, RNF-10 |
+| Confirmar y registrar la sesión (solo se guarda al confirmar; cancelar o Esc no guarda nada) | RF-06 a RF-08, RF-16 |
+| «Me duele», siempre a la vista: pausa la sesión sin registrarla | RF-09 a RF-11 |
+| Avisar a la familia con la hoja de compartir del móvil (alternativa WhatsApp + copiar) | RF-12 |
+| «Hoy tengo dolor o no puedo»: mensaje que valida descansar, sin registrar nada | RF-14 |
+| Error de guardado con «Reintentar» y datos dañados que no bloquean la app | RF-15, RF-18 |
+| Mi Plato y Reto en Familia visibles como «Próximamente» (sin funcionalidad) | RF-19 |
+
+Capturas de todas las pantallas en [docs/capturas-app/](docs/capturas-app/).
 
 ## Alcance
 
@@ -28,19 +47,21 @@ Prototipo de Figma: [Vitalis — NexoTeam (Pantallas)](https://www.figma.com/des
 
 ## Estado
 
-**Prototipo recorrible** (T-01 y T-01c hechas). El flujo móvil completo funciona de punta a punta:
+**MVP funcional** para la entrega final. El flujo móvil completo funciona de punta a punta:
 
 Inicio → Ejercicio (preparación + pasos) → «Terminar ejercicio» → confirmar → **Sesión registrada**
 y la salida segura: «Me duele» → «Pausar sesión» → **Sesión pausada** (sin registro).
 
-**Comprobado automáticamente:** 51 tests unitarios y de componentes + 28 pruebas e2e en dos perfiles de móvil (Chromium/Android y WebKit/iPhone), con auditoría axe sin violaciones *serious* ni *critical*.
+**Comprobado automáticamente:** 57 tests unitarios y de componentes + 28 pruebas e2e en dos perfiles de móvil (Chromium/Android y WebKit/iPhone), con auditoría axe sin violaciones *serious* ni *critical*. **Lighthouse móvil: Rendimiento 100 · Accesibilidad 100 · Buenas prácticas 100** ([informe](docs/lighthouse/inicio-movil.report.html)). Detalle en [validacion.md](validacion.md).
 
 ### Limitaciones conocidas
 
 - Los **tokens de color** salen de las capturas de Figma, no de las variables del archivo: el conector de Figma agotó el límite del plan Starter (tarea T-02b). El contraste sí está verificado con `npm run check:contrast`.
 - **No hay servicios simulados ni servidor:** todo es local con `localStorage`. No hay nada que arrancar aparte de la app.
 - **DEC-01 (solo móvil) está pendiente de confirmar** por el resto del equipo (tarea T-00b).
-- Falta el **test con personas de 65+ años** (T-20) y el informe de **Lighthouse** (T-22).
+- Falta el **test con personas de 65+ años** (T-20).
+- **Servicios simulados:** ninguno. «Avisar a la familia» usa la hoja de compartir real del sistema; no se ha podido probar de forma automática (ver [validacion.md](validacion.md) §9).
+- Dos tests e2e son **inestables en WebKit** por tiempos del propio test; están declarados en validacion.md y no se han desactivado.
 
 ## Puesta en marcha
 
@@ -57,7 +78,7 @@ npm run dev          # servidor local en http://localhost:5173
 npm run check        # todo: lint + tipos + contraste + unitarios + e2e
 npm run lint         # ESLint + jsx-a11y
 npm run typecheck    # tsc --noEmit
-npm run test         # Vitest + Testing Library (51 tests)
+npm run test         # Vitest + Testing Library (57 tests)
 npm run test:e2e     # Playwright + axe (28 tests × 2 perfiles de móvil)
 npm run check:contrast  # contraste de los tokens de color (WCAG AA)
 npm run build        # build de producción

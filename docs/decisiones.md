@@ -1,6 +1,6 @@
 # decisiones.md · Vitalis — Decisiones posteriores al SDD inicial
 
-> Equipo NexoTeam · Isaac, Iker, Enzo
+> Equipo NexoTeam · G0X-01, G0X-02, G0X-03
 > Aquí se anotan las decisiones tomadas después de la primera versión de los documentos SDD (15/10/2026), para no perder el motivo ni la fecha. Cada decisión indica qué documentos quedan pendientes de actualizar.
 
 ---
@@ -10,8 +10,8 @@
 | Apartado | Detalle |
 | --- | --- |
 | **Fecha** | 16/10/2026 |
-| **Propuesta por** | Isaac |
-| **Estado** | Propuesta aplicada al repositorio · **pendiente de confirmación de Iker y Enzo** (M-2) |
+| **Propuesta por** | G0X-01 |
+| **Estado** | Propuesta aplicada al repositorio · **pendiente de confirmación de G0X-02 y G0X-03** (M-2) |
 
 **Decisión.** El MVP se construye y se prueba **únicamente en ancho móvil**, con 390 × 844 px como tamaño de referencia. Las pantallas `*/Desktop` del Figma pasan a ser referencia visual y no se implementan.
 
@@ -41,3 +41,45 @@
 - [ ] Figma — anotar en `07_ReadyForDev` que el flujo Desktop no se implementa.
 
 > Hasta que esos documentos se actualicen, **esta página manda sobre ellos** en todo lo relativo a la plataforma.
+
+---
+
+## DEC-02 · Rediseño visual de estilo iOS sobre los tokens de Figma
+
+| Apartado | Detalle |
+| --- | --- |
+| **Fecha** | 18-19/10/2026 |
+| **Tarea** | T-03 (componentes `Button`, `Badge` y `Card`) |
+| **Estado** | Aplicada en la rama `T-03-componentes-figma` · **pendiente de revisión del equipo** (C-4) |
+
+**Decisión.** Se rehace el aspecto de la app a partir de la captura de `06_Prototype` (paleta azul marino + acento naranja) con un acabado de estilo iOS: fondo gris agrupado, tarjetas sin borde con sombra suave, listas con separadores finos, barra inferior translúcida y títulos grandes.
+
+**Cambios visibles (ningún texto de spec.md ni de Figma cambia):**
+
+| Elemento | Antes | Ahora |
+| --- | --- | --- |
+| Iconos | Emojis (se ven distintos en cada móvil) | Iconos de trazo en SVG propios (`Icon.tsx`), sin librerías ni CDN (P-3, C-7) |
+| Logo | Letra «V» | Logo del equipo redibujado en SVG (`Logo.tsx`) y `favicon.svg` |
+| Tarjeta de Inicio | Solo texto | Ilustración decorativa animada (sentada ↔ de pie, 8 s por ciclo). Se para con «Reducir movimiento» (A-8) |
+| «Me duele» / «Terminar ejercicio» | Apilados | Lado a lado en una barra fija siempre visible (S-1, CA-05.3) |
+| Botones | 48 px | 56-60 px de alto |
+
+**Motivo.** La primera versión se veía pobre frente al Figma. Los cambios mantienen todas las reglas de accesibilidad: el contraste se vuelve a verificar (18 pares) y Lighthouse da 100 en Accesibilidad.
+
+**Pendiente.** La ilustración y la animación **no están en spec.md ni en Figma**: el equipo debe aceptarlas o pedir que se quiten. Los colores siguen sacados de capturas (T-02b).
+
+---
+
+## DEC-03 · Solo códigos de grupo en el repositorio
+
+| Apartado | Detalle |
+| --- | --- |
+| **Fecha** | 19/10/2026 |
+| **Motivo** | El enunciado de la entrega final prohíbe nombres, apellidos, correos o fotografías del alumnado en archivos, repositorio y diapositivas. |
+
+**Decisión.** Los nombres del equipo se sustituyen por los códigos **G0X-01, G0X-02 y G0X-03** en todos los documentos. «2DAM-G0X» es provisional: hay que poner el identificador real del grupo y los números de lista.
+
+**Pendiente (lo tiene que hacer el equipo):**
+
+- El repositorio actual tiene un nombre personal en la URL y los nombres siguen en el **historial de commits** antiguos. Hay que usar el repositorio que indique el profesorado (con el identificador del grupo) y subir allí un historial limpio.
+- Revisar el Figma: su nombre y sus páginas también llevan nombres del equipo.

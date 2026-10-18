@@ -1,6 +1,6 @@
 # uso-ia.md · Registro del uso de IA en la fase SDD
 
-> Equipo NexoTeam · Isaac, Iker, Enzo
+> Equipo NexoTeam · G0X-01, G0X-02, G0X-03
 > Capturas en [evidencias-ia/](evidencias-ia/)
 
 > **Nota para el equipo (borrar antes de entregar):** los campos marcados con **[EQUIPO]** solo los podéis rellenar vosotros, porque recogen **vuestra** revisión y vuestras decisiones. Lo que puntúa es esa revisión crítica, no las propuestas de la IA. Los datos de herramienta, modo y prompts de los casos 1 y 2 son reales y salen de la sesión con Claude.
@@ -34,17 +34,17 @@
 
 - Con solo las capturas, la IA afirmó que el MVP no tocaba la soledad. Al leer después los datos del Figma descubrió que **SesiónRegistrada ya tiene un botón «Avisar a la familia»**. Su primera conclusión era incompleta porque partía de imágenes ilegibles.
 - Los primeros requisitos se basaban en capturas y la propia IA avisó de que eran aproximados. Tras leer el Figma cambiaron los textos de los botones (por ejemplo, «Estoy lista, empezar» y «Sí, registrar sesión»).
-- Escribió «Isaak» siguiendo el Figma, cuando la ideación pone «Isaac».
+- Copió del Figma un nombre del equipo mal escrito, distinto del de la ideación.
 - El conector de Figma del plan Starter llegó a su límite de llamadas y no pudo leer todas las páginas con capturas.
 
 **Revisión humana [EQUIPO]**
 
 | Propuesta de la IA | Decisión | Motivo | Cómo lo comprobamos |
 | --- | --- | --- | --- |
-| Reparto de archivos (Iker → spec, Isaac → plan y AGENTS, Enzo → constitution y tasks) | [aceptado / modificado / descartado] | | |
+| Reparto de archivos (G0X-02 → spec, G0X-01 → plan y AGENTS, G0X-03 → constitution y tasks) | [aceptado / modificado / descartado] | | |
 | Usar «Avisar a la familia» como conexión con la soledad | | | |
 | Dejar fuera el stack completo de la ideación | | | |
-| Corregir «Isaak» → «Isaac» en el Figma | | | |
+| Corregir la grafía de un nombre del equipo en el Figma | | | |
 
 **Evidencia:** [evidencias-ia/01-lectura-figma.png](evidencias-ia/01-lectura-figma.png) — la IA lee el Figma con el conector y corrige lo que había dicho a partir de las capturas.
 
@@ -82,7 +82,7 @@ Sugerencias para revisar el borrador: comprobad cada RF contra las pantallas de 
 
 ## Caso 3 · [EQUIPO] Revisión de casos límite o desglose de tareas
 
-> Lo hace Iker o Enzo con **ChatGPT**. Pegad este prompt y, debajo, la sección 6 (Casos límite) y la sección 4 (Requisitos funcionales) de spec.md. Haced captura de la respuesta y rellenad la tabla.
+> Lo hace G0X-02 o G0X-03 con **ChatGPT**. Pegad este prompt y, debajo, la sección 6 (Casos límite) y la sección 4 (Requisitos funcionales) de spec.md. Haced captura de la respuesta y rellenad la tabla.
 >
 > *Prompt:* «Eres revisor de requisitos de una app para personas de 65 a 85 años con miedo a caerse. Te paso los requisitos y los casos límite de nuestro MVP. Dime qué casos límite importantes faltan y cuáles de los que tenemos son ambiguos o no se pueden comprobar. No propongas funcionalidades nuevas fuera del alcance.»
 
@@ -110,7 +110,7 @@ Sugerencias para revisar el borrador: comprobad cada RF contra las pantallas de 
 **Qué hizo la IA**
 
 - Creó el repositorio privado `vitalis-mi-rutina` y el primer commit con los documentos SDD.
-- **No cambió el alcance por su cuenta en silencio:** creó `decisiones.md` con DEC-01, marcó en spec.md los requisitos afectados (RF-02, RF-03, CA-05.2, RF-10) en vez de borrarlos, y dejó la decisión como «pendiente de confirmar por Iker y Enzo» (regla M-2 y H-5).
+- **No cambió el alcance por su cuenta en silencio:** creó `decisiones.md` con DEC-01, marcó en spec.md los requisitos afectados (RF-02, RF-03, CA-05.2, RF-10) en vez de borrarlos, y dejó la decisión como «pendiente de confirmar por G0X-02 y G0X-03» (regla M-2 y H-5).
 - Añadió M-4 a la constitución, CL-13 (qué pasa si se abre en un navegador ancho) y la tarea T-00b para cerrar la decisión.
 
 **Revisión humana [EQUIPO]**
@@ -156,6 +156,82 @@ Es exactamente el caso límite CL-01 que el equipo había anotado en la fase SDD
 | Que el test de privacidad falle si aparece cualquier petición externa (RNF-08) | | | |
 | Verificar el contraste con un script propio en vez de a mano | | | |
 | Dejar fuera de la validación automática RF-12 (Web Share) y declararlo en validacion.md | | | |
+
+---
+
+## Caso 6 · Rediseño visual con un agente: propuestas, elección y correcciones
+
+| Apartado | Detalle |
+| --- | --- |
+| **Tarea y objetivo** | T-03: componentes `Button`, `Badge` y `Card`. La primera versión «se veía pobre» frente al Figma; se pide acercarla al diseño y mejorarla. |
+| **Herramienta o agente** | Claude Code (extensión de VS Code). Modelo visible: `claude-opus-5-5`. |
+| **Modo de trabajo** | Agente con herramientas: lee el código, edita, ejecuta `npm run check` y hace capturas con Playwright para comprobar el resultado. |
+| **Contexto facilitado** | El repositorio con los documentos SDD, una captura de la página `06_Prototype` del Figma ([06-captura-figma-referencia.png](evidencias-ia/06-captura-figma-referencia.png)) y capturas de la app con los fallos señalados. |
+| **Prompts relevantes (textuales)** | «mejoralo muchisimo visualmetne esta fatal y que sea parecido al figma» · «saca tus mejores diseñoss y inventa como podriamos mejorarlo» · «este pero mas refinado estilo apple» · «la animacion esta fatal arregla el espacing» |
+
+**Resultado.**
+
+1. La IA **no empezó a cambiar código directamente**: AGENTS.md exige una tarea T-xx, así que preguntó en cuál encajaba (se eligió T-03) y creó la rama `T-03-componentes-figma`.
+2. El conector de Figma **volvió a agotar el límite del plan Starter**; se trabajó con una captura.
+3. Propuso **tres direcciones visuales** en un lienzo de diseño (A · Azul confianza, B · Luz de mañana, C · Bloques grandes). Se eligió la A ([06-propuesta-a-elegida.png](evidencias-ia/06-propuesta-a-elegida.png)) y se aplicó con acabado de estilo iOS (DEC-02).
+4. Nuevo componente `Card`, iconos SVG propios en lugar de emojis, logo en SVG, ilustración animada que respeta «Reducir movimiento» y 3 pares nuevos en el verificador de contraste.
+
+**Errores de la IA que detectó la revisión humana o las pruebas.**
+
+| Error | Cómo se detectó | Corrección |
+| --- | --- | --- |
+| Las insignias de la tarjeta azul salían blancas: una regla CSS nueva pisaba a la de la tarjeta | Captura del equipo ([06-fallo-insignias-tarjeta.png](evidencias-ia/06-fallo-insignias-tarjeta.png)) | Regla específica para insignias dentro de la tarjeta azul |
+| La primera animación «estiraba» la figura y quedaba mal | Revisión del equipo («la animacion esta fatal») | Ilustración nueva con dos posturas que se funden |
+| «No me sale nada»: la app en blanco | La IA abrió la página con Playwright y leyó el error de consola: caché de Vite desfasada tras un `git stash` suyo | Reinicio del servidor de desarrollo; el código estaba bien |
+| `Button` ignoraba el `className` recibido | La propia IA al revisar su cambio | Unir clases en lugar de sobrescribirlas |
+
+**Lo que la IA rechazó y por qué.**
+
+- **Backend y cuentas** («que sea un app funcional no solo front end»): lo prohíben P-2, P-3 y RNF-08. Explicó que la app ya funciona sin servidor y propuso alternativas dentro del spec.
+- **Contador o temporizador**: excluidos en spec.md §3.2.
+- **Una foto de una persona real como «logo»**: no la incorporó (datos personales, P-1 y límite 9 de AGENTS.md), y la borró de la carpeta temporal cuando se le pidió.
+
+**Revisión humana [EQUIPO]**
+
+| Propuesta de la IA | Decisión | Motivo | Cómo lo comprobamos |
+| --- | --- | --- | --- |
+| Dirección A con estilo iOS | | | |
+| Ilustración animada en la tarjeta de Inicio (no está en spec ni en Figma) | | | |
+| Botones lado a lado en Ejercicio («Terminar» y «Me duele») | | | |
+| Logo redibujado en SVG en lugar de usar el PNG | | | |
+
+---
+
+## Caso 7 · Validación para la entrega final: capturas, Lighthouse y protección de datos
+
+| Apartado | Detalle |
+| --- | --- |
+| **Tarea y objetivo** | Comparar el repositorio con el enunciado de la entrega final y cerrar lo que la IA puede hacer sola. |
+| **Herramienta o agente** | Claude Code (extensión de VS Code). Modelo visible: `claude-opus-5-5`. |
+| **Modo de trabajo** | Agente con herramientas, en la rama `entrega-final-documentacion`. |
+| **Contexto facilitado** | El PDF del enunciado de la entrega final y el repositorio. |
+| **Prompts relevantes (textuales)** | «me preocupa la funcionalidad que falta segun este docs» · y, pegando su propia lista, «haz esto» |
+
+**Resultado.**
+
+- **Auditoría contra el enunciado.** La funcionalidad del MVP estaba completa; lo que faltaba era documentación y entrega. Encontró un problema grave: **los nombres del alumnado** (uno con apellidos) aparecían en 8 documentos y en la URL del repositorio, cuando el enunciado lo prohíbe.
+- **Datos personales.** Sustituyó los nombres por códigos G0X-NN (DEC-03). Avisó de que el **historial de git** los conserva y de que eso lo tiene que resolver el equipo.
+- **Capturas de evidencia.** Un script de Playwright genera 9 capturas a 390 × 844 de la app real: flujo principal, ruta de dolor, caso de error simulando que `localStorage` falla, y «Hoy no puedo» ([docs/capturas-app/](docs/capturas-app/)).
+- **Las capturas destaparon una regresión** que los 113 tests no detectaban: las insignias de Ejercicio se habían quedado sin fondo tras la corrección del Caso 6 ([07-captura-revela-regresion.png](evidencias-ia/07-captura-revela-regresion.png)). Se corrigió y se repitieron las capturas.
+- **Lighthouse** (móvil, build de producción): Rendimiento 100 · Accesibilidad 100 · Buenas prácticas 100. Cierra RNF-09.
+
+**Qué aprendimos**
+
+- Los tests comprueban comportamiento y accesibilidad, pero **no si algo se ve bien**: una captura revisada por una persona encontró lo que los tests no veían.
+- La IA no marcó como hechas las tareas que nadie había revisado. Las dejó como «funciona, falta revisión del equipo» en tasks.md.
+
+**Revisión humana [EQUIPO]**
+
+| Propuesta de la IA | Decisión | Motivo | Cómo lo comprobamos |
+| --- | --- | --- | --- |
+| Códigos G0X-01/02/03 en lugar de nombres | | | |
+| Estado de las tareas en tasks.md sin marcarlas como hechas | | | |
+| Declarar los dos tests e2e inestables en lugar de desactivarlos | | | |
 
 ---
 

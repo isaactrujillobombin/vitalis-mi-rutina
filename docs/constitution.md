@@ -1,6 +1,6 @@
 # constitution.md · Vitalis — Principios del proyecto
 
-> Equipo NexoTeam · Isaac, Iker, Enzo
+> Equipo NexoTeam · G0X-01, G0X-02, G0X-03
 > Estas reglas **no se negocian durante el desarrollo**. Si una tarea, una propuesta de la IA o una decisión técnica entra en conflicto con ellas, gana la constitución. Para cambiarlas hace falta el acuerdo de los tres integrantes, una nota en el historial de cambios del final y la actualización de los documentos afectados.
 
 Orden de prioridad ante un conflicto: **1. Seguridad de la usuaria → 2. Accesibilidad → 3. Privacidad → 4. Alcance del MVP → 5. Calidad del código.**
@@ -92,5 +92,5 @@ La IA es una herramienta del equipo, no un integrante. **Quien acepta una propue
 
 | Fecha | Cambio | Acordado por |
 | --- | --- | --- |
-| 15/10/2026 | Primera versión para la entrega SDD. | Pendiente de aprobación de Isaac, Iker y Enzo |
-| 16/10/2026 | Se añade M-4: el alcance del MVP se reduce a app móvil (DEC-01 en `decisiones.md`). | Propuesto por Isaac · pendiente de confirmar Iker y Enzo |
+| 15/10/2026 | Primera versión para la entrega SDD. | Pendiente de aprobación de G0X-01, G0X-02 y G0X-03 |
+| 16/10/2026 | Se añade M-4: el alcance del MVP se reduce a app móvil (DEC-01 en `decisiones.md`). | Propuesto por G0X-01 · pendiente de confirmar G0X-02 y G0X-03 |

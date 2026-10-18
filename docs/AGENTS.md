@@ -1,6 +1,6 @@
 # AGENTS.md · Instrucciones para asistentes de IA
 
-> Proyecto **Vitalis — Mi Rutina** · Equipo NexoTeam (Isaac, Iker, Enzo) · Monlau 2026-2027
+> Proyecto **Vitalis — Mi Rutina** · Equipo NexoTeam (G0X-01, G0X-02, G0X-03) · Monlau 2026-2027
 > Este archivo lo lee cualquier asistente de IA (Claude, Copilot, Cursor, etc.) **antes** de proponer o modificar nada en este repositorio.
 
 ## 1. Contexto en 30 segundos
@@ -70,13 +70,13 @@ Después de cada cambio, ejecuta las comprobaciones y muestra el resultado. Si a
 | Lint | `npm run lint` (ESLint + jsx-a11y) | **Confirmado** · 0 avisos |
 | Tipos | `npm run typecheck` (`tsc --noEmit`) | **Confirmado** |
 | Formato | `npm run format` · `npm run format:check` | **Confirmado** |
-| Contraste de los tokens | `npm run check:contrast` | **Confirmado** · 15 pares, todos ≥ mínimo |
-| Tests unitarios y de componentes | `npm run test` (Vitest) | **Confirmado** · 51 tests |
+| Contraste de los tokens | `npm run check:contrast` | **Confirmado** · 18 pares, todos ≥ mínimo |
+| Tests unitarios y de componentes | `npm run test` (Vitest) | **Confirmado** · 57 tests |
 | Tests e2e + accesibilidad | `npm run test:e2e` (Playwright + axe) | **Confirmado** · 28 × 2 perfiles |
 | Build | `npm run build` (incluye `typecheck`) | **Confirmado** |
 | Servidor local | `npm run dev` (en http://localhost:5173) | **Confirmado** |
 | **Todo de una vez** | `npm run check` | **Confirmado** |
-| Lighthouse | Pendiente de definir (manual o `@lhci/cli`) | Pendiente de decidir en T-22 |
+| Lighthouse | `npx lighthouse@12.2.1` sobre `npm run build` + `vite preview` (ver validacion.md) | **Confirmado** · 100 / 100 / 100 en móvil |
 
 > `npm run check` encadena lint → tipos → contraste → unitarios → e2e. Es lo que hay que ver en verde antes de abrir un *pull request* (C-3).
 

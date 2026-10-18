@@ -1,7 +1,7 @@
 # validacion.md · Vitalis — Mi Rutina
 
 > Qué se ha comprobado del MVP, cómo, con qué resultado y dónde está la evidencia.
-> Fecha de la validación: **16/10/2026** · Commit validado: el de esta misma entrega.
+> Fecha de la validación: **19/10/2026** (actualizada para la entrega final) · Commit validado: el de esta misma entrega.
 > Documentos de referencia: [docs/spec.md](docs/spec.md) · [docs/constitution.md](docs/constitution.md) · [docs/tasks.md](docs/tasks.md)
 
 ## 0. Cómo reproducir todo esto
@@ -20,14 +20,24 @@ npm run check                            # lint + tipos + contraste + unitarios 
 | --- | --- | --- |
 | Lint y accesibilidad al escribir | ESLint 9 + jsx-a11y | **0 avisos** |
 | Tipos | TypeScript 5.9 `strict` | **0 errores** |
-| Contraste de los tokens | `scripts/check-contrast.mjs` | **15/15 pares** cumplen |
-| Unitarios y de componentes | Vitest + Testing Library | **51/51 pasan** |
+| Contraste de los tokens | `scripts/check-contrast.mjs` | **18/18 pares** cumplen |
+| Unitarios y de componentes | Vitest + Testing Library | **57/57 pasan** |
 | End-to-end | Playwright · perfil Android (Chromium) | **28/28 pasan** |
-| End-to-end | Playwright · perfil iPhone (WebKit) | **28/28 pasan** |
+| End-to-end | Playwright · perfil iPhone (WebKit) | **28/28 pasan** en la última ejecución completa · 2 tests inestables (ver §9) |
 | Accesibilidad automática | @axe-core/playwright, 6 pantallas | **0 violaciones** *serious* / *critical* |
 | Build de producción | Vite 7 | **correcto** |
+| Rendimiento y accesibilidad | Lighthouse 12.2.1 · móvil, build de producción | **Rendimiento 100 · Accesibilidad 100 · Buenas prácticas 100** · [informe](docs/lighthouse/inicio-movil.report.html) |
 
-**Total: 107 comprobaciones automáticas en verde** (51 unitarias + 28 × 2 perfiles de e2e).
+**Total: 113 comprobaciones automáticas** (57 unitarias + 28 × 2 perfiles de e2e), más el informe de Lighthouse.
+
+**Capturas de evidencia** (390 × 844, generadas con Playwright sobre la app real) en [docs/capturas-app/](docs/capturas-app/):
+
+| Situación | Captura |
+| --- | --- |
+| Flujo principal: Inicio pendiente → Ejercicio → Confirmar → Registrada → Inicio «Hecha hoy» | [01](docs/capturas-app/01-inicio-pendiente.png) · [02](docs/capturas-app/02-ejercicio.png) · [03](docs/capturas-app/03-confirmar-registro.png) · [04](docs/capturas-app/04-sesion-registrada.png) · [05](docs/capturas-app/05-inicio-hecha-hoy.png) |
+| Ruta de dolor: «Me duele» → Sesión pausada | [06](docs/capturas-app/06-me-duele.png) · [07](docs/capturas-app/07-sesion-pausada.png) |
+| **Caso de error** (RF-15): el almacenamiento falla al guardar y aparece «Reintentar» | [08](docs/capturas-app/08-error-guardado.png) |
+| «Hoy tengo dolor o no puedo» (RF-14) | [09](docs/capturas-app/09-hoy-no-puedo.png) |
 
 ---
 
@@ -152,7 +162,8 @@ Esta sección es tan importante como las anteriores. Nada de lo de aquí debe da
 | **Pasos del ejercicio (D-10, S-6)** | Los ha redactado el equipo; **no los ha validado un fisioterapeuta ni una guía oficial**. Es un riesgo físico, no de software. | Validación con fuente fiable antes del piloto. Bloquea T-20. |
 | **Lector de pantalla** | axe detecta fallos de marcado, pero no si la experiencia con VoiceOver o TalkBack se entiende. | Recorrido manual con lector, apuntado en T-18. |
 | **Zoom al 200 % y escala de grises** | Comprobaciones manuales que aún no se han hecho. | Lista firmada en el PR de T-18. |
-| **Lighthouse (RNF-09)** | Pendiente: Accesibilidad ≥ 95 y Rendimiento ≥ 85 sin medir. | T-22, antes de la entrega final. |
+| **Tests e2e inestables en WebKit** | `RNF-05: el flujo completo se hace solo con teclado` y `RNF-01 (A-1): todos los botones del flujo miden 48 px o más` fallan de forma intermitente en el perfil iPhone (son problemas de tiempos del test, no de la app: también fallaban antes del rediseño). No se han desactivado (regla 8 de AGENTS.md). | Esperar a que la navegación termine antes de tabular y de medir. |
+| **Lighthouse solo en Inicio** | Se ha medido la pantalla de Inicio con el build de producción. El resto de pantallas no se pueden abrir directamente (RF-17 redirige a Inicio). | Medición manual recorriendo el flujo con DevTools. |
 | **Tokens de color contra Figma** | Los hex salen de las capturas, no de las variables del archivo: el conector de Figma agotó el límite de llamadas del plan Starter. **El contraste sí está verificado**, pero el parecido con el diseño no. | T-02b. |
 | **DEC-01 (solo móvil)** | Decisión aplicada al código pero **pendiente de que la confirmen los otros dos integrantes** y de comentarla con el docente. | T-00b. |
 | **Navegadores reales** | Probado en los motores Chromium y WebKit que trae Playwright, no en móviles físicos. | Durante T-20. |
@@ -182,6 +193,6 @@ Esta sección es tan importante como las anteriores. Nada de lo de aquí debe da
 | RF-18 | ✅ automático | 3 unitarios + e2e |
 | RF-19 | ✅ automático | `HomePage.test.tsx` (comprueba que no hay cifras) |
 | RNF-01 a RNF-08 | ✅ automático | ver §7 y §8 |
-| RNF-09 | ❌ **sin validar** | Lighthouse pendiente (T-22) |
+| RNF-09 | ✅ automático | Lighthouse móvil: Rendimiento 100, Accesibilidad 100 · [informe](docs/lighthouse/inicio-movil.report.html) |
 | RNF-10, RNF-11 | ✅ / ⚠️ | el aviso sí; la revisión de lenguaje la hacen dos personas (T-05) |
 | RNF-12 | ✅ parcial | axe sí; lector de pantalla no |

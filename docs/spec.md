@@ -12,9 +12,9 @@
 
 | Integrante | Rol principal en el SDD | Rol principal en el desarrollo |
 | --- | --- | --- |
-| Isaac Trujillo Bombín | plan.md, AGENTS.md | Datos, registro de sesiones, integración y despliegue |
-| Iker Mayor Oñate | spec.md | Componentes de interfaz, Inicio, ruta de dolor y pausa |
-| Enzo Ruiz Loze | constitution.md, tasks.md | Preparación, Ejercicio, pruebas e2e y privacidad |
+| G0X-01 | plan.md, AGENTS.md | Datos, registro de sesiones, integración y despliegue |
+| G0X-02 | spec.md | Componentes de interfaz, Inicio, ruta de dolor y pausa |
+| G0X-03 | constitution.md, tasks.md | Preparación, Ejercicio, pruebas e2e y privacidad |
 
 **Prototipo de Figma:** [Vitalis — NexoTeam (Pantallas)](https://www.figma.com/design/qs3XbPY89nY10Wf2JxxdI0/Vitalis-%E2%80%94-NexoTeam--Pantallas-)
 Páginas de referencia: `00_Cover · 01_Brief · 02_UserFlow · 03_Wireframes`, `04_UI · 05_Components · 06_Prototype` y `07_ReadyForDev`.
@@ -247,15 +247,15 @@ Donde la interfaz muestre «Mi Plato» o «Familia» (tarjetas de Inicio y naveg
 | --- | --- | --- | --- |
 | D-01 | ~~Plataforma del MVP~~ **Resuelta (15/10/2026):** web adaptable (React + Vite) en lugar de React Native, porque cubre los dos diseños de Figma con un solo código y el piloto se comparte con un enlace (plan.md §2). **Actualizada (16/10/2026, DEC-01):** sigue siendo web con React + Vite, pero **solo con el diseño móvil**. | Todo el equipo | Antes de empezar T-01 |
 | D-02 | ~~Mi Plato~~ **Resuelta (15/10/2026):** fuera del MVP, como primera mejora futura; el Figma solo prototipa Mi Rutina. | Todo el equipo | — |
-| D-03 | **Persona:** la ideación usa a «Rosa, 78 años» y el Figma a «Carmen». Unificar en todos los documentos y pantallas. | Iker | Antes de entregar |
-| D-04 | **Datos de demostración · decidido (15/10/2026):** «Próximamente» sin cifras (RF-19). Pendiente: actualizar las tarjetas de Inicio en Figma. | Iker | Fase de desarrollo |
-| D-05 | **«Hoy tengo dolor o no puedo»:** el Figma no define a qué pantalla lleva. El spec propone un mensaje en Inicio (RF-14). Confirmar o diseñar la pantalla. | Iker | Fase de desarrollo |
+| D-03 | **Persona:** la ideación usa a «Rosa, 78 años» y el Figma a «Carmen». Unificar en todos los documentos y pantallas. | G0X-02 | Antes de entregar |
+| D-04 | **Datos de demostración · decidido (15/10/2026):** «Próximamente» sin cifras (RF-19). Pendiente: actualizar las tarjetas de Inicio en Figma. | G0X-02 | Fase de desarrollo |
+| D-05 | **«Hoy tengo dolor o no puedo»:** el Figma no define a qué pantalla lleva. El spec propone un mensaje en Inicio (RF-14). Confirmar o diseñar la pantalla. | G0X-02 | Fase de desarrollo |
 | D-06 | **Nombre en el saludo:** el Figma muestra «Buenos días, Carmen», pero sin cuentas no hay nombre. ¿Saludo sin nombre o un campo opcional guardado en el dispositivo? | Todo el equipo | Fase de desarrollo |
-| D-07 | **Contador de repeticiones / temporizador de 30 s:** ¿ayudan a la usuaria o la presionan? Decidir tras el test de usabilidad. | Enzo | Tras T-20 |
-| D-08 | **Pendientes del Figma:** test con una persona que no haya construido el diseño, revisión en Present, retorno de Hover de Button/Primary, acceso del docente al archivo y recurso Community. | Iker | Antes de entregar |
-| D-09 | **Grafía del equipo:** el Figma escribe «Isaak» y la ideación «Isaac». Corregir en Figma: el nombre correcto es Isaac. | Iker | Antes de entregar |
-| D-10 | **Texto de los pasos del ejercicio:** validar con una fuente fiable (fisioterapeuta o guía oficial de ejercicio para mayores) antes del piloto. | Enzo | Antes de T-20 |
-| D-11 | **DEC-01 (solo móvil):** pendiente de que Iker y Enzo lo confirmen y de actualizar plan.md y tasks.md. | Todo el equipo | Antes de empezar T-02 |
+| D-07 | **Contador de repeticiones / temporizador de 30 s:** ¿ayudan a la usuaria o la presionan? Decidir tras el test de usabilidad. | G0X-03 | Tras T-20 |
+| D-08 | **Pendientes del Figma:** test con una persona que no haya construido el diseño, revisión en Present, retorno de Hover de Button/Primary, acceso del docente al archivo y recurso Community. | G0X-02 | Antes de entregar |
+| D-09 | **Grafía de un nombre del equipo en Figma:** estaba mal escrito. Resuelto en la entrega final: los documentos usan solo códigos G0X-NN (protección de datos del enunciado). | G0X-02 | ✔ Resuelta |
+| D-10 | **Texto de los pasos del ejercicio:** validar con una fuente fiable (fisioterapeuta o guía oficial de ejercicio para mayores) antes del piloto. | G0X-03 | Antes de T-20 |
+| D-11 | **DEC-01 (solo móvil):** pendiente de que G0X-02 y G0X-03 lo confirmen y de actualizar plan.md y tasks.md. | Todo el equipo | Antes de empezar T-02 |
 
 ---
 
