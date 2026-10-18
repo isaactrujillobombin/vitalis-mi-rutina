@@ -10,9 +10,10 @@ interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 /** A-1 y RNF-01: el tamaño mínimo de 48 px lo garantiza la clase .btn en app.css. */
-export function Button({ variant = 'primary', block = true, children, ...rest }: Props) {
+export function Button({ variant = 'primary', block = true, className, children, ...rest }: Props) {
   const classes = ['btn', `btn--${variant}`];
   if (block) classes.push('btn--block');
+  if (className !== undefined) classes.push(className);
   return (
     <button type="button" className={classes.join(' ')} {...rest}>
       {children}

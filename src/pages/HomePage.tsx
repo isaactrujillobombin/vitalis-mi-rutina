@@ -1,6 +1,9 @@
+import { Card } from '../components/Card';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Badge } from '../components/Badge';
+import { Icon } from '../components/Icon';
+import { SitToStandIllustration } from '../components/SitToStandIllustration';
 import { Button } from '../components/Button';
 import { sitToStand, ui } from '../content/exercises';
 import { useTodayStatus } from '../features/session/useTodayStatus';
@@ -23,11 +26,18 @@ export function HomePage() {
     <>
       <h1 className="greeting">{greeting()}</h1>
 
-      <section className="card card--highlight" aria-labelledby="rutina-hoy">
-        <p className="card__label">{ui.home.cardLabel}</p>
-        <h2 id="rutina-hoy" className="card__title card__title--big">
-          {sitToStand.name}
-        </h2>
+      <Card tone="highlight" aria-labelledby="rutina-hoy">
+        <div className="card__head">
+          <div>
+            <p className="card__label">{ui.home.cardLabel}</p>
+            <h2 id="rutina-hoy" className="card__title card__title--big">
+              {sitToStand.name}
+            </h2>
+          </div>
+          <span className="card__illustration">
+            <SitToStandIllustration />
+          </span>
+        </div>
 
         <p className="badges">
           <Badge>{sitToStand.level}</Badge> <Badge>{sitToStand.repetitions}</Badge>{' '}
@@ -50,38 +60,51 @@ export function HomePage() {
 
         {/* CA-01.3: es la acción principal y la primera del contenido. */}
         <Button variant="primary" onClick={() => navigate('/rutina/ejercicio')}>
+          <Icon name="play" />
           {today.done ? ui.home.continue : ui.home.start}
         </Button>
-      </section>
+      </Card>
 
       {/* RF-14: validar la decisión de descansar, sin guardar nada ni culpabilizar. */}
       <Button
         variant="secondary"
+        className="btn--with-icon"
         onClick={() => setShowRestMessage((shown) => !shown)}
         aria-expanded={showRestMessage}
         aria-controls="mensaje-descanso"
       >
+        <Icon name="heart" />
         {ui.home.cannotToday}
       </Button>
 
       {showRestMessage && (
-        <section id="mensaje-descanso" className="card card--calm">
+        <Card id="mensaje-descanso" tone="calm">
           <h2 className="card__title">{ui.home.restMessageTitle}</h2>
           <p>{ui.home.restMessageBody}</p>
-        </section>
+        </Card>
       )}
 
       {/* RF-19: secciones futuras, sin cifras y sin navegación. */}
-      <section className="card card--muted" aria-labelledby="proximamente">
+      <Card tone="muted" aria-labelledby="proximamente">
         <h2 id="proximamente" className="card__title">
           {ui.home.soonTitle}
         </h2>
         <p className="soon">
-          <span>{ui.home.soonPlate}</span>
-          <span>{ui.home.soonFamily}</span>
+          <span className="soon__tile">
+            <span className="soon__emoji soon__emoji--plate">
+              <Icon name="plate" size={26} />
+            </span>
+            {ui.home.soonPlate}
+          </span>
+          <span className="soon__tile">
+            <span className="soon__emoji soon__emoji--family">
+              <Icon name="family" size={26} />
+            </span>
+            {ui.home.soonFamily}
+          </span>
         </p>
         <p className="muted">{ui.home.soonBody}</p>
-      </section>
+      </Card>
     </>
   );
 }

@@ -1,3 +1,4 @@
+import { Card } from '../components/Card';
 import { useNavigate } from 'react-router-dom';
 import { Badge } from '../components/Badge';
 import { Button } from '../components/Button';
@@ -11,7 +12,7 @@ export function SessionPausedPage() {
     <>
       <p className="eyebrow">{ui.section}</p>
 
-      <section className="card card--calm" aria-labelledby="pausada">
+      <Card tone="calm" aria-labelledby="pausada">
         <p className="big-icon" aria-hidden="true">
           ⏸
         </p>
@@ -25,7 +26,7 @@ export function SessionPausedPage() {
             {ui.paused.status}
           </Badge>
         </p>
-      </section>
+      </Card>
 
       <Button variant="primary" onClick={() => navigate('/')}>
         {ui.paused.home}

@@ -1,8 +1,10 @@
+import { Card } from '../components/Card';
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Badge } from '../components/Badge';
 import { Button } from '../components/Button';
 import { HealthNotice } from '../components/HealthNotice';
+import { Icon } from '../components/Icon';
 import { PreparationChecklist } from '../components/PreparationChecklist';
 import { ConfirmRegistrationModal } from '../components/modals/ConfirmRegistrationModal';
 import { PainNoticeModal } from '../components/modals/PainNoticeModal';
@@ -34,7 +36,7 @@ export function ExercisePage() {
 
       <PreparationChecklist />
 
-      <section className="card" aria-labelledby="pasos">
+      <Card aria-labelledby="pasos">
         <h2 id="pasos" className="card__title">
           {sitToStand.steps.title}
         </h2>
@@ -44,7 +46,7 @@ export function ExercisePage() {
             <li key={step}>{step}</li>
           ))}
         </ol>
-      </section>
+      </Card>
 
       <HealthNotice />
 
@@ -54,7 +56,7 @@ export function ExercisePage() {
           {ui.exercise.finish}
         </Button>
         <Button variant="secondary" onClick={flow.reportPain}>
-          <span aria-hidden="true">🛑</span> {ui.exercise.pain}
+          <Icon name="pause" /> {ui.exercise.pain}
         </Button>
       </div>
 

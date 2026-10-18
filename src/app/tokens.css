@@ -11,24 +11,28 @@
  * este mismo archivo. Si cambias un color aquí, vuelve a ejecutarlo.
  */
 :root {
-  /* Color */
-  --bg: #faf7f1; /* crema del fondo */
+  /* Color · T-03: paleta fría como en la captura de 06_Prototype (pendiente T-02b) */
+  --bg: #f2f2f7; /* gris de fondo agrupado, estilo iOS */
   --surface: #ffffff; /* tarjetas */
-  --navy: #16294a; /* tarjeta destacada de Inicio */
-  --navy-soft: #2f4d7d; /* bordes sobre blanco */
-  --ink: #141d33; /* texto principal */
-  --ink-soft: #4d566d; /* texto secundario */
-  --primary: #b4481a; /* naranja de la acción principal */
-  --primary-dark: #8f3610; /* hover y sección activa */
-  --success-bg: #e6f2e9;
-  --success-ink: #12512a;
-  --warn-bg: #fcefe3;
-  --warn-ink: #833707;
-  --notice-bg: #f1ece3; /* fondo del aviso de salud */
-  --line: #e2dcd2;
-
+  --navy: #14284b; /* tarjeta destacada de Inicio y cabeceras */
+  --navy-soft: #3a5788; /* bordes sobre blanco */
+  --ink: #1c1c1e; /* texto principal */
+  --ink-soft: #5a5a66; /* texto secundario */
+  --primary: #1d3a6e; /* azul de la acción principal */
+  --primary-dark: #12264b; /* hover y sección activa */
+  --accent: #c2410c; /* naranja de «Empezar ahora» en la tarjeta azul */
+  --accent-dark: #9a3412;
+  --accent-ink: #ffffff;
+  --success-bg: #e3f3e8;
+  --success-ink: #14532d;
+  --warn-bg: #fdeee2;
+  --warn-ink: #7c2d06;
+  --notice-bg: #f2f4f8; /* fondo del aviso de salud */
+  --line: #e3e3e8;
+  --active-bg: #e4eaf5; /* píldora de la sección activa */
   /* Tipografía — A-2: cuerpo mínimo 18 px, títulos 24 px */
-  --font: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font:
+    -apple-system, BlinkMacSystemFont, 'SF Pro Text', system-ui, 'Segoe UI', Roboto, sans-serif;
   --text-body: 1.125rem; /* 18 px */
   --text-lead: 1.25rem; /* 20 px */
   --text-title: 1.5rem; /* 24 px */
@@ -43,8 +47,10 @@
   --space-5: 2rem;
 
   /* Formas */
-  --radius: 14px;
-  --radius-lg: 20px;
+  --radius: 16px;
+  --radius-xl: 28px;
+  --shadow: 0 1px 2px rgba(0, 0, 0, 0.04), 0 8px 24px rgba(0, 0, 0, 0.05);
+  --radius-lg: 22px;
 
   /* A-1: zona pulsable mínima */
   --tap-min: 48px;

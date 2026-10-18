@@ -1,5 +1,7 @@
 import type { ReactNode } from 'react';
 import { NavLink } from 'react-router-dom';
+import { Logo } from '../components/Logo';
+import { Icon } from '../components/Icon';
 import { ui } from '../content/exercises';
 
 /** DEC-01: solo barra inferior; no hay cabecera de escritorio. */
@@ -11,7 +13,10 @@ export function AppShell({ children }: { children: ReactNode }) {
       </a>
 
       <header className="shell__header">
-        <span className="shell__brand">{ui.appName}</span>
+        <span className="shell__brand">
+          <Logo size={30} />
+          {ui.appName}
+        </span>
       </header>
 
       <main id="contenido" className="shell__main">
@@ -20,22 +25,22 @@ export function AppShell({ children }: { children: ReactNode }) {
 
       <nav className="tabbar" aria-label="Secciones">
         <NavLink to="/" className="tabbar__item" end>
-          <span aria-hidden="true">🏠</span>
+          <Icon name="home" />
           {ui.nav.home}
         </NavLink>
         <NavLink to="/rutina/ejercicio" className="tabbar__item">
-          <span aria-hidden="true">💪</span>
+          <Icon name="routine" />
           {ui.nav.routine}
         </NavLink>
         {/* RF-19: «Próximamente», sin navegación funcional.
             A-5: que no esté disponible se dice con texto, no con un color más flojo. */}
         <span className="tabbar__item tabbar__item--disabled">
-          <span aria-hidden="true">🍽️</span>
+          <Icon name="plate" />
           {ui.nav.plate}
           <span className="sr-only"> · {ui.home.soonTitle}</span>
         </span>
         <span className="tabbar__item tabbar__item--disabled">
-          <span aria-hidden="true">👪</span>
+          <Icon name="family" />
           {ui.nav.family}
           <span className="sr-only"> · {ui.home.soonTitle}</span>
         </span>

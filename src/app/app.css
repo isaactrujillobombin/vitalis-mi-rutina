@@ -1,4 +1,4 @@
-/* Estilos globales. Simples a propósito: un solo archivo mientras el MVP sea pequeño. */
+/* Estilos globales, estilo iOS. Simples a propósito: un solo archivo mientras el MVP sea pequeño. */
 
 *,
 *::before,
@@ -12,7 +12,10 @@ body {
   color: var(--ink);
   font-family: var(--font);
   font-size: var(--text-body);
-  line-height: 1.55;
+  line-height: 1.45;
+  letter-spacing: -0.01em;
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: transparent;
   /* A-8: nada de animaciones que metan prisa. */
 }
 
@@ -22,6 +25,10 @@ p,
 ul,
 ol {
   margin: 0;
+}
+
+.icon {
+  flex: none;
 }
 
 /* ---------- Estructura (CL-13: en pantallas anchas se centra, no se estira) ---------- */
@@ -36,12 +43,18 @@ ol {
 }
 
 .shell__header {
-  padding: var(--space-3) var(--space-3) 0;
+  padding: var(--space-3) 20px 0;
+  display: flex;
+  align-items: center;
 }
 
 .shell__brand {
-  font-weight: 700;
-  letter-spacing: 0.02em;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  font-size: var(--text-lead);
+  font-weight: 800;
+  letter-spacing: -0.02em;
   color: var(--navy);
 }
 
@@ -50,16 +63,16 @@ ol {
   display: flex;
   flex-direction: column;
   gap: var(--space-3);
-  padding: var(--space-3);
+  padding: var(--space-2) var(--space-3) var(--space-3);
   /* Hueco para la barra inferior fija. */
-  padding-bottom: calc(var(--tap-min) + var(--space-5) + env(safe-area-inset-bottom));
+  padding-bottom: calc(72px + var(--space-4) + env(safe-area-inset-bottom));
 }
 
 /* RNF-05: el foco siempre se ve. */
 :focus-visible {
-  outline: 3px solid var(--navy);
-  outline-offset: 2px;
-  border-radius: 6px;
+  outline: 3px solid var(--primary);
+  outline-offset: 3px;
+  border-radius: 10px;
 }
 
 /* Texto solo para lectores de pantalla (RNF-12). */
@@ -88,24 +101,32 @@ ol {
   border-radius: var(--radius);
 }
 
-/* ---------- Texto ---------- */
+/* ---------- Texto (títulos grandes al estilo iOS) ---------- */
 
 .greeting {
-  font-size: var(--text-hero);
-  line-height: 1.25;
+  font-size: 2.125rem; /* 34 px, «Large Title» */
+  line-height: 1.15;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  color: var(--ink);
+  margin-bottom: var(--space-1);
 }
 
 .page-title {
-  font-size: var(--text-title);
-  line-height: 1.3;
+  font-size: 1.75rem;
+  line-height: 1.2;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--ink);
 }
 
 .eyebrow {
   font-size: var(--text-small);
-  font-weight: 700;
-  letter-spacing: 0.06em;
+  font-weight: 600;
+  letter-spacing: 0.02em;
   text-transform: uppercase;
   color: var(--ink-soft);
+  margin-bottom: -8px;
 }
 
 .muted {
@@ -116,54 +137,153 @@ ol {
 
 .card {
   background: var(--surface);
-  border: 1px solid var(--line);
+  border: none;
   border-radius: var(--radius-lg);
-  padding: var(--space-3);
+  box-shadow: var(--shadow);
+  padding: 20px;
   display: flex;
   flex-direction: column;
   gap: var(--space-2);
 }
 
 .card--highlight {
-  background: var(--navy);
-  border-color: var(--navy);
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 100% 0%, rgba(255, 255, 255, 0.12) 0, transparent 55%), var(--navy);
+  border-radius: var(--radius-xl);
   color: #ffffff;
+  padding: 24px 22px 22px;
+  gap: 14px;
+  box-shadow: 0 14px 32px rgba(20, 40, 75, 0.22);
+}
+
+/* En la tarjeta azul, la acción principal es naranja, como en Figma. */
+.card--highlight .btn--primary {
+  background: var(--accent);
+  color: var(--accent-ink);
+  box-shadow: none;
+  min-height: 60px;
+  font-size: var(--text-lead);
+  margin-top: var(--space-1);
+}
+
+.card--highlight .btn--primary:hover:not(:disabled) {
+  background: var(--accent-dark);
 }
 
 .card--success {
-  background: var(--success-bg);
-  border-color: #bcd9c4;
+  background: var(--surface);
   text-align: center;
+  align-items: center;
+  padding: var(--space-5) var(--space-4);
 }
 
 .card--calm {
   background: var(--warn-bg);
-  border-color: #efd8bf;
+  box-shadow: none;
 }
 
 .card--muted {
   background: transparent;
-  border-style: dashed;
+  box-shadow: none;
+  padding: 0;
+}
+
+/* Cabecera de la tarjeta azul: texto a la izquierda, dibujo a la derecha. */
+.card__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+}
+
+.card__head .card__label {
+  margin-bottom: 6px;
+}
+
+.card__illustration {
+  flex: none;
+  width: 80px;
+  height: 80px;
+  border-radius: 24px;
+  display: grid;
+  place-items: center;
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+}
+
+.sit-to-stand__chair {
+  opacity: 0.55;
+}
+
+/*
+ * Las dos posturas se funden despacio (8 s por ciclo, con pausas largas en cada una).
+ * A-8: ritmo tranquilo. Si el móvil pide reducir el movimiento, se queda de pie y quieta.
+ */
+.sit-to-stand__pose {
+  animation: pose-fade 8s ease-in-out infinite;
+}
+
+.sit-to-stand__pose--standing {
+  animation-delay: -4s;
+}
+
+@keyframes pose-fade {
+  0%,
+  40% {
+    opacity: 1;
+  }
+  50%,
+  90% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sit-to-stand__pose {
+    animation: none;
+  }
+  .sit-to-stand__pose--sitting {
+    opacity: 0;
+  }
 }
 
 .card__label {
   font-size: var(--text-small);
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  opacity: 0.85;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: #c9d6ee;
 }
 
 .card__title {
   font-size: var(--text-lead);
-  line-height: 1.3;
+  line-height: 1.25;
+  font-weight: 700;
+  letter-spacing: -0.015em;
 }
 
 .card__title--big {
-  font-size: var(--text-title);
+  text-wrap: balance;
+  font-size: 1.875rem;
+  line-height: 1.12;
+  letter-spacing: -0.025em;
 }
 
 .big-icon {
-  font-size: 2.5rem;
+  width: 76px;
+  height: 76px;
+  margin: 0 auto var(--space-2);
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: var(--success-bg);
+  color: var(--success-ink);
+  font-size: 2.25rem;
+  font-weight: 700;
   line-height: 1;
 }
 
@@ -179,19 +299,18 @@ ol {
   display: inline-flex;
   align-items: center;
   gap: 0.35em;
-  padding: 0.25em 0.7em;
+  padding: 0.3em 0.75em;
   border-radius: 999px;
   font-size: var(--text-small);
   font-weight: 600;
-  background: rgba(255, 255, 255, 0.15);
-  border: 1px solid currentColor;
+  background: rgba(255, 255, 255, 0.14);
+  border: none;
 }
 
-.card:not(.card--highlight) .badge--neutral,
-.badges > .badge--neutral {
-  background: var(--notice-bg);
+.card:not(.card--highlight) .badge--neutral {
+  background: var(--surface);
   color: var(--ink-soft);
-  border-color: var(--line);
+  box-shadow: inset 0 0 0 1px var(--line);
 }
 
 .badge--success {
@@ -204,77 +323,154 @@ ol {
   color: var(--warn-ink);
 }
 
-/* ---------- Listas ---------- */
+/* ---------- Listas agrupadas con separadores finos (estilo iOS) ---------- */
 
-.checklist {
+.checklist,
+.steps {
   list-style: none;
   padding: 0;
   display: flex;
   flex-direction: column;
-  gap: var(--space-2);
 }
 
-.checklist li {
+.checklist li,
+.steps li {
   display: flex;
-  gap: var(--space-2);
+  align-items: flex-start;
+  gap: 14px;
+  padding: 12px 0;
+}
+
+.checklist li + li,
+.steps li + li {
+  border-top: 1px solid var(--line);
+}
+
+.checklist li:last-child,
+.steps li:last-child {
+  padding-bottom: 0;
 }
 
 .checklist__mark {
+  flex: none;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: var(--success-bg);
   color: var(--success-ink);
-  font-weight: 700;
 }
 
 .steps {
-  padding-left: 1.3em;
-  display: flex;
-  flex-direction: column;
+  counter-reset: step;
+}
+
+.steps li {
+  counter-increment: step;
+}
+
+.steps li::before {
+  content: counter(step);
+  flex: none;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: var(--navy);
+  color: #ffffff;
+  font-weight: 700;
+  font-size: var(--text-small);
+}
+
+/* Próximamente: dos mosaicos discretos. */
+.soon {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: var(--space-2);
 }
 
-.soon {
+.soon__tile {
+  background: var(--surface);
+  border-radius: var(--radius);
+  padding: 16px;
   display: flex;
-  gap: var(--space-2);
-  flex-wrap: wrap;
+  flex-direction: column;
+  gap: 10px;
   font-weight: 600;
+  color: var(--ink);
+  box-shadow: var(--shadow);
+}
+
+.soon__emoji {
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  display: grid;
+  place-items: center;
+}
+
+.soon__emoji--plate {
+  background: var(--success-bg);
+  color: var(--success-ink);
+}
+
+.soon__emoji--family {
+  background: var(--warn-bg);
+  color: var(--warn-ink);
+}
+
+.card--muted .card__title {
+  font-size: var(--text-small);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
   color: var(--ink-soft);
+  padding-top: var(--space-2);
 }
 
 /* ---------- Avisos ---------- */
 
 .health-notice {
+  display: flex;
+  gap: var(--space-1);
+  align-items: flex-start;
   font-size: var(--text-small);
   color: var(--ink-soft);
-  background: var(--notice-bg);
-  border-radius: var(--radius);
-  padding: var(--space-2);
+  padding: 0 4px;
 }
 
 .alert {
   background: var(--warn-bg);
   color: var(--warn-ink);
-  border: 1px solid var(--warn-ink);
   border-radius: var(--radius);
-  padding: var(--space-2);
+  padding: var(--space-2) var(--space-3);
   font-weight: 600;
 }
 
 /* ---------- Botones (A-1: 48 px mínimo, 8 px de separación) ---------- */
 
 .btn {
-  min-height: var(--tap-min);
+  min-height: 56px;
   min-width: var(--tap-min);
   padding: var(--space-2) var(--space-3);
   border-radius: var(--radius);
-  border: 2px solid transparent;
+  border: none;
   font: inherit;
-  font-weight: 700;
+  font-weight: 600;
+  letter-spacing: -0.01em;
   cursor: pointer;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 0.4em;
+  gap: 0.5em;
   text-align: center;
   text-decoration: none;
+}
+
+.btn:active:not(:disabled) {
+  filter: brightness(0.92);
 }
 
 .btn--block {
@@ -293,17 +489,23 @@ ol {
 .btn--secondary {
   background: var(--surface);
   color: var(--navy);
-  border-color: var(--navy-soft);
+  box-shadow: inset 0 0 0 1.5px var(--navy-soft);
 }
 
 .btn--secondary:hover {
   background: var(--notice-bg);
 }
 
+/* Botón de fila con icono, como una celda de iOS. */
+.btn--with-icon {
+  justify-content: flex-start;
+  padding-left: 18px;
+  box-shadow: var(--shadow);
+}
+
 .btn--return {
   background: transparent;
-  color: var(--navy);
-  border-color: transparent;
+  color: var(--primary);
   text-decoration: underline;
 }
 
@@ -318,17 +520,27 @@ ol {
   gap: var(--space-2);
 }
 
-/* S-1 y CA-05.3: «Me duele» visible sin desplazarse en 390 × 844. */
+/*
+ * S-1 y CA-05.3: «Me duele» visible sin desplazarse en 390 × 844.
+ * Barra translúcida pegada encima de la barra inferior, botones lado a lado.
+ */
 .sticky-actions {
   position: sticky;
-  bottom: calc(var(--tap-min) + var(--space-2));
-  display: flex;
-  flex-direction: column;
+  bottom: calc(72px + env(safe-area-inset-bottom));
+  margin: 0 calc(-1 * var(--space-3));
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: var(--space-2);
-  padding: var(--space-2);
-  background: var(--bg);
-  border-top: 1px solid var(--line);
-  border-radius: var(--radius);
+  padding: var(--space-2) var(--space-3);
+  background: rgba(242, 242, 247, 0.88);
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+}
+
+.sticky-actions .btn--secondary {
+  background: var(--warn-bg);
+  color: var(--warn-ink);
+  box-shadow: inset 0 0 0 1.5px var(--warn-ink);
 }
 
 /* ---------- Ventanas modales (RNF-05, 350 px como en Figma) ---------- */
@@ -336,18 +548,21 @@ ol {
 .modal {
   width: min(350px, calc(100vw - 2rem));
   border: none;
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-xl);
   padding: 0;
   background: var(--surface);
   color: var(--ink);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.25);
 }
 
 .modal::backdrop {
-  background: rgba(10, 18, 35, 0.55);
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
 }
 
 .modal__content {
-  padding: var(--space-3);
+  padding: var(--space-4) 20px 20px;
   display: flex;
   flex-direction: column;
   gap: var(--space-2);
@@ -355,11 +570,17 @@ ol {
 
 .modal__title {
   font-size: var(--text-title);
-  line-height: 1.3;
+  line-height: 1.2;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--ink);
 }
 
 .modal__summary {
   font-weight: 600;
+  background: var(--bg);
+  border-radius: var(--radius);
+  padding: var(--space-2) var(--space-3);
 }
 
 .modal__body {
@@ -373,7 +594,7 @@ ol {
   margin-top: var(--space-1);
 }
 
-/* ---------- Barra inferior ---------- */
+/* ---------- Barra inferior translúcida ---------- */
 
 .tabbar {
   position: fixed;
@@ -381,19 +602,23 @@ ol {
   width: min(var(--app-width), 100%);
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  background: var(--surface);
+  gap: 4px;
+  padding: 6px 8px calc(8px + env(safe-area-inset-bottom));
+  background: rgba(255, 255, 255, 0.86);
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
   border-top: 1px solid var(--line);
-  padding-bottom: env(safe-area-inset-bottom);
 }
 
 .tabbar__item {
-  min-height: var(--tap-min);
+  min-height: 58px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 2px;
-  font-size: 0.8rem;
+  gap: 3px;
+  border-radius: 14px;
+  font-size: 0.875rem;
   font-weight: 600;
   color: var(--ink-soft);
   text-decoration: none;
@@ -401,6 +626,7 @@ ol {
 
 .tabbar__item.active {
   color: var(--primary-dark);
+  background: var(--active-bg);
 }
 
 /*

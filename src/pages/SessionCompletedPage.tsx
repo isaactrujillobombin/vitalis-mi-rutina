@@ -1,3 +1,4 @@
+import { Card } from '../components/Card';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Badge } from '../components/Badge';
@@ -26,7 +27,7 @@ export function SessionCompletedPage() {
     <>
       <p className="eyebrow">{ui.section}</p>
 
-      <section className="card card--success" aria-labelledby="registrada">
+      <Card tone="success" aria-labelledby="registrada">
         <p className="big-icon" aria-hidden="true">
           ✓
         </p>
@@ -39,7 +40,7 @@ export function SessionCompletedPage() {
             {sitToStand.name} · {sitToStand.repetitions}
           </Badge>
         </p>
-      </section>
+      </Card>
 
       <Button variant="primary" onClick={() => navigate('/')}>
         {ui.completed.home}
