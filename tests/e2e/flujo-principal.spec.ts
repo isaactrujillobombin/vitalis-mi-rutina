@@ -106,10 +106,13 @@ test('CL-04: recargar en mitad del ejercicio no crea ningún registro', async ({
 
 test('RNF-05: el flujo completo se hace solo con teclado', async ({ page }) => {
   await page.goto('/');
+  // Esperar a que la app esté pintada: si no, los primeros Tab caen en <body>.
+  await expect(page.getByRole('button', { name: 'Empezar ahora' })).toBeVisible();
 
   // Llegar a «Empezar ahora» tabulando y activarlo con Enter.
+  // WebKit (iPhone) se salta los enlaces al tabular, así que puede necesitar más pulsaciones.
   await page.keyboard.press('Tab');
-  for (let i = 0; i < 10; i += 1) {
+  for (let i = 0; i < 20; i += 1) {
     const name = await page.evaluate(() => document.activeElement?.textContent ?? '');
     if (name.includes('Empezar ahora')) break;
     await page.keyboard.press('Tab');

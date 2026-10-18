@@ -52,7 +52,7 @@ Prototipo de Figma: [Vitalis — NexoTeam (Pantallas)](https://www.figma.com/des
 Inicio → Ejercicio (preparación + pasos) → «Terminar ejercicio» → confirmar → **Sesión registrada**
 y la salida segura: «Me duele» → «Pausar sesión» → **Sesión pausada** (sin registro).
 
-**Comprobado automáticamente:** 57 tests unitarios y de componentes + 28 pruebas e2e en dos perfiles de móvil (Chromium/Android y WebKit/iPhone), con auditoría axe sin violaciones *serious* ni *critical*. **Lighthouse móvil: Rendimiento 100 · Accesibilidad 100 · Buenas prácticas 100** ([informe](docs/lighthouse/inicio-movil.report.html)). Detalle en [validacion.md](validacion.md).
+**Comprobado automáticamente:** 62 tests unitarios y de componentes + 28 pruebas e2e en dos perfiles de móvil (Chromium/Android y WebKit/iPhone), con auditoría axe sin violaciones *serious* ni *critical*. **Lighthouse móvil: Rendimiento 100 · Accesibilidad 100 · Buenas prácticas 100** ([informe](docs/lighthouse/inicio-movil.report.html)). Detalle en [validacion.md](validacion.md).
 
 ### Limitaciones conocidas
 
@@ -60,8 +60,7 @@ y la salida segura: «Me duele» → «Pausar sesión» → **Sesión pausada** 
 - **No hay servicios simulados ni servidor:** todo es local con `localStorage`. No hay nada que arrancar aparte de la app.
 - **DEC-01 (solo móvil) está pendiente de confirmar** por el resto del equipo (tarea T-00b).
 - Falta el **test con personas de 65+ años** (T-20).
-- **Servicios simulados:** ninguno. «Avisar a la familia» usa la hoja de compartir real del sistema; no se ha podido probar de forma automática (ver [validacion.md](validacion.md) §9).
-- Dos tests e2e son **inestables en WebKit** por tiempos del propio test; están declarados en validacion.md y no se han desactivado.
+- **Servicios simulados:** ninguno. «Avisar a la familia» usa la hoja de compartir real del sistema; se prueba con la función de compartir simulada; la hoja real del sistema se comprueba a mano (ver [validacion.md](validacion.md) §9).
 
 ## Puesta en marcha
 
@@ -78,7 +77,7 @@ npm run dev          # servidor local en http://localhost:5173
 npm run check        # todo: lint + tipos + contraste + unitarios + e2e
 npm run lint         # ESLint + jsx-a11y
 npm run typecheck    # tsc --noEmit
-npm run test         # Vitest + Testing Library (57 tests)
+npm run test         # Vitest + Testing Library (62 tests)
 npm run test:e2e     # Playwright + axe (28 tests × 2 perfiles de móvil)
 npm run check:contrast  # contraste de los tokens de color (WCAG AA)
 npm run build        # build de producción

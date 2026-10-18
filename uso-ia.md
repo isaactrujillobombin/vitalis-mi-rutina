@@ -155,7 +155,7 @@ Es exactamente el caso límite CL-01 que el equipo había anotado en la fase SDD
 | Corregir RF-16 con una marca `useRef` en vez de solo con el botón desactivado | **Aceptado** | Pulsar dos veces sin querer es muy habitual en personas con poca experiencia digital (CL-01), y un registro duplicado confundiría a la usuaria. | Test de componente: una doble pulsación crea un solo registro. |
 | Que el test de privacidad falle si aparece cualquier petición externa (RNF-08) | **Aceptado** | Le decimos a la usuaria que sus datos no salen del móvil, y este test es la forma de demostrar que es verdad. | Test `RNF-08 (P-3): no se pide nada a dominios de terceros`. |
 | Verificar el contraste con un script propio en vez de a mano | **Aceptado, pero no basta** | El script no sabe si un color se ve bien o se parece al Figma: eso lo tuvimos que revisar a ojo. | `npm run check:contrast` (18 pares) y revisión de las capturas de la app. |
-| Dejar fuera de la validación automática RF-12 (Web Share) y declararlo en validacion.md | **Insuficiente · modificado** | Queremos al menos un test con la función de compartir simulada para comprobar también la alternativa de WhatsApp y copiar. | Pendiente: test con `navigator.share` simulado (validacion.md §9). |
+| Dejar fuera de la validación automática RF-12 (Web Share) y declararlo en validacion.md | **Insuficiente · modificado** | Queremos al menos un test con la función de compartir simulada para comprobar también la alternativa de WhatsApp y copiar. | Añadidos 5 tests con `navigator.share` y el portapapeles simulados en `SessionCompletedPage.test.tsx`. |
 
 ---
 
@@ -231,7 +231,7 @@ Es exactamente el caso límite CL-01 que el equipo había anotado en la fase SDD
 | --- | --- | --- | --- |
 | Códigos G0X-01/02/03 en lugar de nombres | **Aceptado** | El enunciado prohíbe nombres del alumnado en el repositorio, y no nos habíamos dado cuenta de que estaban en 8 documentos, uno con apellidos. | Búsqueda en todo el repositorio: ningún nombre en los archivos actuales. |
 | Estado de las tareas en tasks.md sin marcarlas como hechas | **Modificado** | Funcionan y tienen tests, así que preferimos marcarlas como hechas. | 57 tests unitarios y 28 × 2 e2e; tasks.md actualizado. |
-| Declarar los dos tests e2e inestables en lugar de desactivarlos | **Aceptado** | Fallaban también antes del rediseño, así que es un problema de tiempos del test y no de la app. | Ejecutados varias veces con y sin los cambios del rediseño. |
+| Declarar los dos tests e2e inestables en lugar de desactivarlos | **Aceptado** | Fallaban también antes del rediseño, así que es un problema de tiempos del test y no de la app. | Ejecutados varias veces con y sin el rediseño. Después se corrigieron: esperan a que la pantalla esté pintada y pasan 6 de 6 veces. |
 
 ---
 

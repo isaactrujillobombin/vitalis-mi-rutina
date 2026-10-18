@@ -59,6 +59,8 @@ test('RNF-06: SesiónPausada sin violaciones graves', async ({ page }) => {
 test('RNF-01 (A-1): todos los botones del flujo miden 48 px o más', async ({ page }) => {
   await page.goto('/');
   await page.getByRole('button', { name: 'Empezar ahora' }).click();
+  // Medir cuando la pantalla de Ejercicio ya está pintada, no durante la navegación.
+  await expect(page.getByRole('button', { name: 'Terminar ejercicio' })).toBeVisible();
 
   for (const boton of await page.getByRole('button').all()) {
     if (!(await boton.isVisible())) continue;

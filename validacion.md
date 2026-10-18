@@ -21,14 +21,14 @@ npm run check                            # lint + tipos + contraste + unitarios 
 | Lint y accesibilidad al escribir | ESLint 9 + jsx-a11y | **0 avisos** |
 | Tipos | TypeScript 5.9 `strict` | **0 errores** |
 | Contraste de los tokens | `scripts/check-contrast.mjs` | **18/18 pares** cumplen |
-| Unitarios y de componentes | Vitest + Testing Library | **57/57 pasan** |
+| Unitarios y de componentes | Vitest + Testing Library | **62/62 pasan** |
 | End-to-end | Playwright · perfil Android (Chromium) | **28/28 pasan** |
-| End-to-end | Playwright · perfil iPhone (WebKit) | **28/28 pasan** en la última ejecución completa · 2 tests inestables (ver §9) |
+| End-to-end | Playwright · perfil iPhone (WebKit) | **28/28 pasan** |
 | Accesibilidad automática | @axe-core/playwright, 6 pantallas | **0 violaciones** *serious* / *critical* |
 | Build de producción | Vite 7 | **correcto** |
 | Rendimiento y accesibilidad | Lighthouse 12.2.1 · móvil, build de producción | **Rendimiento 100 · Accesibilidad 100 · Buenas prácticas 100** · [informe](docs/lighthouse/inicio-movil.report.html) |
 
-**Total: 113 comprobaciones automáticas** (57 unitarias + 28 × 2 perfiles de e2e), más el informe de Lighthouse.
+**Total: 118 comprobaciones automáticas** (62 unitarias + 28 × 2 perfiles de e2e), más el informe de Lighthouse.
 
 **Capturas de evidencia** (390 × 844, generadas con Playwright sobre la app real) en [docs/capturas-app/](docs/capturas-app/):
 
@@ -157,12 +157,11 @@ Esta sección es tan importante como las anteriores. Nada de lo de aquí debe da
 
 | Qué | Por qué | Cómo se cerrará |
 | --- | --- | --- |
-| **RF-12 · «Avisar a la familia»** | La Web Share API no se puede ejercitar de verdad en un navegador automatizado: la hoja de compartir la pinta el sistema operativo, fuera de la página. Solo está comprobado que el botón existe. | Prueba manual en un móvil real (Android e iPhone), apuntada para T-13. La alternativa WhatsApp + copiar tampoco está probada. |
+| **RF-12 · hoja de compartir real** | Los 5 tests de `SessionCompletedPage.test.tsx` simulan `navigator.share` y el portapapeles: comprueban el mensaje, la cancelación sin error (CA-12.3) y las alternativas WhatsApp y Copiar (CA-12.1). Lo que no se puede automatizar es la hoja que pinta el sistema operativo. | Prueba manual en un Android y un iPhone antes de la defensa. |
 | **Test con usuarias reales (T-20)** | No se ha hecho todavía. **El indicador de éxito del MVP (2 de cada 3 personas completan la tarea sin instrucciones de clic) está sin medir.** | Sesión con 1-2 personas de 65+ años con el guion de `08_Test` de Figma. |
 | **Pasos del ejercicio (D-10, S-6)** | Los ha redactado el equipo; **no los ha validado un fisioterapeuta ni una guía oficial**. Es un riesgo físico, no de software. | Validación con fuente fiable antes del piloto. Bloquea T-20. |
 | **Lector de pantalla** | axe detecta fallos de marcado, pero no si la experiencia con VoiceOver o TalkBack se entiende. | Recorrido manual con lector, apuntado en T-18. |
 | **Zoom al 200 % y escala de grises** | Comprobaciones manuales que aún no se han hecho. | Lista firmada en el PR de T-18. |
-| **Tests e2e inestables en WebKit** | `RNF-05: el flujo completo se hace solo con teclado` y `RNF-01 (A-1): todos los botones del flujo miden 48 px o más` fallan de forma intermitente en el perfil iPhone (son problemas de tiempos del test, no de la app: también fallaban antes del rediseño). No se han desactivado (regla 8 de AGENTS.md). | Esperar a que la navegación termine antes de tabular y de medir. |
 | **Lighthouse solo en Inicio** | Se ha medido la pantalla de Inicio con el build de producción. El resto de pantallas no se pueden abrir directamente (RF-17 redirige a Inicio). | Medición manual recorriendo el flujo con DevTools. |
 | **Tokens de color contra Figma** | Los hex salen de las capturas, no de las variables del archivo: el conector de Figma agotó el límite de llamadas del plan Starter. **El contraste sí está verificado**, pero el parecido con el diseño no. | T-02b. |
 | **DEC-01 (solo móvil)** | Decisión aplicada al código pero **pendiente de que la confirmen los otros dos integrantes** y de comentarla con el docente. | T-00b. |
@@ -184,7 +183,7 @@ Esta sección es tan importante como las anteriores. Nada de lo de aquí debe da
 | RF-09 | ✅ automático | e2e + componente |
 | RF-10 | ✅ automático | e2e |
 | RF-11 | ✅ automático | e2e |
-| RF-12 | ⚠️ **parcial** | solo existencia del botón · ver §9 |
+| RF-12 | ✅ automático (simulado) | 5 tests en `SessionCompletedPage.test.tsx` · la hoja real del sistema, a mano (§9) |
 | RF-13 | ✅ automático | e2e + `useTodayStatus.test.ts` |
 | RF-14 | ✅ automático | e2e + componente |
 | RF-15 | ✅ automático | 5 tests · ver §3 |
