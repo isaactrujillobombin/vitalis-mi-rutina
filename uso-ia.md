@@ -237,6 +237,12 @@ Es exactamente el caso límite CL-01 que el equipo había anotado en la fase SDD
 
 ## Reflexión final [EQUIPO]
 
-> Borrador a reescribir con vuestras palabras (5-8 líneas). Cada integrante debe poder defenderlo.
+> **Borrador preparado por la IA a partir de los casos documentados. Reescribidlo con vuestras palabras (8-12 líneas)** y completad los huecos entre corchetes: son opiniones y decisiones vuestras, no de la IA. Cada integrante debe poder defender lo que quede escrito.
 
-La IA nos ayudó sobre todo a entender qué pedía el SDD y a convertir el prototipo en requisitos verificables y casos límite que no habíamos previsto (doble pulsación, almacenamiento bloqueado, acceso directo a pantallas). También señaló incoherencias entre la ideación, el Figma y el enunciado. Detectamos que se equivoca cuando trabaja con información incompleta: con capturas ilegibles sacó conclusiones erróneas sobre la soledad. Además, tiende a proponer más alcance y tecnología de la que cabe en un MVP. Decidimos nosotros el alcance final, la plataforma y [completar], y revisamos cada requisito contra el Figma antes de aceptarlo.
+**En qué nos ayudó.** En la fase SDD, la IA nos ayudó a entender qué pedía el método y a convertir el prototipo en requisitos verificables, con casos límite que no habíamos previsto (doble pulsación, almacenamiento bloqueado, acceso directo a pantallas). En el desarrollo montó el proyecto, los tests y la mayor parte del código siguiendo AGENTS.md, y fue útil que preguntara la tarea T-xx antes de tocar nada. [Completar: qué os resultó más útil a vosotros.]
+
+**En qué se equivocó.** Se equivoca cuando trabaja con información incompleta: con capturas ilegibles sacó conclusiones erróneas sobre la soledad, y sin acceso al Figma los colores tuvieron que salir de capturas. En el código escribió un fallo real de doble registro (Caso 5) que solo se vio al ejecutar los tests, y en el rediseño introdujo dos regresiones visuales (Casos 6 y 7) que no detectó ningún test: las encontramos nosotros y una captura. También tiende a proponer más alcance del que cabe en un MVP. [Completar: algún error que os afectara directamente.]
+
+**Lo que decidimos nosotros.** El alcance final y la plataforma (DEC-01), la dirección visual (DEC-02), [completar]. La IA rechazó por sí misma lo que chocaba con la constitución (servidor, cuentas, contador, la foto de una persona real), pero cada una de esas reglas la escribimos nosotros antes.
+
+**Qué aprendimos y qué haríamos distinto.** [Completar. Ideas para discutir: que los tests no sustituyen mirar la app; que escribir el caso límite en el spec no basta si no hay un test que lo ejecute; que las peticiones vagas («mejóralo») dan resultados que hay que corregir varias veces; que conviene revisar cada propuesta antes de aceptarla en lugar de al final.]
