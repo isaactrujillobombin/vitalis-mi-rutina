@@ -64,6 +64,17 @@ export const ui = {
     restMessageTitle: 'Descansar también está bien',
     restMessageBody:
       'Hoy no pasa nada. Mañana lo retomas. Si el dolor sigue, cuéntaselo a tu médico.',
+    /** RF-20: resumen de la semana. S-2: sin rachas ni culpa; S-5: sin animar a hacer más. */
+    week: {
+      title: 'Esta semana',
+      daysDone: (n: number) => (n === 1 ? '1 día' : `${n} días`),
+      empty: 'Cuando hagas una sesión, aparecerá aquí.',
+      listLabel: 'Días de esta semana',
+      today: 'hoy',
+      dayDone: 'sesión hecha',
+      dayNotDone: 'sin sesión',
+      dayFuture: 'todavía no ha llegado',
+    },
     soonTitle: 'Próximamente',
     soonPlate: 'Mi Plato',
     soonFamily: 'Reto en Familia',

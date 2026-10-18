@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Badge } from '../components/Badge';
 import { Icon } from '../components/Icon';
+import { WeekSummaryCard } from '../components/WeekSummaryCard';
 import { SitToStandIllustration } from '../components/SitToStandIllustration';
 import { Button } from '../components/Button';
 import { sitToStand, ui } from '../content/exercises';
@@ -83,6 +84,9 @@ export function HomePage() {
           <p>{ui.home.restMessageBody}</p>
         </Card>
       )}
+
+      {/* RF-20: resumen de la semana, después de las acciones del día (CA-01.3). */}
+      <WeekSummaryCard />
 
       {/* RF-19: secciones futuras, sin cifras y sin navegación. */}
       <Card tone="muted" aria-labelledby="proximamente">

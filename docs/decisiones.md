@@ -83,3 +83,21 @@
 
 - El repositorio actual tiene un nombre personal en la URL y los nombres siguen en el **historial de commits** antiguos. Hay que usar el repositorio que indique el profesorado (con el identificador del grupo) y subir allí un historial limpio.
 - Revisar el Figma: su nombre y sus páginas también llevan nombres del equipo.
+
+---
+
+## DEC-04 · Resumen de la semana en Inicio (RF-20)
+
+| Apartado | Detalle |
+| --- | --- |
+| **Fecha** | 19/10/2026 |
+| **Tarea** | T-23 |
+| **Estado** | Aplicada en la rama `T-23-resumen-semanal` |
+
+**Decisión.** Inicio muestra los 7 días de la semana con un círculo por día y cuántos días tienen sesión.
+
+**Motivo.** El MVP se veía corto de funcionalidades. Esta usa los registros que ya se guardaban (sin datos nuevos, P-1), da sensación de progreso y algo concreto que contar a la familia («esta semana he hecho 3 días»), que es la conexión con la soledad. Se descartaron otras opciones de más riesgo: más ejercicios (necesitan validación de un fisioterapeuta, D-10) o contador y temporizador (excluidos en spec.md §3.2).
+
+**Límites que se respetan.** Sin rachas ni mensajes por los días sin hacer (S-2) y sin animar a hacer más (S-5). Textos nuevos en `src/content/exercises.ts`: «Esta semana», «1 día» / «N días» y «Cuando hagas una sesión, aparecerá aquí.».
+
+**Pendiente.** No está en el Figma. Comprobar en el test con usuarias (T-20) que se entiende y no presiona.

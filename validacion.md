@@ -21,14 +21,14 @@ npm run check                            # lint + tipos + contraste + unitarios 
 | Lint y accesibilidad al escribir | ESLint 9 + jsx-a11y | **0 avisos** |
 | Tipos | TypeScript 5.9 `strict` | **0 errores** |
 | Contraste de los tokens | `scripts/check-contrast.mjs` | **18/18 pares** cumplen |
-| Unitarios y de componentes | Vitest + Testing Library | **62/62 pasan** |
-| End-to-end | Playwright · perfil Android (Chromium) | **29/29 pasan** |
-| End-to-end | Playwright · perfil iPhone (WebKit) | **29/29 pasan** |
+| Unitarios y de componentes | Vitest + Testing Library | **71/71 pasan** |
+| End-to-end | Playwright · perfil Android (Chromium) | **30/30 pasan** |
+| End-to-end | Playwright · perfil iPhone (WebKit) | **30/30 pasan** |
 | Accesibilidad automática | @axe-core/playwright, 6 pantallas | **0 violaciones** *serious* / *critical* |
 | Build de producción | Vite 7 | **correcto** |
 | Rendimiento y accesibilidad | Lighthouse 12.2.1 · móvil, build de producción | **Rendimiento 100 · Accesibilidad 100 · Buenas prácticas 100** · [informe](docs/lighthouse/inicio-movil.report.html) |
 
-**Total: 120 comprobaciones automáticas** (62 unitarias + 29 × 2 perfiles de e2e), más el informe de Lighthouse.
+**Total: 131 comprobaciones automáticas** (71 unitarias + 30 × 2 perfiles de e2e), más el informe de Lighthouse.
 
 **Capturas de evidencia** (390 × 844, generadas con Playwright sobre la app real) en [docs/capturas-app/](docs/capturas-app/):
 
@@ -194,6 +194,7 @@ Esta sección es tan importante como las anteriores. Nada de lo de aquí debe da
 | RF-17 | ✅ automático | e2e |
 | RF-18 | ✅ automático | 3 unitarios + e2e |
 | RF-19 | ✅ automático | `HomePage.test.tsx` (comprueba que no hay cifras) |
+| RF-20 | ✅ automático | `weekSummary.test.ts` (6), `WeekSummaryCard.test.tsx` (3) y e2e `RF-20: al registrar una sesión, el resumen de la semana marca hoy` · [captura 05](docs/capturas-app/05-inicio-hecha-hoy.png) |
 | RNF-01 a RNF-08 | ✅ automático | ver §7 y §8 |
 | RNF-09 | ✅ automático | Lighthouse móvil: Rendimiento 100, Accesibilidad 100 · [informe](docs/lighthouse/inicio-movil.report.html) |
 | RNF-10, RNF-11 | ✅ / ⚠️ | el aviso sí; la revisión de lenguaje la hacen dos personas (T-05) |

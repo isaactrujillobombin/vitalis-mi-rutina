@@ -200,6 +200,14 @@ Si los registros guardados en el dispositivo no se pueden leer (formato incorrec
 **RF-19 — Secciones futuras**
 Donde la interfaz muestre «Mi Plato» o «Familia» (tarjetas de Inicio y navegación), el sistema las presentará como «Próximamente», sin cifras y sin navegación funcional.
 
+**RF-20 — Resumen de la semana** *(añadido el 19/10/2026, DEC-04)*
+En Inicio, después de las acciones del día, el sistema mostrará los 7 días de la semana actual (de lunes a domingo, hora local del dispositivo) con un círculo por día, marcado si ese día hay al menos una sesión registrada, y el número de días con sesión («Esta semana: 3 días»).
+
+- **CA-20.1:** dos sesiones el mismo día cuentan como un solo día.
+- **CA-20.2:** un día sin sesión se muestra como un círculo vacío y neutro, sin cruces, colores de alarma ni mensajes de culpa (S-2). Sin sesiones en toda la semana no aparece «0 días», sino «Cuando hagas una sesión, aparecerá aquí.».
+- **CA-20.3:** no hay rachas, metas ni mensajes que animen a hacer más (S-5).
+- **CA-20.4:** cada día se anuncia al lector de pantalla con su nombre y su estado («lunes: sesión hecha»), y hoy se distingue también sin color (RNF-04).
+
 ---
 
 ## 5. Requisitos no funcionales (verificables)
@@ -258,6 +266,7 @@ Donde la interfaz muestre «Mi Plato» o «Familia» (tarjetas de Inicio y naveg
 | D-09 | **Grafía de un nombre del equipo en Figma:** estaba mal escrito. Resuelto en la entrega final: los documentos usan solo códigos G02-NN (protección de datos del enunciado). | G02-02 | ✔ Resuelta |
 | D-10 | **Texto de los pasos del ejercicio:** validar con una fuente fiable (fisioterapeuta o guía oficial de ejercicio para mayores) antes del piloto. | G02-03 | Antes de T-20 |
 | D-11 | **DEC-01 (solo móvil):** pendiente de que G02-02 y G02-03 lo confirmen y de actualizar plan.md y tasks.md. | Todo el equipo | Antes de empezar T-02 |
+| D-12 | ~~¿Mostrar el progreso de la semana en Inicio?~~ **Resuelta (19/10/2026):** sí, como RF-20, sin rachas ni culpa (DEC-04). Validar en el test con usuarias (T-20) que se entiende y no presiona. | Todo el equipo | Tras T-20 |
 
 ---
 
@@ -278,4 +287,5 @@ Donde la interfaz muestre «Mi Plato» o «Familia» (tarjetas de Inicio y naveg
 | RF-17 | — (navegación) | T-15 |
 | RF-18 | — (datos) | T-06 |
 | RF-19 | Inicio, navegación | T-07, T-08 |
+| RF-20 | Inicio (resumen de la semana) | T-23 |
 | RNF-01 … RNF-12 | Todas | T-02, T-03, T-04, T-18, T-19 |

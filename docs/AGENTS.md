@@ -71,8 +71,8 @@ Después de cada cambio, ejecuta las comprobaciones y muestra el resultado. Si a
 | Tipos | `npm run typecheck` (`tsc --noEmit`) | **Confirmado** |
 | Formato | `npm run format` · `npm run format:check` | **Confirmado** |
 | Contraste de los tokens | `npm run check:contrast` | **Confirmado** · 18 pares, todos ≥ mínimo |
-| Tests unitarios y de componentes | `npm run test` (Vitest) | **Confirmado** · 62 tests |
-| Tests e2e + accesibilidad | `npm run test:e2e` (Playwright + axe) | **Confirmado** · 29 × 2 perfiles |
+| Tests unitarios y de componentes | `npm run test` (Vitest) | **Confirmado** · 71 tests |
+| Tests e2e + accesibilidad | `npm run test:e2e` (Playwright + axe) | **Confirmado** · 30 × 2 perfiles |
 | Build | `npm run build` (incluye `typecheck`) | **Confirmado** |
 | Servidor local | `npm run dev` (en http://localhost:5173) | **Confirmado** |
 | **Todo de una vez** | `npm run check` | **Confirmado** |

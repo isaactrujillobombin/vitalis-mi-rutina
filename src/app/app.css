@@ -391,6 +391,68 @@ ol {
   font-size: var(--text-small);
 }
 
+/* ---------- RF-20: resumen de la semana ---------- */
+
+.week__head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-2);
+}
+
+.week__count {
+  font-weight: 700;
+  color: var(--success-ink);
+}
+
+.week__days {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 4px;
+}
+
+.week__day {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Día sin sesión: círculo vacío y neutro (S-2: nada de rojo ni de cruces). */
+.week__dot {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  box-shadow: inset 0 0 0 2px var(--line);
+}
+
+.week__day--done .week__dot {
+  background: var(--success-bg);
+  color: var(--success-ink);
+  box-shadow: inset 0 0 0 2px var(--success-ink);
+}
+
+.week__label {
+  font-size: var(--text-small);
+  font-weight: 600;
+  color: var(--ink-soft);
+}
+
+/* Hoy se marca con un aro y el texto en negrita (A-5: no solo con color). */
+.week__day--today .week__dot {
+  outline: 2px solid var(--navy);
+  outline-offset: 2px;
+}
+
+.week__day--today .week__label {
+  color: var(--ink);
+  font-weight: 800;
+}
+
 /* Próximamente: dos mosaicos discretos. */
 .soon {
   display: grid;

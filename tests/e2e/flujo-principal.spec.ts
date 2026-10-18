@@ -121,3 +121,17 @@ test('RNF-05: el flujo completo se hace solo con teclado', async ({ page }) => {
 
   await expect(page.getByRole('button', { name: 'Terminar ejercicio' })).toBeVisible();
 });
+
+test('RF-20: al registrar una sesión, el resumen de la semana marca hoy', async ({ page }) => {
+  await page.goto('/');
+  const semana = page.getByRole('region', { name: 'Esta semana' });
+  await expect(semana.getByText('Cuando hagas una sesión, aparecerá aquí.')).toBeVisible();
+
+  await page.getByRole('button', { name: 'Empezar ahora' }).click();
+  await page.getByRole('button', { name: 'Terminar ejercicio' }).click();
+  await page.getByRole('button', { name: 'Sí, registrar sesión' }).click();
+  await page.getByRole('button', { name: 'Volver al inicio' }).click();
+
+  await expect(semana.getByText('1 día')).toBeVisible();
+  await expect(semana.getByText(/hoy: sesión hecha/)).toBeAttached();
+});

@@ -53,6 +53,7 @@
 | T-17 | Tests e2e de la ruta de dolor y pausa y de «Hoy tengo dolor o no puedo» | RF-09, RF-10, RF-11, RF-14 | T-12 | G02-02 | 3 | La suite cubre CL-08 y comprueba que no hay registros nuevos. | ☑ |
 | T-18 | Auditoría de accesibilidad: axe en las 6 pantallas, flujo solo con teclado, 320 / 390 / 768 px, botones ≥ 48 px, zoom 200 %, escala de grises y lector de pantalla | RNF-01 a RNF-07, RNF-12 | T-08, T-10 a T-14 | G02-01 | 4 | 0 violaciones *serious* o *critical*, sin desplazamiento horizontal y una lista de comprobación manual firmada en el PR. | ☑ |
 | T-19 | Test de privacidad (sin peticiones a terceros) y revisión de dependencias e iconos (licencias, sin CDN) | RNF-08, P-1 a P-4 | T-13 | G02-03 | 2 | Un test e2e falla si aparece una petición externa y las licencias de los iconos están anotadas en el README. | ☑ |
+| T-23 | Resumen de la semana en Inicio: 7 círculos (L a D) y «Esta semana: N días» (`weekSummary`, `WeekSummaryCard`) | RF-20, S-2, S-5 | T-06, T-08 | G02-01 | 2 | Tests unitarios de la semana (lunes a domingo, días distintos, cambio de día), de componente (lector de pantalla, sin culpa) y e2e del flujo. | ☑ |
 ## Fase 4 · Usabilidad, mejora y entrega
 
 | ID | Tarea | Requisito | Depende de | Responsable | Horas | Hecho cuando… | Estado |
@@ -68,7 +69,7 @@ El prototipo de T-01c ha evolucionado hasta ser el **MVP entregado**: el flujo f
 
 | Estado | Tareas |
 | --- | --- |
-| ☑ Hecha | T-01, T-01b, T-01c y T-02 a T-19 (salvo T-09, eliminada). El equipo decidió marcarlas porque funcionan y tienen tests (uso-ia.md, Caso 7) |
+| ☑ Hecha | T-01, T-01b, T-01c, T-02 a T-19 (salvo T-09, eliminada) y T-23 (resumen de la semana, DEC-04). El equipo decidió marcarlas porque funcionan y tienen tests (uso-ia.md, Caso 7) |
 | ◐ Parcial | T-22: Lighthouse hecho (100 / 100 / 100 en móvil); el despliegue público no lo exige el enunciado |
 | ☐ Sin hacer | T-00, T-00b, T-02b, T-20, T-21 |
 

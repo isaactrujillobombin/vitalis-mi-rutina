@@ -20,6 +20,7 @@ Personas de **65 a 85 años** que viven solas o pasan mucho tiempo en casa, con 
 | Avisar a la familia con la hoja de compartir del móvil (alternativa WhatsApp + copiar) | RF-12 |
 | «Hoy tengo dolor o no puedo»: mensaje que valida descansar, sin registrar nada | RF-14 |
 | Error de guardado con «Reintentar» y datos dañados que no bloquean la app | RF-15, RF-18 |
+| Resumen de la semana en Inicio: 7 círculos y «Esta semana: N días», sin rachas ni culpa | RF-20 |
 | Mi Plato y Reto en Familia visibles como «Próximamente» (sin funcionalidad) | RF-19 |
 
 Capturas de todas las pantallas en [docs/capturas-app/](docs/capturas-app/).
@@ -52,7 +53,7 @@ Prototipo de Figma: [Vitalis — NexoTeam (Pantallas)](https://www.figma.com/des
 Inicio → Ejercicio (preparación + pasos) → «Terminar ejercicio» → confirmar → **Sesión registrada**
 y la salida segura: «Me duele» → «Pausar sesión» → **Sesión pausada** (sin registro).
 
-**Comprobado automáticamente:** 62 tests unitarios y de componentes + 29 pruebas e2e en dos perfiles de móvil (Chromium/Android y WebKit/iPhone), con auditoría axe sin violaciones *serious* ni *critical*. **Lighthouse móvil: Rendimiento 100 · Accesibilidad 100 · Buenas prácticas 100** ([informe](docs/lighthouse/inicio-movil.report.html)). Detalle en [validacion.md](validacion.md).
+**Comprobado automáticamente:** 71 tests unitarios y de componentes + 30 pruebas e2e en dos perfiles de móvil (Chromium/Android y WebKit/iPhone), con auditoría axe sin violaciones *serious* ni *critical*. **Lighthouse móvil: Rendimiento 100 · Accesibilidad 100 · Buenas prácticas 100** ([informe](docs/lighthouse/inicio-movil.report.html)). Detalle en [validacion.md](validacion.md).
 
 ### Limitaciones conocidas
 
@@ -77,8 +78,8 @@ npm run dev          # servidor local en http://localhost:5173
 npm run check        # todo: lint + tipos + contraste + unitarios + e2e
 npm run lint         # ESLint + jsx-a11y
 npm run typecheck    # tsc --noEmit
-npm run test         # Vitest + Testing Library (62 tests)
-npm run test:e2e     # Playwright + axe (29 tests × 2 perfiles de móvil)
+npm run test         # Vitest + Testing Library (71 tests)
+npm run test:e2e     # Playwright + axe (30 tests × 2 perfiles de móvil)
 npm run check:contrast  # contraste de los tokens de color (WCAG AA)
 npm run build        # build de producción
 ```
