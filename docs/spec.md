@@ -13,8 +13,8 @@
 | Integrante | Rol principal en el SDD | Rol principal en el desarrollo |
 | --- | --- | --- |
 | Isaac Trujillo Bombín | plan.md, AGENTS.md | Datos, registro de sesiones, integración y despliegue |
-| Iker [apellidos] | spec.md | Componentes de interfaz, Inicio, ruta de dolor y pausa |
-| Enzo [apellidos] | constitution.md, tasks.md | Preparación, Ejercicio, pruebas e2e y privacidad |
+| Iker Mayor Oñate | spec.md | Componentes de interfaz, Inicio, ruta de dolor y pausa |
+| Enzo Ruiz Loze | constitution.md, tasks.md | Preparación, Ejercicio, pruebas e2e y privacidad |
 
 **Prototipo de Figma:** [Vitalis — NexoTeam (Pantallas)](https://www.figma.com/design/qs3XbPY89nY10Wf2JxxdI0/Vitalis-%E2%80%94-NexoTeam--Pantallas-)
 Páginas de referencia: `00_Cover · 01_Brief · 02_UserFlow · 03_Wireframes`, `04_UI · 05_Components · 06_Prototype` y `07_ReadyForDev`.
